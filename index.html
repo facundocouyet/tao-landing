@@ -145,23 +145,20 @@
     color: var(--bg);
   }
   .hero-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 18px 28px;
-    background: var(--bg);
-    color: var(--black);
+    display: inline-block;
+    padding: 12px 22px;
+    background: transparent;
+    color: var(--bg);
     text-decoration: none;
-    font-size: 12px;
-    letter-spacing: 2px;
+    font-size: 11px;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
-    font-weight: 700;
-    transition: background 0.2s, transform 0.1s;
+    font-weight: 500;
+    border: 1px solid var(--bg);
+    transition: background 0.2s, color 0.2s;
     flex-shrink: 0;
   }
-  .hero-cta:hover { background: var(--gray-150); }
-  .hero-cta:active { transform: translateY(1px); }
-  .hero-cta svg { width: 16px; height: 16px; }
+  .hero-cta:hover { background: var(--bg); color: var(--black); }
 
   /* ───── SECTION primitives ───── */
   section { padding: 96px 0; }
@@ -187,7 +184,7 @@
   .stats { padding: 64px 0; }
   .stats-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 1px;
     background: var(--black);
     border: 1px solid var(--black);
@@ -252,11 +249,11 @@
     font-weight: 500;
   }
   .directory-name {
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 700;
-    letter-spacing: -0.5px;
+    letter-spacing: 1px;
     color: var(--black);
-    text-transform: lowercase;
+    text-transform: uppercase;
   }
   .directory-detail-item {
     margin-bottom: 16px;
@@ -282,7 +279,7 @@
     align-items: center;
   }
   .editorial-image {
-    aspect-ratio: 4/5;
+    aspect-ratio: 4/3;
     overflow: hidden;
     border: 1px solid var(--gray-200);
     box-shadow: 0 4px 16px rgba(46, 46, 42, 0.08);
@@ -320,10 +317,9 @@
     gap: 20px;
   }
   .gallery-card {
-    position: relative;
-    aspect-ratio: 4/3;
+    margin: 0;
     border: 1px solid var(--gray-200);
-    background: var(--gray-75);
+    background: var(--bg);
     overflow: hidden;
     cursor: zoom-in;
     transition: border-color 0.2s, transform 0.25s, box-shadow 0.2s;
@@ -333,21 +329,25 @@
     transform: translateY(-2px);
     box-shadow: 0 6px 18px rgba(46, 46, 42, 0.12);
   }
+  .gallery-card picture {
+    display: block;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: var(--gray-75);
+  }
   .gallery-card img {
     width: 100%; height: 100%; object-fit: cover;
     transition: transform 0.6s ease;
   }
   .gallery-card:hover img { transform: scale(1.03); }
-  .gallery-caption {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
+  .gallery-card figcaption {
     padding: 14px 18px;
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--bg);
-    background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.7) 100%);
-    pointer-events: none;
+    color: var(--gray-700);
+    border-top: 1px solid var(--gray-150);
+    background: var(--bg);
   }
 
   /* ───── PLANS — bordered cards, clickable ───── */
@@ -360,15 +360,14 @@
   .plan-item, .plan-full {
     margin: 0;
     background: var(--bg);
-    border: 1px solid var(--gray-200);
+    border: 1px solid var(--black);
     overflow: hidden;
     cursor: zoom-in;
-    transition: border-color 0.2s, transform 0.25s, box-shadow 0.2s;
+    transition: transform 0.25s, box-shadow 0.2s;
   }
   .plan-item:hover, .plan-full:hover {
-    border-color: var(--black);
     transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(46, 46, 42, 0.12);
+    box-shadow: 0 6px 18px rgba(46, 46, 42, 0.18);
   }
   .plan-item img, .plan-full img {
     display: block;
@@ -380,8 +379,9 @@
     font-size: 11px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--gray-700);
-    border-top: 1px solid var(--gray-150);
+    color: var(--black);
+    font-weight: 700;
+    border-top: 1px solid var(--black);
     background: var(--bg);
   }
 
@@ -432,13 +432,12 @@
     border-bottom: 1px solid var(--gray-150);
   }
   .philosophy-quote {
-    font-size: clamp(26px, 3.5vw, 40px);
-    font-weight: 300;
-    font-style: italic;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 400;
     max-width: 880px;
-    margin: 0 auto 28px;
-    letter-spacing: -0.5px;
-    line-height: 1.3;
+    margin: 0 auto 32px;
+    letter-spacing: -1px;
+    line-height: 1.2;
     color: var(--black);
   }
   .philosophy-attribution {
@@ -567,24 +566,26 @@
     position: fixed;
     bottom: 24px;
     right: 24px;
-    width: 56px;
-    height: 56px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
-    background: var(--wa);
-    color: white;
+    background: var(--bg);
+    color: var(--black);
+    border: 1px solid var(--black);
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+    box-shadow: 0 4px 14px rgba(46, 46, 42, 0.18);
     z-index: 90;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
   }
   .wa-float:hover {
-    transform: scale(1.06);
-    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.55);
+    background: var(--black);
+    color: var(--bg);
+    transform: scale(1.04);
   }
-  .wa-float svg { width: 28px; height: 28px; }
+  .wa-float svg { width: 24px; height: 24px; }
 
   /* ───── LIGHTBOX ───── */
   .lightbox {
@@ -686,7 +687,7 @@
     .hero-content { padding: 90px 24px 40px; }
     .hero-bottom { flex-direction: column; align-items: flex-start; gap: 24px; }
     section { padding: 64px 0; }
-    .stats-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
     .directory-item { grid-template-columns: 60px 1fr; gap: 16px; }
     .directory-item .directory-detail { grid-column: 1 / -1; padding-left: 76px; }
     .editorial-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -709,10 +710,9 @@
 <nav>
   <div class="nav-brand">DE MUR / TAO</div>
   <div class="nav-right">
-    <a href="#directory">El edificio</a>
+    <a href="#directory">Edificio</a>
     <a href="#plans">Plantas</a>
     <a href="#location">Ubicación</a>
-    <a href="#team">Equipo</a>
     <a href="#cta">Visita</a>
   </div>
 </nav>
@@ -725,16 +725,11 @@
   <div class="hero-content">
     <div>
       <p class="hero-meta">DE MUR &middot; ELEVANDO FUTURO</p>
-      <h1 class="hero-title">tao.</h1>
+      <h1 class="hero-title">tao</h1>
     </div>
     <div class="hero-bottom">
       <p class="hero-subtitle">Un edificio de 12 pisos con 24 unidades exclusivas en Av. 13 entre 40 y 41, frente a Plaza Belgrano. La Plata.</p>
-      <a href="https://wa.me/5492214942009?text=Hola%2C%20me%20interesa%20conocer%20TAO.%20%C2%BFPodemos%20coordinar%20una%20visita%3F" target="_blank" rel="noopener" class="hero-cta">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
-        </svg>
-        Coordinar visita
-      </a>
+      <a href="https://wa.me/5492214942009?text=Hola%2C%20me%20interesa%20conocer%20TAO.%20%C2%BFPodemos%20coordinar%20una%20visita%3F" target="_blank" rel="noopener" class="hero-cta">Coordinar visita</a>
     </div>
   </div>
 </section>
@@ -757,6 +752,11 @@
         <p class="label">Lanzamiento</p>
         <p class="value">2025</p>
         <p class="sub">Couyet Arquitectura + Diseño</p>
+      </div>
+      <div class="stat-cell">
+        <p class="label">Entrega estimada</p>
+        <p class="value">Q3<span class="value-unit">2028</span></p>
+        <p class="sub">36 meses desde inicio de obra</p>
       </div>
     </div>
   </div>
@@ -860,48 +860,48 @@
       <h2 class="section-title">Conocé cada espacio.</h2>
     </div>
     <div class="gallery-grid">
-      <div class="gallery-card" data-img="images/gallery-living.jpg" data-alt="Living comedor con vista al balcón">
+      <figure class="gallery-card" data-img="images/gallery-living.jpg" data-alt="Living comedor con vista al balcón">
         <picture>
           <source srcset="images/gallery-living.webp" type="image/webp">
           <img src="images/gallery-living.jpg" alt="Living comedor con vista al balcón" loading="lazy">
         </picture>
-        <div class="gallery-caption">Living &middot; Balcón con vista</div>
-      </div>
-      <div class="gallery-card" data-img="images/gallery-cocina.jpg" data-alt="Cocina con isla de mármol">
+        <figcaption>Living &middot; Balcón con vista</figcaption>
+      </figure>
+      <figure class="gallery-card" data-img="images/gallery-cocina.jpg" data-alt="Cocina con isla de mármol">
         <picture>
           <source srcset="images/gallery-cocina.webp" type="image/webp">
           <img src="images/gallery-cocina.jpg" alt="Cocina con isla de mármol" loading="lazy">
         </picture>
-        <div class="gallery-caption">Cocina &middot; Isla de mármol</div>
-      </div>
-      <div class="gallery-card" data-img="images/gallery-comedor.jpg" data-alt="Comedor amplio con cocina abierta">
+        <figcaption>Cocina &middot; Isla de mármol</figcaption>
+      </figure>
+      <figure class="gallery-card" data-img="images/gallery-comedor.jpg" data-alt="Comedor amplio con cocina abierta">
         <picture>
           <source srcset="images/gallery-comedor.webp" type="image/webp">
           <img src="images/gallery-comedor.jpg" alt="Comedor amplio con cocina abierta" loading="lazy">
         </picture>
-        <div class="gallery-caption">Comedor &middot; Cocina abierta</div>
-      </div>
-      <div class="gallery-card" data-img="images/gallery-quincho.jpg" data-alt="Quincho con vista panorámica">
+        <figcaption>Comedor &middot; Cocina abierta</figcaption>
+      </figure>
+      <figure class="gallery-card" data-img="images/gallery-quincho.jpg" data-alt="Quincho con vista panorámica">
         <picture>
           <source srcset="images/gallery-quincho.webp" type="image/webp">
           <img src="images/gallery-quincho.jpg" alt="Quincho con vista panorámica" loading="lazy">
         </picture>
-        <div class="gallery-caption">Quincho &middot; Vista panorámica</div>
-      </div>
-      <div class="gallery-card" data-img="images/gallery-lobby.jpg" data-alt="Lobby con espejo de agua">
+        <figcaption>Quincho &middot; Vista panorámica</figcaption>
+      </figure>
+      <figure class="gallery-card" data-img="images/gallery-lobby.jpg" data-alt="Lobby con espejo de agua">
         <picture>
           <source srcset="images/gallery-lobby.webp" type="image/webp">
           <img src="images/gallery-lobby.jpg" alt="Lobby con espejo de agua" loading="lazy">
         </picture>
-        <div class="gallery-caption">Lobby &middot; Espejo de agua</div>
-      </div>
-      <div class="gallery-card" data-img="images/gallery-living-2.jpg" data-alt="Living con vista a la ciudad">
+        <figcaption>Lobby &middot; Espejo de agua</figcaption>
+      </figure>
+      <figure class="gallery-card" data-img="images/gallery-living-2.jpg" data-alt="Living con vista a la ciudad">
         <picture>
           <source srcset="images/gallery-living-2.webp" type="image/webp">
           <img src="images/gallery-living-2.jpg" alt="Living con vista a la ciudad" loading="lazy">
         </picture>
-        <div class="gallery-caption">Living &middot; Vista a la ciudad</div>
-      </div>
+        <figcaption>Living &middot; Vista a la ciudad</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -1047,12 +1047,7 @@
   <h2 class="cta-title">Conocé TAO en persona.</h2>
   <p class="cta-sub">Te presentamos el proyecto en una reunión privada con el arquitecto Couyet en su estudio. Plantas, materiales, ubicación y estado del proyecto en detalle.</p>
 
-  <a href="https://wa.me/5492214942009?text=Hola%2C%20quiero%20agendar%20una%20visita%20para%20conocer%20TAO." target="_blank" rel="noopener" class="cta-button">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
-    </svg>
-    Agendar visita por WhatsApp
-  </a>
+  <a href="https://wa.me/5492214942009?text=Hola%2C%20quiero%20agendar%20una%20visita%20para%20conocer%20TAO." target="_blank" rel="noopener" class="cta-button">Agendar visita</a>
   <p class="cta-foot">Te respondemos en menos de 24 horas.</p>
 </section>
 
