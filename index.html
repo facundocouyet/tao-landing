@@ -24,43 +24,44 @@
 <meta name="twitter:description" content="24 unidades exclusivas en La Plata. Av. 13 entre 40 y 41.">
 <meta name="twitter:image" content="https://tao.demur.com.ar/images/hero.jpg">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
   :root {
-    --bg-dark: #1a1612;
-    --bg-mid: #2a221c;
-    --bg-warm: #3d2f24;
-    --copper: #b88860;
-    --copper-soft: #d4a982;
-    --cream: #f4ead8;
-    --cream-dim: rgba(244, 234, 216, 0.7);
-    --cream-faint: rgba(244, 234, 216, 0.4);
-    --line: rgba(244, 234, 216, 0.15);
+    --black: #0a0a0a;
+    --bg: #FAFAF7;
+    --gray-50: #FAFAF7;
+    --gray-75: #F2F1EC;
+    --gray-100: #ECEAE2;
+    --gray-150: #E2E0D6;
+    --gray-200: #D6D3C7;
+    --gray-300: #BDB9A9;
+    --gray-400: #8E8B7C;
+    --gray-500: #6B695D;
+    --gray-600: #4A4943;
+    --gray-700: #2E2E2A;
+    --gray-800: #1F1F1C;
     --wa: #25D366;
   }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'Inter', sans-serif;
-    background: var(--bg-dark);
-    color: var(--cream);
-    line-height: 1.5;
-    font-weight: 300;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--black);
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
 
   img { display: block; max-width: 100%; }
+  a { color: inherit; }
 
-  .display {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 400;
-    letter-spacing: -0.02em;
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
   }
 
   /* ───── NAV ───── */
@@ -68,584 +69,496 @@
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;
-    padding: 28px 48px;
+    padding: 24px 40px;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    color: var(--cream);
-    font-size: 13px;
+    align-items: center;
+    color: var(--bg);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
     mix-blend-mode: difference;
   }
+  .nav-brand { font-weight: 700; }
+  .nav-right { display: flex; gap: 28px; }
+  .nav-right a { text-decoration: none; opacity: 0.85; transition: opacity 0.2s; }
+  .nav-right a:hover { opacity: 1; }
 
-  .nav-brand { letter-spacing: 1px; }
-
-  .nav-right {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 4px;
-    text-align: right;
-  }
-
-  .nav-right a {
-    color: inherit;
-    text-decoration: none;
-    transition: opacity 0.2s;
-  }
-
-  .nav-right a:hover { opacity: 0.6; }
-
-  /* ───── HERO ───── */
+  /* ───── HERO with video ───── */
   .hero {
-    height: 100vh;
-    min-height: 800px;
     position: relative;
+    height: 100vh;
+    min-height: 720px;
+    background: var(--black);
     overflow: hidden;
-    background: var(--bg-dark);
   }
-
-  .hero-bg {
+  .hero video {
     position: absolute;
     inset: 0;
-    background-image: image-set(url('images/hero.webp') type('image/webp'), url('images/hero.jpg') type('image/jpeg'));
-    background-image: -webkit-image-set(url('images/hero.webp') type('image/webp'), url('images/hero.jpg') type('image/jpeg'));
-    background-size: cover;
-    background-position: center 40%;
-    opacity: 0.85;
+    width: 100%; height: 100%;
+    object-fit: cover;
   }
-
-  .hero-bg::after {
+  .hero::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(26,22,18,0.35) 0%, transparent 35%, transparent 55%, rgba(26, 22, 18, 0.92) 100%);
+    background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.05) 30%, rgba(0,0,0,0.05) 55%, rgba(0,0,0,0.7) 100%);
+    z-index: 1;
   }
-
-  .hero-title {
-    position: absolute;
-    top: 110px;
-    left: 48px;
-    right: 48px;
+  .hero-content {
+    position: relative;
     z-index: 2;
-    color: var(--cream);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 96px 40px 56px;
+    color: var(--bg);
+    max-width: 1280px;
+    margin: 0 auto;
   }
-
-  .hero-title h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(80px, 14vw, 220px);
+  .hero-meta {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray-200);
+  }
+  .hero-title {
+    font-size: clamp(80px, 16vw, 220px);
+    font-weight: 700;
+    letter-spacing: -6px;
+    line-height: 0.85;
+    color: var(--bg);
+    margin-top: 24px;
+  }
+  .hero-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 60px;
+  }
+  .hero-subtitle {
+    font-size: clamp(16px, 1.6vw, 22px);
     font-weight: 300;
-    line-height: 0.9;
-    letter-spacing: -0.03em;
-    color: var(--cream);
+    line-height: 1.4;
+    max-width: 480px;
+    color: var(--bg);
   }
-
-  .hero-side {
-    position: absolute;
-    top: 200px;
-    right: 48px;
-    width: 240px;
-    z-index: 3;
-    color: var(--cream);
-  }
-
-  .hero-side p {
-    font-size: 13px;
-    line-height: 1.6;
-    color: var(--cream-dim);
-    margin-bottom: 16px;
-  }
-
   .hero-cta {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    padding: 14px 22px;
-    background: var(--cream);
-    color: var(--bg-dark);
+    padding: 18px 28px;
+    background: var(--bg);
+    color: var(--black);
     text-decoration: none;
     font-size: 12px;
-    letter-spacing: 1.5px;
-    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
     transition: background 0.2s, transform 0.1s;
-    border: none;
-    cursor: pointer;
-    margin-top: 16px;
+    flex-shrink: 0;
   }
-  .hero-cta:hover { background: var(--copper-soft); }
+  .hero-cta:hover { background: var(--gray-150); }
   .hero-cta:active { transform: translateY(1px); }
   .hero-cta svg { width: 16px; height: 16px; }
 
-  .hero-amenities {
-    position: absolute;
-    bottom: 48px;
-    left: 48px;
-    right: 48px;
-    z-index: 3;
-    display: flex;
-    align-items: flex-start;
-    gap: 32px;
-    color: var(--cream);
+  /* ───── SECTION primitives ───── */
+  section { padding: 96px 0; }
+  section.full-bleed { padding: 0; }
+
+  .section-head { margin-bottom: 56px; }
+  .section-tag {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    line-height: 1.05;
+    color: var(--black);
   }
 
-  .hero-amenities-label {
-    font-size: 12px;
-    color: var(--cream-dim);
-    flex-shrink: 0;
-    width: 140px;
-    line-height: 1.4;
-  }
-
-  .hero-amenities-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(20px, 2.4vw, 32px);
-    font-weight: 300;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-    flex: 1;
-    color: var(--cream);
-  }
-
-  /* ───── STATS BAND ───── */
-  .stats {
-    background: var(--bg-dark);
-    padding: 80px 48px 60px;
-    border-bottom: 1px solid var(--line);
-  }
-
+  /* ───── STATS — bordered cells ───── */
+  .stats { padding: 64px 0; }
   .stats-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 60px;
-    max-width: 1200px;
-    margin: 0 auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--black);
+    border: 1px solid var(--black);
+    box-shadow: 0 4px 16px rgba(46, 46, 42, 0.08);
   }
-
-  .stat { color: var(--cream); }
-
-  .stat-number {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(70px, 10vw, 140px);
-    font-weight: 300;
-    line-height: 0.9;
-    letter-spacing: -0.03em;
-    color: var(--cream);
+  .stat-cell {
+    background: linear-gradient(180deg, #FFFFFF 0%, var(--gray-75) 100%);
+    padding: 32px 28px;
+    position: relative;
   }
-
-  .stat-unit {
-    font-size: 18px;
-    color: var(--cream-dim);
-    margin-left: 4px;
-    font-family: 'Inter', sans-serif;
+  .stat-cell::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--black);
   }
-
-  .stat-desc {
+  .stat-cell .label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .stat-cell .value {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -2px;
+    color: var(--black);
+  }
+  .stat-cell .value-unit {
+    font-size: 16px;
+    color: var(--gray-500);
+    font-weight: 500;
+    margin-left: 6px;
+  }
+  .stat-cell .sub {
     font-size: 13px;
-    color: var(--cream-dim);
-    margin-top: 16px;
+    color: var(--gray-600);
+    margin-top: 12px;
     line-height: 1.5;
   }
 
   /* ───── DIRECTORY ───── */
-  .directory {
-    background: var(--bg-dark);
-    padding: 100px 48px;
-    position: relative;
+  .directory-list {
+    border-top: 1px solid var(--gray-150);
   }
-
-  .directory-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 80px;
-  }
-
-  .directory-list { display: flex; flex-direction: column; }
-
   .directory-item {
     display: grid;
-    grid-template-columns: 80px 1fr 320px;
+    grid-template-columns: 80px 220px 1fr;
     gap: 40px;
-    padding: 40px 0;
-    border-bottom: 1px solid var(--line);
+    padding: 36px 0;
+    border-bottom: 1px solid var(--gray-150);
     align-items: baseline;
   }
-
   .directory-num {
     font-size: 11px;
-    color: var(--cream-faint);
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    color: var(--gray-400);
+    font-weight: 500;
   }
-
   .directory-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(36px, 4.5vw, 64px);
-    font-weight: 300;
-    line-height: 1;
-    letter-spacing: -0.02em;
-    color: var(--cream);
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--black);
+    text-transform: lowercase;
   }
-
-  .directory-detail {
-    font-size: 13px;
-    color: var(--cream-dim);
-    line-height: 1.6;
-  }
-
-  .directory-detail strong {
-    color: var(--cream);
-    font-weight: 400;
-    display: block;
-    margin-bottom: 4px;
-  }
-
-  .directory-detail-item { margin-bottom: 12px; }
-
-  .directory-side { padding-top: 60px; }
-
-  .directory-side-title {
-    font-size: 13px;
-    color: var(--cream);
+  .directory-detail-item {
     margin-bottom: 16px;
   }
-
-  .directory-side-text {
-    font-size: 12px;
-    color: var(--cream-dim);
-    line-height: 1.7;
+  .directory-detail-item:last-child { margin-bottom: 0; }
+  .directory-detail strong {
+    display: block;
+    font-weight: 700;
+    color: var(--black);
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .directory-detail span {
+    font-size: 13px;
+    color: var(--gray-600);
   }
 
   /* ───── EDITORIAL ───── */
-  .editorial {
-    background: var(--bg-dark);
-    padding: 120px 48px;
-    position: relative;
-  }
-
   .editorial-grid {
-    max-width: 1200px;
-    margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    gap: 60px;
     align-items: center;
   }
-
   .editorial-image {
     aspect-ratio: 4/5;
-    border-radius: 2px;
     overflow: hidden;
-    position: relative;
+    border: 1px solid var(--gray-200);
+    box-shadow: 0 4px 16px rgba(46, 46, 42, 0.08);
   }
   .editorial-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 100%; height: 100%; object-fit: cover;
   }
-
-  .editorial-text { color: var(--cream); }
-
   .editorial-headline {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(48px, 6vw, 96px);
-    font-weight: 300;
-    line-height: 1;
-    letter-spacing: -0.03em;
-    margin-bottom: 40px;
-    color: var(--cream);
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    line-height: 1.05;
+    color: var(--black);
+    margin-bottom: 28px;
   }
-
   .editorial-headline span { display: block; }
-
   .editorial-body {
-    font-size: 14px;
-    color: var(--cream-dim);
+    font-size: 16px;
+    color: var(--gray-700);
     line-height: 1.7;
-    max-width: 380px;
-    margin-bottom: 32px;
+    max-width: 420px;
+    margin-bottom: 28px;
   }
-
   .editorial-meta {
     font-size: 11px;
-    color: var(--cream-faint);
-    letter-spacing: 1px;
-  }
-
-  /* ───── GALLERY ───── */
-  .gallery {
-    background: var(--bg-dark);
-    padding: 80px 48px 120px;
-  }
-
-  .gallery-inner { max-width: 1400px; margin: 0 auto; }
-
-  .gallery-header { text-align: center; margin-bottom: 56px; }
-
-  .gallery-tag {
-    font-size: 11px;
     letter-spacing: 2px;
-    color: var(--copper-soft);
-    margin-bottom: 16px;
+    text-transform: uppercase;
+    color: var(--gray-500);
   }
 
-  .gallery-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(36px, 5vw, 64px);
-    font-weight: 300;
-    line-height: 1;
-    letter-spacing: -0.03em;
-    color: var(--cream);
-  }
-
+  /* ───── GALLERY — cards with thin borders, clickable ───── */
   .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+    gap: 20px;
   }
-
-  .gallery-item {
+  .gallery-card {
     position: relative;
     aspect-ratio: 4/3;
+    border: 1px solid var(--gray-200);
+    background: var(--gray-75);
     overflow: hidden;
-    border-radius: 2px;
-    background: var(--bg-mid);
+    cursor: zoom-in;
+    transition: border-color 0.2s, transform 0.25s, box-shadow 0.2s;
   }
-
-  .gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  .gallery-card:hover {
+    border-color: var(--black);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(46, 46, 42, 0.12);
+  }
+  .gallery-card img {
+    width: 100%; height: 100%; object-fit: cover;
     transition: transform 0.6s ease;
   }
-
-  .gallery-item:hover img { transform: scale(1.04); }
-
+  .gallery-card:hover img { transform: scale(1.03); }
   .gallery-caption {
     position: absolute;
     bottom: 0; left: 0; right: 0;
-    padding: 20px;
-    background: linear-gradient(180deg, transparent 0%, rgba(26, 22, 18, 0.85) 100%);
-    color: var(--cream);
-    font-size: 12px;
-    letter-spacing: 1px;
+    padding: 14px 18px;
+    font-size: 10px;
+    letter-spacing: 2px;
     text-transform: uppercase;
+    color: var(--bg);
+    background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.7) 100%);
+    pointer-events: none;
+  }
+
+  /* ───── PLANS — bordered cards, clickable ───── */
+  .plans-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  .plan-item, .plan-full {
+    margin: 0;
+    background: var(--bg);
+    border: 1px solid var(--gray-200);
+    overflow: hidden;
+    cursor: zoom-in;
+    transition: border-color 0.2s, transform 0.25s, box-shadow 0.2s;
+  }
+  .plan-item:hover, .plan-full:hover {
+    border-color: var(--black);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(46, 46, 42, 0.12);
+  }
+  .plan-item img, .plan-full img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .plan-item figcaption, .plan-full figcaption {
+    padding: 16px 22px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray-700);
+    border-top: 1px solid var(--gray-150);
+    background: var(--bg);
   }
 
   /* ───── AMENITIES VISUAL ───── */
-  .amenities-visual {
-    background: var(--bg-dark);
-    padding: 0;
-    position: relative;
-  }
-
   .amenities-image {
-    width: 100%;
-    height: clamp(400px, 70vh, 720px);
-    overflow: hidden;
     position: relative;
+    height: clamp(420px, 70vh, 720px);
+    overflow: hidden;
   }
   .amenities-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 100%; height: 100%; object-fit: cover;
   }
   .amenities-image::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(26,22,18,0.4) 0%, transparent 30%, transparent 70%, rgba(26,22,18,0.6) 100%);
+    background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.65) 100%);
   }
-
   .amenities-overlay {
     position: absolute;
-    bottom: 60px;
+    bottom: 56px;
     left: 48px;
     right: 48px;
     z-index: 2;
-    color: var(--cream);
+    color: var(--bg);
     max-width: 700px;
   }
-
   .amenities-overlay-tag {
     font-size: 11px;
-    letter-spacing: 2px;
-    color: var(--copper-soft);
-    margin-bottom: 20px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray-200);
+    margin-bottom: 16px;
   }
-
   .amenities-overlay-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(40px, 5.5vw, 80px);
-    font-weight: 300;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 700;
+    letter-spacing: -2px;
     line-height: 1;
-    letter-spacing: -0.03em;
-    color: var(--cream);
+    color: var(--bg);
   }
 
   /* ───── PHILOSOPHY ───── */
   .philosophy {
-    background: var(--bg-mid);
-    padding: 140px 48px;
+    background: var(--gray-75);
     text-align: center;
+    border-top: 1px solid var(--gray-150);
+    border-bottom: 1px solid var(--gray-150);
+  }
+  .philosophy-quote {
+    font-size: clamp(26px, 3.5vw, 40px);
+    font-weight: 300;
+    font-style: italic;
+    max-width: 880px;
+    margin: 0 auto 28px;
+    letter-spacing: -0.5px;
+    line-height: 1.3;
+    color: var(--black);
+  }
+  .philosophy-attribution {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray-500);
   }
 
-  .philosophy-tag {
+  /* ───── TEAM ───── */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .team-member { margin: 0; }
+  .team-member-image {
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    border: 1px solid var(--gray-200);
+    margin-bottom: 18px;
+    background: var(--gray-75);
+  }
+  .team-member-image img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  .team-member:hover .team-member-image img { transform: scale(1.04); }
+  .team-member-name {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    color: var(--black);
+    line-height: 1.2;
+  }
+  .team-member-role {
     font-size: 11px;
     letter-spacing: 2px;
-    color: var(--copper-soft);
-    margin-bottom: 32px;
-  }
-
-  .philosophy-quote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(32px, 5vw, 56px);
-    font-weight: 300;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    max-width: 900px;
-    margin: 0 auto 40px;
-    color: var(--cream);
-    font-style: italic;
-  }
-
-  .philosophy-attribution {
-    font-size: 13px;
-    color: var(--cream-dim);
-    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    margin-top: 6px;
   }
 
   /* ───── LOCATION ───── */
-  .location { background: var(--bg-dark); padding: 120px 48px; }
-
-  .location-inner { max-width: 1200px; margin: 0 auto; }
-
-  .location-header { margin-bottom: 80px; max-width: 700px; }
-
-  .location-tag {
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: var(--copper-soft);
-    margin-bottom: 24px;
+  .location-image {
+    width: 100%;
+    line-height: 0;
+    background: #8d9b82;
   }
-
-  .location-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(56px, 8vw, 110px);
-    font-weight: 300;
-    line-height: 0.95;
-    letter-spacing: -0.03em;
-    color: var(--cream);
-    margin-bottom: 32px;
+  .location-image img {
+    width: 100%; height: auto; display: block;
   }
-
-  .location-text {
-    font-size: 15px;
-    color: var(--cream-dim);
-    line-height: 1.7;
-    max-width: 480px;
-  }
-
-  .location-grid {
+  .location-features-strip {
+    background: var(--gray-75);
+    padding: 56px 40px;
     display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: 60px;
-    align-items: center;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    border-top: 1px solid var(--gray-150);
+    border-bottom: 1px solid var(--gray-150);
   }
-
-  .location-map {
-    aspect-ratio: 1/1;
-    background: var(--bg-mid);
-    border-radius: 2px;
-    padding: 32px;
-    border: 1px solid var(--line);
-  }
-
-  .location-features { display: flex; flex-direction: column; }
-
-  .location-feature {
-    padding: 24px 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .location-feature:first-child { padding-top: 0; }
-  .location-feature:last-child { border-bottom: none; }
-
   .location-feature-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 26px;
-    font-weight: 300;
-    color: var(--cream);
-    margin-bottom: 4px;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--black);
   }
-
   .location-feature-desc {
     font-size: 12px;
-    color: var(--cream-dim);
+    color: var(--gray-600);
+    margin-top: 6px;
   }
 
-  /* ───── CTA SECTION (replaces form) ───── */
-  .cta {
-    background: var(--bg-mid);
-    padding: 140px 48px;
-  }
-
-  .cta-inner {
-    max-width: 700px;
-    margin: 0 auto;
-    text-align: center;
-  }
-
+  /* ───── CTA ───── */
+  .cta { text-align: center; padding: 120px 40px; }
   .cta-tag {
     font-size: 11px;
-    letter-spacing: 2px;
-    color: var(--copper-soft);
-    margin-bottom: 24px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    margin-bottom: 16px;
   }
-
   .cta-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(48px, 6vw, 84px);
-    font-weight: 300;
-    line-height: 1;
-    letter-spacing: -0.03em;
-    margin-bottom: 24px;
-    color: var(--cream);
+    font-size: clamp(40px, 6vw, 64px);
+    font-weight: 700;
+    letter-spacing: -2px;
+    line-height: 1.05;
+    color: var(--black);
+    margin-bottom: 20px;
   }
-
   .cta-sub {
-    font-size: 15px;
-    color: var(--cream-dim);
+    font-size: 16px;
+    color: var(--gray-700);
     line-height: 1.7;
-    margin-bottom: 48px;
     max-width: 460px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto 40px;
   }
-
   .cta-button {
     display: inline-flex;
     align-items: center;
     gap: 12px;
     padding: 22px 40px;
-    background: var(--cream);
-    color: var(--bg-dark);
+    background: var(--black);
+    color: var(--bg);
     text-decoration: none;
-    font-size: 13px;
-    letter-spacing: 2px;
-    font-weight: 500;
     border: none;
     cursor: pointer;
-    transition: background 0.25s, transform 0.1s;
+    font-size: 12px;
+    letter-spacing: 2px;
     text-transform: uppercase;
+    font-weight: 700;
+    transition: background 0.2s, transform 0.1s;
   }
-  .cta-button:hover { background: var(--copper-soft); }
+  .cta-button:hover { background: var(--gray-700); }
   .cta-button:active { transform: translateY(1px); }
   .cta-button svg { width: 20px; height: 20px; }
-
   .cta-foot {
-    margin-top: 28px;
+    margin-top: 24px;
     font-size: 12px;
-    color: var(--cream-faint);
+    color: var(--gray-500);
     letter-spacing: 0.5px;
   }
 
@@ -654,8 +567,8 @@
     position: fixed;
     bottom: 24px;
     right: 24px;
-    width: 60px;
-    height: 60px;
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
     background: var(--wa);
     color: white;
@@ -663,251 +576,131 @@
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
     z-index: 90;
     transition: transform 0.2s, box-shadow 0.2s;
   }
   .wa-float:hover {
     transform: scale(1.06);
-    box-shadow: 0 8px 28px rgba(37, 211, 102, 0.55);
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.55);
   }
-  .wa-float svg { width: 32px; height: 32px; }
+  .wa-float svg { width: 28px; height: 28px; }
 
-  /* ───── PLANS ───── */
-  .plans {
-    background: #d8d3c4;
-    padding: 120px 48px;
-    color: var(--bg-dark);
+  /* ───── LIGHTBOX ───── */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.96);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    cursor: zoom-out;
   }
-  .plans-inner { max-width: 1400px; margin: 0 auto; }
-
-  .plans-header { text-align: center; margin-bottom: 64px; }
-  .plans-tag {
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: rgba(26, 22, 18, 0.55);
-    margin-bottom: 16px;
+  .lightbox.active { display: flex; }
+  .lightbox img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
   }
-  .plans-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(40px, 5.5vw, 72px);
-    font-weight: 300;
-    line-height: 1;
-    letter-spacing: -0.03em;
-    color: var(--bg-dark);
-  }
-
-  .plans-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-bottom: 24px;
-  }
-  .plan-item, .plan-full {
-    margin: 0;
-    background: var(--bg-dark);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-  .plan-item picture, .plan-full picture {
-    display: block;
-    line-height: 0;
-  }
-  .plan-item img, .plan-full img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  .plan-item figcaption, .plan-full figcaption {
-    padding: 18px 24px;
-    font-size: 12px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--cream);
-    background: var(--bg-dark);
-  }
-
-  /* ───── TEAM ───── */
-  .team {
-    background: var(--bg-mid);
-    padding: 120px 48px;
-    color: var(--cream);
-  }
-  .team-inner { max-width: 1200px; margin: 0 auto; }
-
-  .team-header { text-align: center; margin-bottom: 64px; }
-  .team-tag {
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: var(--copper-soft);
-    margin-bottom: 16px;
-  }
-  .team-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(40px, 5.5vw, 72px);
-    font-weight: 300;
-    line-height: 1;
-    letter-spacing: -0.03em;
-    color: var(--cream);
-  }
-
-  .team-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
-  }
-
-  .team-member {
-    margin: 0;
-    color: var(--cream);
-  }
-  .team-member-image {
-    aspect-ratio: 3/4;
-    overflow: hidden;
-    margin-bottom: 20px;
-    border-radius: 2px;
-    background: var(--bg-dark);
-  }
-  .team-member-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s ease;
-  }
-  .team-member:hover .team-member-image img { transform: scale(1.04); }
-
-  .team-member-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    line-height: 1.1;
-    color: var(--cream);
-    margin-bottom: 4px;
-  }
-  .team-member-role {
-    font-size: 11px;
-    letter-spacing: 1.5px;
-    color: var(--cream-dim);
-    text-transform: uppercase;
-  }
-
-  /* ───── LOCATION (image-driven) ───── */
-  .location-image {
-    width: 100%;
-    line-height: 0;
-    background: #8d9b82;
-  }
-  .location-image picture { display: block; }
-  .location-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  .location-features-strip {
-    background: var(--bg-mid);
-    padding: 64px 48px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
-    border-bottom: 1px solid var(--line);
-  }
-  .location-features-strip .location-feature {
-    padding: 0;
+  .lightbox-close {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    background: var(--bg);
+    color: var(--black);
     border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+    transition: transform 0.15s;
   }
+  .lightbox-close:hover { transform: scale(1.08); }
 
   /* ───── FOOTER ───── */
   footer {
-    background: var(--bg-dark);
-    color: var(--cream);
-    padding: 80px 48px 40px;
-    border-top: 1px solid var(--line);
+    background: var(--black);
+    color: var(--bg);
+    padding: 64px 40px 32px;
   }
-
-  .footer-inner { max-width: 1200px; margin: 0 auto; }
-
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
   .footer-grid {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 60px;
-    margin-bottom: 80px;
+    gap: 48px;
+    margin-bottom: 48px;
   }
-
   .footer-brand-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 56px;
-    font-weight: 300;
-    letter-spacing: -0.02em;
-    line-height: 1;
-    margin-bottom: 8px;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 6px;
+    color: var(--bg);
   }
-
   .footer-tagline {
-    font-size: 12px;
-    color: var(--cream-dim);
-    letter-spacing: 1px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray-300);
   }
-
   .footer-col-title {
     font-size: 11px;
     letter-spacing: 2px;
-    color: var(--cream-faint);
-    margin-bottom: 16px;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    margin-bottom: 14px;
   }
-
   .footer-col a, .footer-col p {
     display: block;
-    color: var(--cream-dim);
+    color: var(--gray-200);
     text-decoration: none;
     font-size: 13px;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     transition: color 0.2s;
   }
-
-  .footer-col a:hover { color: var(--cream); }
-
+  .footer-col a:hover { color: var(--bg); }
   .footer-bottom {
-    border-top: 1px solid var(--line);
-    padding-top: 24px;
+    border-top: 1px solid var(--gray-700);
+    padding-top: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 11px;
-    color: var(--cream-faint);
     letter-spacing: 0.5px;
+    color: var(--gray-400);
   }
 
   /* ───── MOBILE ───── */
   @media (max-width: 768px) {
-    nav { padding: 20px 24px; font-size: 11px; }
-    .hero-title { left: 24px; right: 24px; top: 100px; }
-    .hero-side { display: none; }
-    .hero-amenities { left: 24px; right: 24px; flex-direction: column; gap: 12px; bottom: 32px; }
-    .hero-amenities-label { width: auto; }
-    .stats { padding: 60px 24px; }
-    .stats-grid { grid-template-columns: 1fr; gap: 40px; }
-    .directory { padding: 60px 24px; }
-    .directory-inner { grid-template-columns: 1fr; gap: 40px; }
+    nav { padding: 16px 24px; font-size: 10px; gap: 12px; }
+    .nav-right { gap: 16px; flex-wrap: wrap; justify-content: flex-end; max-width: 60%; }
+    .container { padding: 0 24px; }
+    .hero-content { padding: 90px 24px 40px; }
+    .hero-bottom { flex-direction: column; align-items: flex-start; gap: 24px; }
+    section { padding: 64px 0; }
+    .stats-grid { grid-template-columns: 1fr; }
     .directory-item { grid-template-columns: 60px 1fr; gap: 16px; }
     .directory-item .directory-detail { grid-column: 1 / -1; padding-left: 76px; }
-    .editorial { padding: 80px 24px; }
-    .editorial-grid { grid-template-columns: 1fr; gap: 40px; }
-    .gallery { padding: 60px 24px 80px; }
-    .gallery-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .editorial-grid { grid-template-columns: 1fr; gap: 32px; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .plans-grid { grid-template-columns: 1fr; gap: 12px; margin-bottom: 12px; }
     .amenities-overlay { left: 24px; right: 24px; bottom: 32px; }
-    .philosophy, .cta { padding: 80px 24px; }
-    .plans { padding: 60px 24px 80px; }
-    .plans-grid { grid-template-columns: 1fr; gap: 16px; margin-bottom: 16px; }
-    .plan-item figcaption, .plan-full figcaption { padding: 14px 18px; font-size: 11px; }
-    .team { padding: 80px 24px; }
-    .team-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
-    .location-features-strip { padding: 40px 24px; grid-template-columns: 1fr 1fr; gap: 24px; }
-    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; padding: 0 0 60px; margin-bottom: 24px; }
+    .team-grid { grid-template-columns: 1fr 1fr; gap: 18px; }
+    .location-features-strip { grid-template-columns: 1fr 1fr; gap: 24px; padding: 40px 24px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
     .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
-    .wa-float { bottom: 16px; right: 16px; width: 54px; height: 54px; }
-    .wa-float svg { width: 28px; height: 28px; }
+    .wa-float { bottom: 16px; right: 16px; width: 52px; height: 52px; }
+    .wa-float svg { width: 26px; height: 26px; }
+    .lightbox { padding: 16px; }
+    .lightbox-close { top: 16px; right: 16px; }
   }
 </style>
 </head>
@@ -916,190 +709,193 @@
 <nav>
   <div class="nav-brand">DE MUR / TAO</div>
   <div class="nav-right">
-    <a href="#cta">Visita</a>
-    <a href="#team">Equipo</a>
-    <a href="#location">Ubicación</a>
-    <a href="#plans">Plantas</a>
     <a href="#directory">El edificio</a>
+    <a href="#plans">Plantas</a>
+    <a href="#location">Ubicación</a>
+    <a href="#team">Equipo</a>
+    <a href="#cta">Visita</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
-
-  <div class="hero-title">
-    <h1 class="display">tao.</h1>
-  </div>
-
-  <div class="hero-side">
-    <p>Un edificio de 12 pisos con 24 unidades exclusivas en Av. 13 entre 40 y 41, frente a Plaza Belgrano. La Plata.</p>
-    <a href="https://wa.me/5492214942009?text=Hola%2C%20me%20interesa%20conocer%20TAO.%20%C2%BFPodemos%20coordinar%20una%20visita%3F" target="_blank" rel="noopener" class="hero-cta">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
-      </svg>
-      Coordinar visita
-    </a>
-  </div>
-
-  <div class="hero-amenities">
-    <div class="hero-amenities-label">TAO incluye</div>
-    <div class="hero-amenities-text">terraza propia con parrilla, palier privado, suite con vestidor, pileta y solarium, quincho, gimnasio, encargado, cocheras y bauleras.</div>
+  <video autoplay muted loop playsinline poster="images/hero.jpg">
+    <source src="videos/tao.mp4" type="video/mp4">
+  </video>
+  <div class="hero-content">
+    <div>
+      <p class="hero-meta">DE MUR &middot; ELEVANDO FUTURO</p>
+      <h1 class="hero-title">tao.</h1>
+    </div>
+    <div class="hero-bottom">
+      <p class="hero-subtitle">Un edificio de 12 pisos con 24 unidades exclusivas en Av. 13 entre 40 y 41, frente a Plaza Belgrano. La Plata.</p>
+      <a href="https://wa.me/5492214942009?text=Hola%2C%20me%20interesa%20conocer%20TAO.%20%C2%BFPodemos%20coordinar%20una%20visita%3F" target="_blank" rel="noopener" class="hero-cta">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+        </svg>
+        Coordinar visita
+      </a>
+    </div>
   </div>
 </section>
 
 <!-- STATS -->
 <section class="stats">
-  <div class="stats-grid">
-    <div class="stat">
-      <span class="stat-number">138<span class="stat-unit">m²</span></span>
-      <p class="stat-desc">Superficie total<br>por unidad</p>
-    </div>
-    <div class="stat">
-      <span class="stat-number">24<span class="stat-unit">und.</span></span>
-      <p class="stat-desc">Departamentos<br>distribuidos en 12 pisos</p>
-    </div>
-    <div class="stat">
-      <span class="stat-number">2025<span class="stat-unit"></span></span>
-      <p class="stat-desc">Año del lanzamiento<br>Couyet + Diseño</p>
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-cell">
+        <p class="label">Superficie por unidad</p>
+        <p class="value">138<span class="value-unit">m²</span></p>
+        <p class="sub">106 m² cubiertos + 32 m² semicubiertos</p>
+      </div>
+      <div class="stat-cell">
+        <p class="label">Departamentos</p>
+        <p class="value">24<span class="value-unit">und.</span></p>
+        <p class="sub">Distribuidos en 12 pisos</p>
+      </div>
+      <div class="stat-cell">
+        <p class="label">Lanzamiento</p>
+        <p class="value">2025</p>
+        <p class="sub">Couyet Arquitectura + Diseño</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- DIRECTORY -->
-<section class="directory" id="directory">
-  <div class="directory-inner">
+<section id="directory">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-tag">EL EDIFICIO</p>
+      <h2 class="section-title">Tres claves del proyecto.</h2>
+    </div>
     <div class="directory-list">
       <div class="directory-item">
         <span class="directory-num">/01</span>
-        <span class="directory-name display">unidades</span>
+        <span class="directory-name">unidades</span>
         <div class="directory-detail">
           <div class="directory-detail-item">
             <strong>2 dormitorios</strong>
-            106 m² cubiertos + 32 m² semicubiertos
+            <span>106 m² cubiertos + 32 m² semicubiertos</span>
           </div>
           <div class="directory-detail-item">
             <strong>3 dormitorios con suite</strong>
-            106 m² cubiertos + 32 m² semicubiertos
+            <span>106 m² cubiertos + 32 m² semicubiertos</span>
           </div>
           <div class="directory-detail-item">
-            <strong>Terraza propia</strong>
-            Con parrilla incluida
+            <strong>Terraza propia con parrilla</strong>
+            <span>En cada unidad</span>
           </div>
         </div>
       </div>
-
       <div class="directory-item">
         <span class="directory-num">/02</span>
-        <span class="directory-name display">amenities</span>
+        <span class="directory-name">amenities</span>
         <div class="directory-detail">
           <div class="directory-detail-item">
             <strong>Pileta y solarium</strong>
-            En terraza, vista a Plaza Belgrano
+            <span>En terraza, vista a Plaza Belgrano</span>
           </div>
           <div class="directory-detail-item">
             <strong>Gimnasio equipado</strong>
-            Diseñado para entrenar todos los días
+            <span>Diseñado para entrenar todos los días</span>
           </div>
           <div class="directory-detail-item">
             <strong>Quincho con parrilla</strong>
-            Para reuniones de hasta 12 personas
+            <span>Para reuniones de hasta 12 personas</span>
           </div>
         </div>
       </div>
-
       <div class="directory-item">
         <span class="directory-num">/03</span>
-        <span class="directory-name display">servicios</span>
+        <span class="directory-name">servicios</span>
         <div class="directory-detail">
           <div class="directory-detail-item">
             <strong>Encargado en planta</strong>
-            Departamento dedicado en piso 13
+            <span>Departamento dedicado en piso 13</span>
           </div>
           <div class="directory-detail-item">
             <strong>Cocheras y bauleras</strong>
-            36 cocheras + 13 bauleras propias
+            <span>36 cocheras + 13 bauleras propias</span>
           </div>
           <div class="directory-detail-item">
             <strong>Grupo electrógeno</strong>
-            Cubre ascensores, agua y portón
+            <span>Cubre ascensores, agua y portón</span>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="directory-side">
-      <p class="directory-side-title">Pensado para vos</p>
-      <p class="directory-side-text">Cada detalle de TAO fue pensado para construir un estándar de vida superior. La arquitectura responde a las expectativas más altas del habitante moderno, sin resignar la estética ni la comodidad.</p>
     </div>
   </div>
 </section>
 
 <!-- EDITORIAL -->
-<section class="editorial">
-  <div class="editorial-grid">
-    <div class="editorial-image">
-      <picture>
-        <source srcset="images/editorial-terraza.webp" type="image/webp">
-        <img src="images/editorial-terraza.jpg" alt="Terraza con parrilla del edificio TAO" loading="lazy">
-      </picture>
-    </div>
-    <div class="editorial-text">
-      <h2 class="editorial-headline">
-        <span>Lo mejor,</span>
-        <span>ya viene</span>
-        <span>incluido.</span>
-      </h2>
-      <p class="editorial-body">El concepto rector de TAO es claro: no son departamentos, son casas en altura. Cada unidad está pensada con la libertad espacial de una casa y la sofisticación de un edificio premium.</p>
-      <p class="editorial-meta">NUESTRA FILOSOFÍA · 2026</p>
+<section>
+  <div class="container">
+    <div class="editorial-grid">
+      <div class="editorial-image">
+        <picture>
+          <source srcset="images/editorial-terraza.webp" type="image/webp">
+          <img src="images/editorial-terraza.jpg" alt="Terraza con parrilla del edificio TAO" loading="lazy">
+        </picture>
+      </div>
+      <div>
+        <p class="section-tag">FILOSOFÍA</p>
+        <h2 class="editorial-headline">
+          <span>Lo mejor,</span>
+          <span>ya viene</span>
+          <span>incluido.</span>
+        </h2>
+        <p class="editorial-body">El concepto rector de TAO es claro: no son departamentos, son casas en altura. Cada unidad está pensada con la libertad espacial de una casa y la sofisticación de un edificio premium.</p>
+        <p class="editorial-meta">DE MUR &middot; 2026</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- GALLERY -->
-<section class="gallery">
-  <div class="gallery-inner">
-    <div class="gallery-header">
-      <p class="gallery-tag">RENDERS DEL PROYECTO</p>
-      <h2 class="gallery-title display">Conocé cada espacio.</h2>
+<section id="gallery">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-tag">RENDERS</p>
+      <h2 class="section-title">Conocé cada espacio.</h2>
     </div>
     <div class="gallery-grid">
-      <div class="gallery-item">
+      <div class="gallery-card" data-img="images/gallery-living.jpg" data-alt="Living comedor con vista al balcón">
         <picture>
           <source srcset="images/gallery-living.webp" type="image/webp">
           <img src="images/gallery-living.jpg" alt="Living comedor con vista al balcón" loading="lazy">
         </picture>
         <div class="gallery-caption">Living &middot; Balcón con vista</div>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-card" data-img="images/gallery-cocina.jpg" data-alt="Cocina con isla de mármol">
         <picture>
           <source srcset="images/gallery-cocina.webp" type="image/webp">
           <img src="images/gallery-cocina.jpg" alt="Cocina con isla de mármol" loading="lazy">
         </picture>
         <div class="gallery-caption">Cocina &middot; Isla de mármol</div>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-card" data-img="images/gallery-comedor.jpg" data-alt="Comedor amplio con cocina abierta">
         <picture>
           <source srcset="images/gallery-comedor.webp" type="image/webp">
           <img src="images/gallery-comedor.jpg" alt="Comedor amplio con cocina abierta" loading="lazy">
         </picture>
         <div class="gallery-caption">Comedor &middot; Cocina abierta</div>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-card" data-img="images/gallery-quincho.jpg" data-alt="Quincho con vista panorámica">
         <picture>
           <source srcset="images/gallery-quincho.webp" type="image/webp">
           <img src="images/gallery-quincho.jpg" alt="Quincho con vista panorámica" loading="lazy">
         </picture>
         <div class="gallery-caption">Quincho &middot; Vista panorámica</div>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-card" data-img="images/gallery-lobby.jpg" data-alt="Lobby con espejo de agua">
         <picture>
           <source srcset="images/gallery-lobby.webp" type="image/webp">
           <img src="images/gallery-lobby.jpg" alt="Lobby con espejo de agua" loading="lazy">
         </picture>
         <div class="gallery-caption">Lobby &middot; Espejo de agua</div>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-card" data-img="images/gallery-living-2.jpg" data-alt="Living con vista a la ciudad">
         <picture>
           <source srcset="images/gallery-living-2.webp" type="image/webp">
           <img src="images/gallery-living-2.jpg" alt="Living con vista a la ciudad" loading="lazy">
@@ -1111,21 +907,21 @@
 </section>
 
 <!-- PLANS -->
-<section class="plans" id="plans">
-  <div class="plans-inner">
-    <div class="plans-header">
-      <p class="plans-tag">PLANTAS DEL PROYECTO</p>
-      <h2 class="plans-title">Cada metro, pensado.</h2>
+<section id="plans">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-tag">PLANTAS DEL PROYECTO</p>
+      <h2 class="section-title">Cada metro, pensado.</h2>
     </div>
     <div class="plans-grid">
-      <figure class="plan-item">
+      <figure class="plan-item" data-img="images/plan-2hab.jpg" data-alt="Planta tipo 2 habitaciones — 138 m²">
         <picture>
           <source srcset="images/plan-2hab.webp" type="image/webp">
           <img src="images/plan-2hab.jpg" alt="Planta tipo 2 habitaciones — 138 m²" loading="lazy">
         </picture>
         <figcaption>Unidad 2 habitaciones &middot; 138 m²</figcaption>
       </figure>
-      <figure class="plan-item">
+      <figure class="plan-item" data-img="images/plan-3hab.jpg" data-alt="Planta tipo 3 habitaciones — 138 m²">
         <picture>
           <source srcset="images/plan-3hab.webp" type="image/webp">
           <img src="images/plan-3hab.jpg" alt="Planta tipo 3 habitaciones — 138 m²" loading="lazy">
@@ -1133,10 +929,10 @@
         <figcaption>Unidad 3 habitaciones &middot; 138 m²</figcaption>
       </figure>
     </div>
-    <figure class="plan-full">
+    <figure class="plan-full" data-img="images/plan-terraza.jpg" data-alt="Planta nivel 13 — Terraza con amenities">
       <picture>
         <source srcset="images/plan-terraza.webp" type="image/webp">
-        <img src="images/plan-terraza.jpg" alt="Planta nivel 13 — Terraza con pileta, gimnasio, encargado y quincho" loading="lazy">
+        <img src="images/plan-terraza.jpg" alt="Planta nivel 13 — Terraza con amenities" loading="lazy">
       </picture>
       <figcaption>Nivel 13 &middot; Terraza con pileta, gimnasio y quincho</figcaption>
     </figure>
@@ -1144,32 +940,33 @@
 </section>
 
 <!-- AMENITIES VISUAL -->
-<section class="amenities-visual">
+<section class="full-bleed">
   <div class="amenities-image">
     <picture>
       <source srcset="images/amenities-pileta.webp" type="image/webp">
       <img src="images/amenities-pileta.jpg" alt="Pileta y gimnasio en terraza" loading="lazy">
     </picture>
     <div class="amenities-overlay">
-      <p class="amenities-overlay-tag">PILETA · GIMNASIO · SOLARIUM</p>
-      <h2 class="amenities-overlay-title display">La terraza<br>es tuya.</h2>
+      <p class="amenities-overlay-tag">PILETA &middot; GIMNASIO &middot; SOLARIUM</p>
+      <h2 class="amenities-overlay-title">La terraza es tuya.</h2>
     </div>
   </div>
 </section>
 
 <!-- PHILOSOPHY -->
 <section class="philosophy">
-  <p class="philosophy-tag">DE MUR · ELEVANDO FUTURO</p>
-  <p class="philosophy-quote">"TAO es la unidad que todo lo contiene: comodidad, tranquilidad, naturaleza."</p>
-  <p class="philosophy-attribution">COUYET ARQUITECTURA + DISEÑO</p>
+  <div class="container">
+    <p class="philosophy-quote">"TAO es la unidad que todo lo contiene: comodidad, tranquilidad, naturaleza."</p>
+    <p class="philosophy-attribution">COUYET ARQUITECTURA + DISEÑO</p>
+  </div>
 </section>
 
 <!-- TEAM -->
-<section class="team" id="team">
-  <div class="team-inner">
-    <div class="team-header">
-      <p class="team-tag">QUIENES SOMOS</p>
-      <h2 class="team-title">Detrás de TAO.</h2>
+<section id="team">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-tag">QUIENES SOMOS</p>
+      <h2 class="section-title">Detrás de TAO.</h2>
     </div>
     <div class="team-grid">
       <figure class="team-member">
@@ -1217,7 +1014,7 @@
 </section>
 
 <!-- LOCATION -->
-<section class="location" id="location">
+<section class="full-bleed" id="location">
   <div class="location-image">
     <picture>
       <source srcset="images/location-map.webp" type="image/webp">
@@ -1226,19 +1023,19 @@
   </div>
   <div class="location-features-strip">
     <div class="location-feature">
-      <p class="location-feature-name display">Plaza Belgrano</p>
+      <p class="location-feature-name">Plaza Belgrano</p>
       <p class="location-feature-desc">Frente al edificio &middot; 0 minutos</p>
     </div>
     <div class="location-feature">
-      <p class="location-feature-name display">Casco fundacional</p>
+      <p class="location-feature-name">Casco fundacional</p>
       <p class="location-feature-desc">5 minutos al centro de La Plata</p>
     </div>
     <div class="location-feature">
-      <p class="location-feature-name display">Buenos Aires</p>
+      <p class="location-feature-name">Buenos Aires</p>
       <p class="location-feature-desc">Salida directa por autopista</p>
     </div>
     <div class="location-feature">
-      <p class="location-feature-name display">Universidades</p>
+      <p class="location-feature-name">Universidades</p>
       <p class="location-feature-desc">UNLP a 10 minutos en auto</p>
     </div>
   </div>
@@ -1246,19 +1043,17 @@
 
 <!-- CTA -->
 <section class="cta" id="cta">
-  <div class="cta-inner">
-    <p class="cta-tag">COORDINÁ TU VISITA</p>
-    <h2 class="cta-title display">Conocé TAO<br>en persona.</h2>
-    <p class="cta-sub">Te presentamos el proyecto en una reunión privada con el arquitecto Couyet en su estudio. Plantas, materiales, ubicación y estado del proyecto en detalle.</p>
+  <p class="cta-tag">COORDINÁ TU VISITA</p>
+  <h2 class="cta-title">Conocé TAO en persona.</h2>
+  <p class="cta-sub">Te presentamos el proyecto en una reunión privada con el arquitecto Couyet en su estudio. Plantas, materiales, ubicación y estado del proyecto en detalle.</p>
 
-    <a href="https://wa.me/5492214942009?text=Hola%2C%20quiero%20agendar%20una%20visita%20para%20conocer%20TAO." target="_blank" rel="noopener" class="cta-button">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
-      </svg>
-      Agendar visita por WhatsApp
-    </a>
-    <p class="cta-foot">Te respondemos en menos de 24 horas.</p>
-  </div>
+  <a href="https://wa.me/5492214942009?text=Hola%2C%20quiero%20agendar%20una%20visita%20para%20conocer%20TAO." target="_blank" rel="noopener" class="cta-button">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+    </svg>
+    Agendar visita por WhatsApp
+  </a>
+  <p class="cta-foot">Te respondemos en menos de 24 horas.</p>
 </section>
 
 <!-- FLOATING WHATSAPP -->
@@ -1268,17 +1063,24 @@
   </svg>
 </a>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar">×</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-grid">
       <div>
-        <p class="footer-brand-name display">DE MUR</p>
-        <p class="footer-tagline">ELEVANDO FUTURO · 2026</p>
+        <p class="footer-brand-name">DE MUR</p>
+        <p class="footer-tagline">ELEVANDO FUTURO &middot; 2026</p>
       </div>
       <div class="footer-col">
         <p class="footer-col-title">PROYECTO</p>
         <a href="#directory">El edificio</a>
+        <a href="#plans">Plantas</a>
         <a href="#location">Ubicación</a>
         <a href="#cta">Visita</a>
       </div>
@@ -1291,15 +1093,52 @@
       <div class="footer-col">
         <p class="footer-col-title">UBICACIÓN</p>
         <p>Av. 13 entre 40 y 41</p>
-        <p>La Plata · Buenos Aires</p>
+        <p>La Plata &middot; Buenos Aires</p>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 DE MUR EF SRL</span>
-      <span>Comercialización · Century 21 Esposito</span>
+      <span>Comercialización &middot; Century 21 Esposito</span>
     </div>
   </div>
 </footer>
+
+<script>
+  (function() {
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImg = document.getElementById('lightbox-img');
+    var lightboxClose = document.getElementById('lightbox-close');
+
+    function openLightbox(src, alt) {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || '';
+      lightbox.classList.add('active');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImg.src = '';
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('[data-img]').forEach(function(el) {
+      el.addEventListener('click', function() {
+        openLightbox(el.getAttribute('data-img'), el.getAttribute('data-alt'));
+      });
+    });
+
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === lightbox || e.target === lightboxImg) closeLightbox();
+    });
+    lightboxClose.addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
+    });
+  })();
+</script>
 
 </body>
 </html>
