@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TAO — Casas en altura · La Plata</title>
-<meta name="description" content="TAO. 24 casas en altura sobre Av. 13 entre 40 y 41, La Plata. Frente a Plaza Belgrano. Couyet Arquitectura + Diseño.">
+<title>TAO — El silencio del espacio</title>
+<meta name="description" content="TAO. Casas en altura. Av. 13 entre 40 y 41, La Plata. Couyet Arquitectura + Diseño. De Mur — Elevando Futuro.">
 
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
@@ -14,15 +14,15 @@
 <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="TAO — Casas en altura · La Plata">
-<meta property="og:description" content="24 unidades exclusivas frente a Plaza Belgrano. Av. 13 entre 40 y 41. Couyet Arquitectura + Diseño.">
-<meta property="og:image" content="https://tao.demur.com.ar/images/hero.jpg">
+<meta property="og:title" content="TAO — El silencio del espacio">
+<meta property="og:description" content="Av. 13 entre 40 y 41, La Plata. Vista a Plaza Belgrano desde ambos lados. Couyet Arquitectura + Diseño.">
+<meta property="og:image" content="https://tao.demur.com.ar/images/hero-building.jpg">
 <meta property="og:url" content="https://tao.demur.com.ar/">
 <meta property="og:locale" content="es_AR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="TAO — Casas en altura">
-<meta name="twitter:description" content="24 unidades exclusivas en La Plata. Av. 13 entre 40 y 41.">
-<meta name="twitter:image" content="https://tao.demur.com.ar/images/hero.jpg">
+<meta name="twitter:title" content="TAO — El silencio del espacio">
+<meta name="twitter:description" content="Casas en altura · La Plata.">
+<meta name="twitter:image" content="https://tao.demur.com.ar/images/hero-building.jpg">
 
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -84,30 +84,42 @@
   .nav-right a { text-decoration: none; opacity: 0.85; transition: opacity 0.2s; }
   .nav-right a:hover { opacity: 1; }
 
-  /* ───── HERO with video ───── */
+  /* ───── HERO with image + scroll fade ───── */
   .hero {
     position: relative;
     height: 100vh;
     min-height: 720px;
-    background: var(--black);
+    background: var(--bg);
     overflow: hidden;
   }
-  .hero video {
+  .hero-bg {
     position: absolute;
     inset: 0;
+    z-index: 1;
+    will-change: opacity;
+  }
+  .hero-bg img {
     width: 100%; height: 100%;
     object-fit: cover;
+    object-position: center;
+    display: block;
   }
-  .hero::after {
-    content: '';
+  .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.05) 30%, rgba(0,0,0,0.05) 55%, rgba(0,0,0,0.7) 100%);
-    z-index: 1;
+    z-index: 2;
+    pointer-events: none;
+    background:
+      linear-gradient(180deg,
+        rgba(10,10,10,0.55) 0%,
+        rgba(10,10,10,0.15) 22%,
+        transparent 50%,
+        rgba(250,250,247,0.55) 82%,
+        var(--bg) 100%);
   }
   .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -117,31 +129,50 @@
     max-width: 1280px;
     margin: 0 auto;
   }
+  .hero-top {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
   .hero-meta {
     font-size: 11px;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--gray-200);
+    color: var(--bg);
+    opacity: 0.85;
+  }
+  .hero-tagline {
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--bg);
+    opacity: 0.7;
+    margin-top: 4px;
   }
   .hero-title {
-    font-size: clamp(80px, 16vw, 220px);
+    font-size: clamp(72px, 14vw, 200px);
     font-weight: 700;
-    letter-spacing: -6px;
+    letter-spacing: -5px;
     line-height: 0.85;
     color: var(--bg);
-    margin-top: 24px;
+    margin-bottom: 28px;
   }
   .hero-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .hero-bottom-row {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     gap: 60px;
   }
   .hero-subtitle {
-    font-size: clamp(16px, 1.6vw, 22px);
+    font-size: clamp(15px, 1.4vw, 19px);
     font-weight: 300;
-    line-height: 1.4;
-    max-width: 480px;
+    line-height: 1.5;
+    max-width: 460px;
     color: var(--bg);
   }
   .hero-cta {
@@ -383,6 +414,32 @@
     font-weight: 700;
     border-top: 1px solid var(--black);
     background: var(--bg);
+  }
+
+  /* ───── MATERIALS ───── */
+  .materials-list {
+    border-top: 1px solid var(--gray-150);
+  }
+  .material-row {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 60px;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--gray-150);
+    align-items: baseline;
+  }
+  .material-name {
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--black);
+    font-weight: 700;
+  }
+  .material-desc {
+    font-size: 15px;
+    color: var(--gray-700);
+    line-height: 1.7;
+    max-width: 700px;
   }
 
   /* ───── AMENITIES VISUAL ───── */
@@ -693,6 +750,7 @@
     .editorial-grid { grid-template-columns: 1fr; gap: 32px; }
     .gallery-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
     .plans-grid { grid-template-columns: 1fr; gap: 12px; margin-bottom: 12px; }
+    .material-row { grid-template-columns: 1fr; gap: 8px; padding: 24px 0; }
     .amenities-overlay { left: 24px; right: 24px; bottom: 32px; }
     .team-grid { grid-template-columns: 1fr 1fr; gap: 18px; }
     .location-features-strip { grid-template-columns: 1fr 1fr; gap: 24px; padding: 40px 24px; }
@@ -711,25 +769,32 @@
   <div class="nav-brand">DE MUR / TAO</div>
   <div class="nav-right">
     <a href="#directory">Edificio</a>
-    <a href="#plans">Plantas</a>
+    <a href="#materiales">Materiales</a>
     <a href="#location">Ubicación</a>
-    <a href="#cta">Visita</a>
+    <a href="#cta">Contacto</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <video autoplay muted loop playsinline poster="images/hero.jpg">
-    <source src="videos/tao.mp4" type="video/mp4">
-  </video>
+  <div class="hero-bg" id="hero-bg">
+    <picture>
+      <source srcset="images/hero-building.webp" type="image/webp">
+      <img src="images/hero-building.jpg" alt="Edificio TAO al atardecer · Av. 13 entre 40 y 41, La Plata">
+    </picture>
+  </div>
+  <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div>
+    <div class="hero-top">
       <p class="hero-meta">DE MUR &middot; ELEVANDO FUTURO</p>
-      <h1 class="hero-title">tao</h1>
+      <p class="hero-tagline">CASAS EN ALTURA</p>
     </div>
     <div class="hero-bottom">
-      <p class="hero-subtitle">Un edificio de 12 pisos con 24 unidades exclusivas en Av. 13 entre 40 y 41, frente a Plaza Belgrano. La Plata.</p>
-      <a href="https://wa.me/5492214942009?text=Hola%2C%20me%20interesa%20conocer%20TAO.%20%C2%BFPodemos%20coordinar%20una%20visita%3F" target="_blank" rel="noopener" class="hero-cta">Coordinar visita</a>
+      <h1 class="hero-title">tao</h1>
+      <div class="hero-bottom-row">
+        <p class="hero-subtitle">El edificio TAO es el primer desarrollo insignia de De Mur en la ciudad de La Plata.</p>
+        <a href="https://wa.me/5492214942009?text=Hola%2C%20me%20interesa%20conocer%20TAO.%20%C2%BFPodemos%20coordinar%20una%20visita%3F" target="_blank" rel="noopener" class="hero-cta">Coordinar visita</a>
+      </div>
     </div>
   </div>
 </section>
@@ -749,9 +814,9 @@
         <p class="sub">Distribuidos en 12 pisos</p>
       </div>
       <div class="stat-cell">
-        <p class="label">Lanzamiento</p>
-        <p class="value">2025</p>
-        <p class="sub">Couyet Arquitectura + Diseño</p>
+        <p class="label">Habitaciones</p>
+        <p class="value">2<span class="value-unit">/ 3</span></p>
+        <p class="sub">Según la unidad. Suite con vestidor en 3 hab.</p>
       </div>
       <div class="stat-cell">
         <p class="label">Entrega estimada</p>
@@ -767,60 +832,68 @@
   <div class="container">
     <div class="section-head">
       <p class="section-tag">EL EDIFICIO</p>
-      <h2 class="section-title">Tres claves del proyecto.</h2>
+      <h2 class="section-title">El proyecto, en tres claves.</h2>
     </div>
     <div class="directory-list">
       <div class="directory-item">
         <span class="directory-num">/01</span>
-        <span class="directory-name">unidades</span>
+        <span class="directory-name">DEPARTAMENTOS</span>
         <div class="directory-detail">
           <div class="directory-detail-item">
-            <strong>2 dormitorios</strong>
-            <span>106 m² cubiertos + 32 m² semicubiertos</span>
+            <strong>2 habitaciones</strong>
+            <span>Superficie total 138 m²</span>
           </div>
           <div class="directory-detail-item">
-            <strong>3 dormitorios con suite</strong>
-            <span>106 m² cubiertos + 32 m² semicubiertos</span>
+            <strong>3 habitaciones con suite</strong>
+            <span>Dormitorio en suite con vestidor</span>
           </div>
           <div class="directory-detail-item">
-            <strong>Terraza propia con parrilla</strong>
-            <span>En cada unidad</span>
+            <strong>Terraza con parrilla</strong>
+            <span>Vista a Plaza Belgrano desde ambos lados</span>
           </div>
         </div>
       </div>
       <div class="directory-item">
         <span class="directory-num">/02</span>
-        <span class="directory-name">amenities</span>
+        <span class="directory-name">AMENITIES</span>
         <div class="directory-detail">
           <div class="directory-detail-item">
-            <strong>Pileta y solarium</strong>
-            <span>En terraza, vista a Plaza Belgrano</span>
+            <strong>SUM con parrilla y semicubierto</strong>
+            <span>Para reuniones sociales</span>
           </div>
           <div class="directory-detail-item">
-            <strong>Gimnasio equipado</strong>
-            <span>Diseñado para entrenar todos los días</span>
+            <strong>Gimnasio</strong>
+            <span>Espacio equipado para entrenamientos</span>
           </div>
           <div class="directory-detail-item">
-            <strong>Quincho con parrilla</strong>
-            <span>Para reuniones de hasta 12 personas</span>
+            <strong>Piscina y solarium</strong>
+            <span>Vistas panorámicas de la ciudad</span>
+          </div>
+          <div class="directory-detail-item">
+            <strong>Plaza seca en el hall de entrada</strong>
+            <span>Recibimiento con luz natural</span>
+          </div>
+          <div class="directory-detail-item">
+            <strong>Grupo electrógeno</strong>
+            <span>Ascensores, rampa, portón, agua y electricidad</span>
           </div>
         </div>
       </div>
       <div class="directory-item">
         <span class="directory-num">/03</span>
-        <span class="directory-name">servicios</span>
+        <span class="directory-name">COCHERAS</span>
         <div class="directory-detail">
           <div class="directory-detail-item">
-            <strong>Encargado en planta</strong>
-            <span>Departamento dedicado en piso 13</span>
+            <strong>24 cocheras techadas</strong>
+            <span>Subsuelo y planta baja</span>
           </div>
           <div class="directory-detail-item">
-            <strong>Cocheras y bauleras</strong>
-            <span>36 cocheras + 13 bauleras propias</span>
+            <strong>12 cocheras descubiertas</strong>
+            <span>Planta baja</span>
           </div>
           <div class="directory-detail-item">
-            <strong>Grupo electrógeno</strong>
-            <span>Cubre ascensores, agua y portón</span>
+            <strong>13 bauleras privadas</strong>
+            <span>Subsuelo</span>
           </div>
         </div>
       </div>
@@ -841,12 +914,11 @@
       <div>
         <p class="section-tag">FILOSOFÍA</p>
         <h2 class="editorial-headline">
-          <span>Lo mejor,</span>
-          <span>ya viene</span>
-          <span>incluido.</span>
+          <span>El diseño</span>
+          <span>y su espíritu.</span>
         </h2>
-        <p class="editorial-body">El concepto rector de TAO es claro: no son departamentos, son casas en altura. Cada unidad está pensada con la libertad espacial de una casa y la sofisticación de un edificio premium.</p>
-        <p class="editorial-meta">DE MUR &middot; 2026</p>
+        <p class="editorial-body">Los departamentos de TAO se caracterizan por su amplitud y luminosidad. Cada detalle ha sido pensado para ofrecer una experiencia de vida única, en un entorno que prioriza el bienestar, la privacidad y el confort.</p>
+        <p class="editorial-meta">SILENCIO &middot; FUNCIONALIDAD &middot; AMPLITUD</p>
       </div>
     </div>
   </div>
@@ -939,6 +1011,38 @@
   </div>
 </section>
 
+<!-- MATERIALS -->
+<section id="materiales">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-tag">MATERIALES</p>
+      <h2 class="section-title">Calidez y modernidad.</h2>
+    </div>
+    <div class="materials-list">
+      <div class="material-row">
+        <div class="material-name">Pisos</div>
+        <p class="material-desc">En las áreas principales como el estar, la cocina, los dormitorios y las terrazas, se ha optado por porcelanato de gran formato con apariencia de madera (22 x 160 cm), lo que proporciona una sensación de calidez y modernidad.</p>
+      </div>
+      <div class="material-row">
+        <div class="material-name">Baños</div>
+        <p class="material-desc">Los baños cuentan con revestimientos en porcelanato de alta gama (60 x 120 cm o 80 x 160 cm), en tonos neutros como travertino grey o concreto hueso, creando una atmósfera elegante y relajante.</p>
+      </div>
+      <div class="material-row">
+        <div class="material-name">Griferías y artefactos</div>
+        <p class="material-desc">Se han incorporado griferías de la línea Roca Varna, así como artefactos sanitarios de primera marca como Roca The Gap, garantizando calidad y funcionalidad.</p>
+      </div>
+      <div class="material-row">
+        <div class="material-name">Carpinterías</div>
+        <p class="material-desc">El edificio está equipado con carpinterías de aluminio negro con doble vidrio hermético (DVH), lo que asegura un aislamiento térmico y acústico óptimo.</p>
+      </div>
+      <div class="material-row">
+        <div class="material-name">Mesadas</div>
+        <p class="material-desc">Las cocinas y baños cuentan con mesadas compuestas del clásico negro Brasil o blanco nube, añadiendo un toque de lujo a los espacios más funcionales del hogar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- AMENITIES VISUAL -->
 <section class="full-bleed">
   <div class="amenities-image">
@@ -965,19 +1069,19 @@
 <section id="team">
   <div class="container">
     <div class="section-head">
-      <p class="section-tag">QUIENES SOMOS</p>
-      <h2 class="section-title">Detrás de TAO.</h2>
+      <p class="section-tag">QUIÉNES SOMOS</p>
+      <h2 class="section-title">Couyet Arquitectura + Diseño.</h2>
     </div>
     <div class="team-grid">
       <figure class="team-member">
         <div class="team-member-image">
           <picture>
             <source srcset="images/team-couyet-padre.webp" type="image/webp">
-            <img src="images/team-couyet-padre.jpg" alt="Luis Carlos Couyet" loading="lazy">
+            <img src="images/team-couyet-padre.jpg" alt="Luis Couyet" loading="lazy">
           </picture>
         </div>
-        <p class="team-member-name">Luis Carlos Couyet</p>
-        <p class="team-member-role">Arquitecto fundador</p>
+        <p class="team-member-name">Luis Couyet</p>
+        <p class="team-member-role">Arquitecto</p>
       </figure>
       <figure class="team-member">
         <div class="team-member-image">
@@ -987,17 +1091,17 @@
           </picture>
         </div>
         <p class="team-member-name">Juliana Azpiazu</p>
-        <p class="team-member-role">Arquitecta socia</p>
+        <p class="team-member-role">Arquitecta</p>
       </figure>
       <figure class="team-member">
         <div class="team-member-image">
           <picture>
             <source srcset="images/team-couyet-luis.webp" type="image/webp">
-            <img src="images/team-couyet-luis.jpg" alt="Couyet" loading="lazy">
+            <img src="images/team-couyet-luis.jpg" alt="Andrés García Olivares" loading="lazy">
           </picture>
         </div>
-        <p class="team-member-name">Couyet</p>
-        <p class="team-member-role">Arquitecto · Dirección de obra</p>
+        <p class="team-member-name">Andrés García Olivares</p>
+        <p class="team-member-role">Arquitecto</p>
       </figure>
       <figure class="team-member">
         <div class="team-member-image">
@@ -1007,7 +1111,7 @@
           </picture>
         </div>
         <p class="team-member-name">Facundo Couyet</p>
-        <p class="team-member-role">Socio · Comercial</p>
+        <p class="team-member-role">Director comercial</p>
       </figure>
     </div>
   </div>
@@ -1024,28 +1128,28 @@
   <div class="location-features-strip">
     <div class="location-feature">
       <p class="location-feature-name">Plaza Belgrano</p>
-      <p class="location-feature-desc">Frente al edificio &middot; 0 minutos</p>
+      <p class="location-feature-desc">Frente al edificio</p>
     </div>
     <div class="location-feature">
-      <p class="location-feature-name">Casco fundacional</p>
-      <p class="location-feature-desc">5 minutos al centro de La Plata</p>
+      <p class="location-feature-name">Por afuera del centro</p>
+      <p class="location-feature-desc">Zona residencial</p>
     </div>
     <div class="location-feature">
       <p class="location-feature-name">Buenos Aires</p>
       <p class="location-feature-desc">Salida directa por autopista</p>
     </div>
     <div class="location-feature">
-      <p class="location-feature-name">Universidades</p>
-      <p class="location-feature-desc">UNLP a 10 minutos en auto</p>
+      <p class="location-feature-name">Vistas despejadas</p>
+      <p class="location-feature-desc">Plazas y áreas verdes</p>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
 <section class="cta" id="cta">
-  <p class="cta-tag">COORDINÁ TU VISITA</p>
+  <p class="cta-tag">COORDINAR VISITA</p>
   <h2 class="cta-title">Conocé TAO en persona.</h2>
-  <p class="cta-sub">Te presentamos el proyecto en una reunión privada con el arquitecto Couyet en su estudio. Plantas, materiales, ubicación y estado del proyecto en detalle.</p>
+  <p class="cta-sub">Te presentamos el proyecto en una reunión privada con el arquitecto en su estudio.</p>
 
   <a href="https://wa.me/5492214942009?text=Hola%2C%20quiero%20agendar%20una%20visita%20para%20conocer%20TAO." target="_blank" rel="noopener" class="cta-button">Agendar visita</a>
   <p class="cta-foot">Te respondemos en menos de 24 horas.</p>
@@ -1070,14 +1174,14 @@
     <div class="footer-grid">
       <div>
         <p class="footer-brand-name">DE MUR</p>
-        <p class="footer-tagline">ELEVANDO FUTURO &middot; 2026</p>
+        <p class="footer-tagline">ELEVANDO FUTURO</p>
       </div>
       <div class="footer-col">
         <p class="footer-col-title">PROYECTO</p>
         <a href="#directory">El edificio</a>
+        <a href="#materiales">Materiales</a>
         <a href="#plans">Plantas</a>
         <a href="#location">Ubicación</a>
-        <a href="#cta">Visita</a>
       </div>
       <div class="footer-col">
         <p class="footer-col-title">CONTACTO</p>
@@ -1088,12 +1192,12 @@
       <div class="footer-col">
         <p class="footer-col-title">UBICACIÓN</p>
         <p>Av. 13 entre 40 y 41</p>
-        <p>La Plata &middot; Buenos Aires</p>
+        <p>La Plata &middot; Argentina</p>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 DE MUR EF SRL</span>
-      <span>Comercialización &middot; Century 21 Esposito</span>
+      <span>COUYET ARQUITECTURA + DISEÑO</span>
     </div>
   </div>
 </footer>
@@ -1132,6 +1236,25 @@
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
     });
+
+    var heroBg = document.getElementById('hero-bg');
+    if (heroBg) {
+      var lastScroll = 0;
+      var ticking = false;
+      function updateHero() {
+        var heroH = window.innerHeight;
+        var op = Math.max(0, 1 - (lastScroll / heroH) * 1.3);
+        heroBg.style.opacity = op;
+        ticking = false;
+      }
+      window.addEventListener('scroll', function() {
+        lastScroll = window.pageYOffset;
+        if (!ticking) {
+          window.requestAnimationFrame(updateHero);
+          ticking = true;
+        }
+      }, { passive: true });
+    }
   })();
 </script>
 
