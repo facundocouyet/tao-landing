@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAO — Casas en altura · La Plata</title>
+<meta name="description" content="TAO. 24 casas en altura sobre Av. 13 entre 40 y 41, La Plata. Frente a Plaza Belgrano. Couyet Arquitectura + Diseño.">
+
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="TAO — Casas en altura · La Plata">
+<meta property="og:description" content="24 unidades exclusivas frente a Plaza Belgrano. Av. 13 entre 40 y 41. Couyet Arquitectura + Diseño.">
+<meta property="og:image" content="https://tao.demur.com.ar/images/hero.jpg">
+<meta property="og:url" content="https://tao.demur.com.ar/">
+<meta property="og:locale" content="es_AR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TAO — Casas en altura">
+<meta name="twitter:description" content="24 unidades exclusivas en La Plata. Av. 13 entre 40 y 41.">
+<meta name="twitter:image" content="https://tao.demur.com.ar/images/hero.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-dark: #1a1612;
+    --bg-mid: #2a221c;
+    --bg-warm: #3d2f24;
+    --copper: #b88860;
+    --copper-soft: #d4a982;
+    --cream: #f4ead8;
+    --cream-dim: rgba(244, 234, 216, 0.7);
+    --cream-faint: rgba(244, 234, 216, 0.4);
+    --line: rgba(244, 234, 216, 0.15);
+    --wa: #25D366;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-dark);
+    color: var(--cream);
+    line-height: 1.5;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  img { display: block; max-width: 100%; }
+
+  .display {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
+  /* ───── NAV ───── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 28px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    color: var(--cream);
+    font-size: 13px;
+    mix-blend-mode: difference;
+  }
+
+  .nav-brand { letter-spacing: 1px; }
+
+  .nav-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    text-align: right;
+  }
+
+  .nav-right a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .nav-right a:hover { opacity: 0.6; }
+
+  /* ───── HERO ───── */
+  .hero {
+    height: 100vh;
+    min-height: 800px;
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-dark);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: image-set(url('images/hero.webp') type('image/webp'), url('images/hero.jpg') type('image/jpeg'));
+    background-image: -webkit-image-set(url('images/hero.webp') type('image/webp'), url('images/hero.jpg') type('image/jpeg'));
+    background-size: cover;
+    background-position: center 40%;
+    opacity: 0.85;
+  }
+
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(26,22,18,0.35) 0%, transparent 35%, transparent 55%, rgba(26, 22, 18, 0.92) 100%);
+  }
+
+  .hero-title {
+    position: absolute;
+    top: 110px;
+    left: 48px;
+    right: 48px;
+    z-index: 2;
+    color: var(--cream);
+  }
+
+  .hero-title h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(80px, 14vw, 220px);
+    font-weight: 300;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    color: var(--cream);
+  }
+
+  .hero-side {
+    position: absolute;
+    top: 200px;
+    right: 48px;
+    width: 240px;
+    z-index: 3;
+    color: var(--cream);
+  }
+
+  .hero-side p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--cream-dim);
+    margin-bottom: 16px;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    background: var(--cream);
+    color: var(--bg-dark);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+    transition: background 0.2s, transform 0.1s;
+    border: none;
+    cursor: pointer;
+    margin-top: 16px;
+  }
+  .hero-cta:hover { background: var(--copper-soft); }
+  .hero-cta:active { transform: translateY(1px); }
+  .hero-cta svg { width: 16px; height: 16px; }
+
+  .hero-amenities {
+    position: absolute;
+    bottom: 48px;
+    left: 48px;
+    right: 48px;
+    z-index: 3;
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+    color: var(--cream);
+  }
+
+  .hero-amenities-label {
+    font-size: 12px;
+    color: var(--cream-dim);
+    flex-shrink: 0;
+    width: 140px;
+    line-height: 1.4;
+  }
+
+  .hero-amenities-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.4vw, 32px);
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    flex: 1;
+    color: var(--cream);
+  }
+
+  /* ───── STATS BAND ───── */
+  .stats {
+    background: var(--bg-dark);
+    padding: 80px 48px 60px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .stat { color: var(--cream); }
+
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(70px, 10vw, 140px);
+    font-weight: 300;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    color: var(--cream);
+  }
+
+  .stat-unit {
+    font-size: 18px;
+    color: var(--cream-dim);
+    margin-left: 4px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .stat-desc {
+    font-size: 13px;
+    color: var(--cream-dim);
+    margin-top: 16px;
+    line-height: 1.5;
+  }
+
+  /* ───── DIRECTORY ───── */
+  .directory {
+    background: var(--bg-dark);
+    padding: 100px 48px;
+    position: relative;
+  }
+
+  .directory-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 80px;
+  }
+
+  .directory-list { display: flex; flex-direction: column; }
+
+  .directory-item {
+    display: grid;
+    grid-template-columns: 80px 1fr 320px;
+    gap: 40px;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+  }
+
+  .directory-num {
+    font-size: 11px;
+    color: var(--cream-faint);
+    letter-spacing: 1px;
+  }
+
+  .directory-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4.5vw, 64px);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+  }
+
+  .directory-detail {
+    font-size: 13px;
+    color: var(--cream-dim);
+    line-height: 1.6;
+  }
+
+  .directory-detail strong {
+    color: var(--cream);
+    font-weight: 400;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .directory-detail-item { margin-bottom: 12px; }
+
+  .directory-side { padding-top: 60px; }
+
+  .directory-side-title {
+    font-size: 13px;
+    color: var(--cream);
+    margin-bottom: 16px;
+  }
+
+  .directory-side-text {
+    font-size: 12px;
+    color: var(--cream-dim);
+    line-height: 1.7;
+  }
+
+  /* ───── EDITORIAL ───── */
+  .editorial {
+    background: var(--bg-dark);
+    padding: 120px 48px;
+    position: relative;
+  }
+
+  .editorial-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .editorial-image {
+    aspect-ratio: 4/5;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+  }
+  .editorial-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .editorial-text { color: var(--cream); }
+
+  .editorial-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 6vw, 96px);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 40px;
+    color: var(--cream);
+  }
+
+  .editorial-headline span { display: block; }
+
+  .editorial-body {
+    font-size: 14px;
+    color: var(--cream-dim);
+    line-height: 1.7;
+    max-width: 380px;
+    margin-bottom: 32px;
+  }
+
+  .editorial-meta {
+    font-size: 11px;
+    color: var(--cream-faint);
+    letter-spacing: 1px;
+  }
+
+  /* ───── GALLERY ───── */
+  .gallery {
+    background: var(--bg-dark);
+    padding: 80px 48px 120px;
+  }
+
+  .gallery-inner { max-width: 1400px; margin: 0 auto; }
+
+  .gallery-header { text-align: center; margin-bottom: 56px; }
+
+  .gallery-tag {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--copper-soft);
+    margin-bottom: 16px;
+  }
+
+  .gallery-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--cream);
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .gallery-item {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    border-radius: 2px;
+    background: var(--bg-mid);
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .gallery-item:hover img { transform: scale(1.04); }
+
+  .gallery-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 20px;
+    background: linear-gradient(180deg, transparent 0%, rgba(26, 22, 18, 0.85) 100%);
+    color: var(--cream);
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ───── AMENITIES VISUAL ───── */
+  .amenities-visual {
+    background: var(--bg-dark);
+    padding: 0;
+    position: relative;
+  }
+
+  .amenities-image {
+    width: 100%;
+    height: clamp(400px, 70vh, 720px);
+    overflow: hidden;
+    position: relative;
+  }
+  .amenities-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .amenities-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(26,22,18,0.4) 0%, transparent 30%, transparent 70%, rgba(26,22,18,0.6) 100%);
+  }
+
+  .amenities-overlay {
+    position: absolute;
+    bottom: 60px;
+    left: 48px;
+    right: 48px;
+    z-index: 2;
+    color: var(--cream);
+    max-width: 700px;
+  }
+
+  .amenities-overlay-tag {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--copper-soft);
+    margin-bottom: 20px;
+  }
+
+  .amenities-overlay-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 5.5vw, 80px);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--cream);
+  }
+
+  /* ───── PHILOSOPHY ───── */
+  .philosophy {
+    background: var(--bg-mid);
+    padding: 140px 48px;
+    text-align: center;
+  }
+
+  .philosophy-tag {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--copper-soft);
+    margin-bottom: 32px;
+  }
+
+  .philosophy-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    max-width: 900px;
+    margin: 0 auto 40px;
+    color: var(--cream);
+    font-style: italic;
+  }
+
+  .philosophy-attribution {
+    font-size: 13px;
+    color: var(--cream-dim);
+    letter-spacing: 1.5px;
+  }
+
+  /* ───── LOCATION ───── */
+  .location { background: var(--bg-dark); padding: 120px 48px; }
+
+  .location-inner { max-width: 1200px; margin: 0 auto; }
+
+  .location-header { margin-bottom: 80px; max-width: 700px; }
+
+  .location-tag {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--copper-soft);
+    margin-bottom: 24px;
+  }
+
+  .location-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(56px, 8vw, 110px);
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: var(--cream);
+    margin-bottom: 32px;
+  }
+
+  .location-text {
+    font-size: 15px;
+    color: var(--cream-dim);
+    line-height: 1.7;
+    max-width: 480px;
+  }
+
+  .location-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .location-map {
+    aspect-ratio: 1/1;
+    background: var(--bg-mid);
+    border-radius: 2px;
+    padding: 32px;
+    border: 1px solid var(--line);
+  }
+
+  .location-features { display: flex; flex-direction: column; }
+
+  .location-feature {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .location-feature:first-child { padding-top: 0; }
+  .location-feature:last-child { border-bottom: none; }
+
+  .location-feature-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 4px;
+  }
+
+  .location-feature-desc {
+    font-size: 12px;
+    color: var(--cream-dim);
+  }
+
+  /* ───── CTA SECTION (replaces form) ───── */
+  .cta {
+    background: var(--bg-mid);
+    padding: 140px 48px;
+  }
+
+  .cta-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .cta-tag {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--copper-soft);
+    margin-bottom: 24px;
+  }
+
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 6vw, 84px);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+    color: var(--cream);
+  }
+
+  .cta-sub {
+    font-size: 15px;
+    color: var(--cream-dim);
+    line-height: 1.7;
+    margin-bottom: 48px;
+    max-width: 460px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 22px 40px;
+    background: var(--cream);
+    color: var(--bg-dark);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.1s;
+    text-transform: uppercase;
+  }
+  .cta-button:hover { background: var(--copper-soft); }
+  .cta-button:active { transform: translateY(1px); }
+  .cta-button svg { width: 20px; height: 20px; }
+
+  .cta-foot {
+    margin-top: 28px;
+    font-size: 12px;
+    color: var(--cream-faint);
+    letter-spacing: 0.5px;
+  }
+
+  /* ───── FLOATING WHATSAPP ───── */
+  .wa-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--wa);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4);
+    z-index: 90;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .wa-float:hover {
+    transform: scale(1.06);
+    box-shadow: 0 8px 28px rgba(37, 211, 102, 0.55);
+  }
+  .wa-float svg { width: 32px; height: 32px; }
+
+  /* ───── FOOTER ───── */
+  footer {
+    background: var(--bg-dark);
+    color: var(--cream);
+    padding: 80px 48px 40px;
+    border-top: 1px solid var(--line);
+  }
+
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 80px;
+  }
+
+  .footer-brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .footer-tagline {
+    font-size: 12px;
+    color: var(--cream-dim);
+    letter-spacing: 1px;
+  }
+
+  .footer-col-title {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--cream-faint);
+    margin-bottom: 16px;
+  }
+
+  .footer-col a, .footer-col p {
+    display: block;
+    color: var(--cream-dim);
+    text-decoration: none;
+    font-size: 13px;
+    margin-bottom: 8px;
+    transition: color 0.2s;
+  }
+
+  .footer-col a:hover { color: var(--cream); }
+
+  .footer-bottom {
+    border-top: 1px solid var(--line);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: var(--cream-faint);
+    letter-spacing: 0.5px;
+  }
+
+  /* ───── MOBILE ───── */
+  @media (max-width: 768px) {
+    nav { padding: 20px 24px; font-size: 11px; }
+    .hero-title { left: 24px; right: 24px; top: 100px; }
+    .hero-side { display: none; }
+    .hero-amenities { left: 24px; right: 24px; flex-direction: column; gap: 12px; bottom: 32px; }
+    .hero-amenities-label { width: auto; }
+    .stats { padding: 60px 24px; }
+    .stats-grid { grid-template-columns: 1fr; gap: 40px; }
+    .directory { padding: 60px 24px; }
+    .directory-inner { grid-template-columns: 1fr; gap: 40px; }
+    .directory-item { grid-template-columns: 60px 1fr; gap: 16px; }
+    .directory-item .directory-detail { grid-column: 1 / -1; padding-left: 76px; }
+    .editorial { padding: 80px 24px; }
+    .editorial-grid { grid-template-columns: 1fr; gap: 40px; }
+    .gallery { padding: 60px 24px 80px; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .amenities-overlay { left: 24px; right: 24px; bottom: 32px; }
+    .philosophy, .location, .cta { padding: 80px 24px; }
+    .location-grid { grid-template-columns: 1fr; gap: 40px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; padding: 0 0 60px; margin-bottom: 24px; }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    .wa-float { bottom: 16px; right: 16px; width: 54px; height: 54px; }
+    .wa-float svg { width: 28px; height: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">DE MUR / TAO</div>
+  <div class="nav-right">
+    <a href="#cta">Visita</a>
+    <a href="#location">Ubicación</a>
+    <a href="#directory">El edificio</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+
+  <div class="hero-title">
+    <h1 class="display">tao.</h1>
+  </div>
+
+  <div class="hero-side">
+    <p>Un edificio de 12 pisos con 24 unidades exclusivas en Av. 13 entre 40 y 41, frente a Plaza Belgrano. La Plata.</p>
+    <a href="https://wa.me/5492214942009?text=Hola%2C%20me%20interesa%20conocer%20TAO.%20%C2%BFPodemos%20coordinar%20una%20visita%3F" target="_blank" rel="noopener" class="hero-cta">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+      </svg>
+      Coordinar visita
+    </a>
+  </div>
+
+  <div class="hero-amenities">
+    <div class="hero-amenities-label">TAO incluye</div>
+    <div class="hero-amenities-text">terraza propia con parrilla, palier privado, suite con vestidor, pileta y solarium, quincho, gimnasio, encargado, cocheras y bauleras.</div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat">
+      <span class="stat-number">138<span class="stat-unit">m²</span></span>
+      <p class="stat-desc">Superficie total<br>por unidad</p>
+    </div>
+    <div class="stat">
+      <span class="stat-number">24<span class="stat-unit">und.</span></span>
+      <p class="stat-desc">Departamentos<br>distribuidos en 12 pisos</p>
+    </div>
+    <div class="stat">
+      <span class="stat-number">2025<span class="stat-unit"></span></span>
+      <p class="stat-desc">Año del lanzamiento<br>Couyet + Diseño</p>
+    </div>
+  </div>
+</section>
+
+<!-- DIRECTORY -->
+<section class="directory" id="directory">
+  <div class="directory-inner">
+    <div class="directory-list">
+      <div class="directory-item">
+        <span class="directory-num">/01</span>
+        <span class="directory-name display">unidades</span>
+        <div class="directory-detail">
+          <div class="directory-detail-item">
+            <strong>2 dormitorios</strong>
+            106 m² cubiertos + 32 m² semicubiertos
+          </div>
+          <div class="directory-detail-item">
+            <strong>3 dormitorios con suite</strong>
+            106 m² cubiertos + 32 m² semicubiertos
+          </div>
+          <div class="directory-detail-item">
+            <strong>Terraza propia</strong>
+            Con parrilla incluida
+          </div>
+        </div>
+      </div>
+
+      <div class="directory-item">
+        <span class="directory-num">/02</span>
+        <span class="directory-name display">amenities</span>
+        <div class="directory-detail">
+          <div class="directory-detail-item">
+            <strong>Pileta y solarium</strong>
+            En terraza, vista a Plaza Belgrano
+          </div>
+          <div class="directory-detail-item">
+            <strong>Gimnasio equipado</strong>
+            Diseñado para entrenar todos los días
+          </div>
+          <div class="directory-detail-item">
+            <strong>Quincho con parrilla</strong>
+            Para reuniones de hasta 12 personas
+          </div>
+        </div>
+      </div>
+
+      <div class="directory-item">
+        <span class="directory-num">/03</span>
+        <span class="directory-name display">servicios</span>
+        <div class="directory-detail">
+          <div class="directory-detail-item">
+            <strong>Encargado en planta</strong>
+            Departamento dedicado en piso 13
+          </div>
+          <div class="directory-detail-item">
+            <strong>Cocheras y bauleras</strong>
+            36 cocheras + 13 bauleras propias
+          </div>
+          <div class="directory-detail-item">
+            <strong>Grupo electrógeno</strong>
+            Cubre ascensores, agua y portón
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="directory-side">
+      <p class="directory-side-title">Pensado para vos</p>
+      <p class="directory-side-text">Cada detalle de TAO fue pensado para construir un estándar de vida superior. La arquitectura responde a las expectativas más altas del habitante moderno, sin resignar la estética ni la comodidad.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL -->
+<section class="editorial">
+  <div class="editorial-grid">
+    <div class="editorial-image">
+      <picture>
+        <source srcset="images/editorial-terraza.webp" type="image/webp">
+        <img src="images/editorial-terraza.jpg" alt="Terraza con parrilla del edificio TAO" loading="lazy">
+      </picture>
+    </div>
+    <div class="editorial-text">
+      <h2 class="editorial-headline">
+        <span>Lo mejor,</span>
+        <span>ya viene</span>
+        <span>incluido.</span>
+      </h2>
+      <p class="editorial-body">El concepto rector de TAO es claro: no son departamentos, son casas en altura. Cada unidad está pensada con la libertad espacial de una casa y la sofisticación de un edificio premium.</p>
+      <p class="editorial-meta">NUESTRA FILOSOFÍA · 2026</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="gallery-inner">
+    <div class="gallery-header">
+      <p class="gallery-tag">RENDERS DEL PROYECTO</p>
+      <h2 class="gallery-title display">Conocé cada espacio.</h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <picture>
+          <source srcset="images/gallery-living.webp" type="image/webp">
+          <img src="images/gallery-living.jpg" alt="Living comedor con vista al balcón" loading="lazy">
+        </picture>
+        <div class="gallery-caption">Living &middot; Balcón con vista</div>
+      </div>
+      <div class="gallery-item">
+        <picture>
+          <source srcset="images/gallery-cocina.webp" type="image/webp">
+          <img src="images/gallery-cocina.jpg" alt="Cocina con isla de mármol" loading="lazy">
+        </picture>
+        <div class="gallery-caption">Cocina &middot; Isla de mármol</div>
+      </div>
+      <div class="gallery-item">
+        <picture>
+          <source srcset="images/gallery-comedor.webp" type="image/webp">
+          <img src="images/gallery-comedor.jpg" alt="Comedor amplio con cocina abierta" loading="lazy">
+        </picture>
+        <div class="gallery-caption">Comedor &middot; Cocina abierta</div>
+      </div>
+      <div class="gallery-item">
+        <picture>
+          <source srcset="images/gallery-quincho.webp" type="image/webp">
+          <img src="images/gallery-quincho.jpg" alt="Quincho con vista panorámica" loading="lazy">
+        </picture>
+        <div class="gallery-caption">Quincho &middot; Vista panorámica</div>
+      </div>
+      <div class="gallery-item">
+        <picture>
+          <source srcset="images/gallery-lobby.webp" type="image/webp">
+          <img src="images/gallery-lobby.jpg" alt="Lobby con espejo de agua" loading="lazy">
+        </picture>
+        <div class="gallery-caption">Lobby &middot; Espejo de agua</div>
+      </div>
+      <div class="gallery-item">
+        <picture>
+          <source srcset="images/gallery-living-2.webp" type="image/webp">
+          <img src="images/gallery-living-2.jpg" alt="Living con vista a la ciudad" loading="lazy">
+        </picture>
+        <div class="gallery-caption">Living &middot; Vista a la ciudad</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AMENITIES VISUAL -->
+<section class="amenities-visual">
+  <div class="amenities-image">
+    <picture>
+      <source srcset="images/amenities-pileta.webp" type="image/webp">
+      <img src="images/amenities-pileta.jpg" alt="Pileta y gimnasio en terraza" loading="lazy">
+    </picture>
+    <div class="amenities-overlay">
+      <p class="amenities-overlay-tag">PILETA · GIMNASIO · SOLARIUM</p>
+      <h2 class="amenities-overlay-title display">La terraza<br>es tuya.</h2>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy">
+  <p class="philosophy-tag">DE MUR · ELEVANDO FUTURO</p>
+  <p class="philosophy-quote">"TAO es la unidad que todo lo contiene: comodidad, tranquilidad, naturaleza."</p>
+  <p class="philosophy-attribution">COUYET ARQUITECTURA + DISEÑO</p>
+</section>
+
+<!-- LOCATION -->
+<section class="location" id="location">
+  <div class="location-inner">
+    <div class="location-header">
+      <p class="location-tag">UBICACIÓN</p>
+      <h2 class="location-title display">Av. 13<br>entre 40 y 41.</h2>
+      <p class="location-text">En el corazón residencial de La Plata, frente a Plaza Belgrano. Por afuera del centro, con la cercanía intacta. Rápida salida a Buenos Aires por autopista.</p>
+    </div>
+
+    <div class="location-grid">
+      <div class="location-map">
+        <svg viewBox="0 0 200 200" style="width: 100%; height: 100%;">
+          <rect x="0" y="0" width="200" height="200" fill="transparent"/>
+          <line x1="0" y1="60" x2="200" y2="60" stroke="rgba(244,234,216,0.18)" stroke-width="1"/>
+          <line x1="0" y1="120" x2="200" y2="120" stroke="rgba(244,234,216,0.18)" stroke-width="1"/>
+          <line x1="50" y1="0" x2="50" y2="200" stroke="rgba(244,234,216,0.18)" stroke-width="1"/>
+          <line x1="100" y1="0" x2="100" y2="200" stroke="rgba(244,234,216,0.18)" stroke-width="1"/>
+          <line x1="150" y1="0" x2="150" y2="200" stroke="rgba(244,234,216,0.18)" stroke-width="1"/>
+          <rect x="55" y="65" width="42" height="50" fill="rgba(184, 136, 96, 0.25)" stroke="rgba(184, 136, 96, 0.5)" stroke-width="0.5"/>
+          <text x="76" y="92" font-size="6" fill="#d4a982" text-anchor="middle" font-weight="500">PLAZA</text>
+          <text x="76" y="100" font-size="6" fill="#d4a982" text-anchor="middle" font-weight="500">BELGRANO</text>
+          <circle cx="115" cy="90" r="8" fill="#f4ead8"/>
+          <text x="115" y="93" font-size="5" fill="#1a1612" text-anchor="middle" font-weight="500" font-family="Cormorant Garamond, serif">tao</text>
+          <text x="115" y="60" font-size="4" fill="rgba(244,234,216,0.5)" text-anchor="middle">AV. 13</text>
+          <text x="105" y="50" font-size="3.5" fill="rgba(244,234,216,0.4)" text-anchor="middle">CALLE 40</text>
+          <text x="158" y="50" font-size="3.5" fill="rgba(244,234,216,0.4)" text-anchor="middle">CALLE 41</text>
+        </svg>
+      </div>
+
+      <div class="location-features">
+        <div class="location-feature">
+          <p class="location-feature-name display">Plaza Belgrano</p>
+          <p class="location-feature-desc">Frente al edificio · 0 minutos</p>
+        </div>
+        <div class="location-feature">
+          <p class="location-feature-name display">Casco fundacional</p>
+          <p class="location-feature-desc">5 minutos al centro de La Plata</p>
+        </div>
+        <div class="location-feature">
+          <p class="location-feature-name display">Buenos Aires</p>
+          <p class="location-feature-desc">Salida directa por autopista</p>
+        </div>
+        <div class="location-feature">
+          <p class="location-feature-name display">Universidades</p>
+          <p class="location-feature-desc">UNLP a 10 minutos en auto</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="cta">
+  <div class="cta-inner">
+    <p class="cta-tag">COORDINÁ TU VISITA</p>
+    <h2 class="cta-title display">Conocé TAO<br>en persona.</h2>
+    <p class="cta-sub">Te presentamos el proyecto en una reunión privada con el arquitecto Couyet en su estudio. Plantas, materiales, ubicación y estado del proyecto en detalle.</p>
+
+    <a href="https://wa.me/5492214942009?text=Hola%2C%20quiero%20agendar%20una%20visita%20para%20conocer%20TAO." target="_blank" rel="noopener" class="cta-button">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+      </svg>
+      Agendar visita por WhatsApp
+    </a>
+    <p class="cta-foot">Te respondemos en menos de 24 horas.</p>
+  </div>
+</section>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/5492214942009?text=Hola%2C%20me%20interesa%20conocer%20TAO." target="_blank" rel="noopener" class="wa-float" aria-label="Chatear por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+  </svg>
+</a>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <p class="footer-brand-name display">DE MUR</p>
+        <p class="footer-tagline">ELEVANDO FUTURO · 2026</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">PROYECTO</p>
+        <a href="#directory">El edificio</a>
+        <a href="#location">Ubicación</a>
+        <a href="#cta">Visita</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">CONTACTO</p>
+        <a href="https://wa.me/5492214942009" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://www.instagram.com/demurdesarrollos/" target="_blank" rel="noopener">@demurdesarrollos</a>
+        <a href="mailto:contacto@demur.com.ar">contacto@demur.com.ar</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">UBICACIÓN</p>
+        <p>Av. 13 entre 40 y 41</p>
+        <p>La Plata · Buenos Aires</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 DE MUR EF SRL</span>
+      <span>Comercialización · Century 21 Esposito</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
