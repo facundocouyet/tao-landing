@@ -990,17 +990,17 @@
   }
   .location-map {
     aspect-ratio: 1/1;
-    background: var(--bg-deep);
+    background: #F2F1EC;
     border-radius: 2px;
     border: 1px solid var(--line);
     overflow: hidden;
     position: relative;
+    padding: 24px;
   }
   .location-map picture, .location-map img {
     width: 100%; height: 100%;
     display: block;
-    object-fit: cover;
-    object-position: 25% 50%;
+    object-fit: contain;
   }
   .location-features { display: flex; flex-direction: column; }
   .location-feature {
@@ -1484,14 +1484,14 @@
           <span class="stat-split-num">2</span>
           <div>
             <span class="stat-split-label">Habitaciones</span>
-            <p class="stat-split-meta">12 unidades · 138 m²</p>
+            <p class="stat-split-meta">12 unidades · 1 en suite</p>
           </div>
         </div>
         <div class="stat-split-row">
           <span class="stat-split-num">3</span>
           <div>
             <span class="stat-split-label">Habitaciones</span>
-            <p class="stat-split-meta">12 unidades · suite con vestidor</p>
+            <p class="stat-split-meta">12 unidades · 1 en suite</p>
           </div>
         </div>
       </div>
@@ -1524,10 +1524,10 @@
         </div>
         <div class="directory-card-body">
           <h3 class="directory-card-name">Departamentos</h3>
-          <p class="directory-card-lead">Tipologías de 2 y 3 habitaciones, 138 m² totales con terraza propia y vista a Plaza Belgrano.</p>
+          <p class="directory-card-lead">Tipologías de 2 y 3 habitaciones, una en suite con vestidor. 138 m² totales con terraza propia y vista a Plaza Belgrano.</p>
           <div class="directory-card-tags">
-            <span class="directory-card-tag">2 hab</span>
-            <span class="directory-card-tag">3 hab + suite</span>
+            <span class="directory-card-tag">2 hab · 1 suite</span>
+            <span class="directory-card-tag">3 hab · 1 suite</span>
             <span class="directory-card-tag">Terraza · parrilla</span>
           </div>
         </div>
@@ -1696,7 +1696,7 @@
       </button>
       <button class="plano-tab" type="button" role="tab" data-plano="3hab" aria-selected="false">
         <span class="plano-tab-num">3</span>
-        <span class="plano-tab-label">Hab. + suite</span>
+        <span class="plano-tab-label">Habitaciones</span>
       </button>
       <button class="plano-tab" type="button" role="tab" data-plano="terraza" aria-selected="false">
         <span class="plano-tab-num">↑</span>
@@ -1733,7 +1733,8 @@
           <ul class="plano-info-features">
             <li>Living-comedor con balcón vidriado</li>
             <li>Cocina abierta con isla de mármol</li>
-            <li>Dos dormitorios con placard</li>
+            <li>Suite principal con vestidor</li>
+            <li>Segundo dormitorio con placard</li>
             <li>Baño completo + toilette</li>
             <li>Terraza con parrilla propia</li>
           </ul>
@@ -1851,7 +1852,7 @@
       <div class="location-map reveal">
         <picture>
           <source srcset="images/location-map.webp" type="image/webp">
-          <img src="images/location-map.jpg" alt="Mapa ilustrado de Av. 13 entre 40 y 41, La Plata. TAO frente a Plaza Belgrano." loading="lazy">
+          <img src="images/location-map.png" alt="Mapa ilustrado de Av. 13 entre 40 y 41, La Plata. TAO frente a Plaza Belgrano." loading="lazy">
         </picture>
       </div>
 
