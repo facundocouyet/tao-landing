@@ -161,23 +161,38 @@
     .reveal { opacity: 1; transform: none; transition: none; }
   }
 
-  /* ───── NAV ───── */
+  /* ───── NAV ─────
+     Sobre hero: texto siempre cream sobre fade oscuro (foto dark en ambos themes).
+     Scrolleado: el nav adopta los colores del theme — cream en dark, dark en light. */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;
-    padding: 28px 48px;
+    padding: 22px 48px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: var(--cream);
+    color: #FAFAF7;
     font-size: 13px;
     letter-spacing: 1.5px;
     font-weight: 600;
-    mix-blend-mode: difference;
+    background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, transparent 100%);
+    transition: background 0.3s ease, color 0.3s ease, padding 0.3s ease, border-color 0.3s;
+    border-bottom: 1px solid transparent;
+  }
+  nav.nav-scrolled {
+    color: var(--cream);
+    background: rgba(31, 31, 28, 0.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 16px 48px;
+    border-bottom-color: var(--line);
+  }
+  :root[data-theme="light"] nav.nav-scrolled {
+    background: rgba(250, 250, 247, 0.92);
   }
   .nav-brand { font-weight: 700; letter-spacing: 2px; }
-  .nav-right { display: flex; gap: 28px; }
+  .nav-right { display: flex; gap: 28px; align-items: center; }
   .nav-right a {
     color: inherit;
     text-decoration: none;
@@ -1111,6 +1126,54 @@
   }
   .team-text strong { color: var(--cream); font-weight: 500; }
 
+  /* ───── VIDEO ───── */
+  .video-section {
+    background: var(--bg-deep);
+    padding: 120px 48px;
+  }
+  .video-inner { max-width: 1400px; margin: 0 auto; }
+  .video-header {
+    margin-bottom: 48px;
+    max-width: 700px;
+    text-align: left;
+  }
+  .video-tag {
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: var(--cream-dim);
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+  .video-title {
+    font-size: clamp(40px, 5vw, 72px);
+    font-weight: 200;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--cream);
+  }
+  .video-sub {
+    font-size: 14px;
+    color: var(--cream-dim);
+    line-height: 1.7;
+    margin-top: 16px;
+    max-width: 520px;
+  }
+  .video-frame {
+    position: relative;
+    border-radius: 2px;
+    overflow: hidden;
+    background: #000;
+    border: 1px solid var(--line);
+    aspect-ratio: 16/9;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+  }
+  .video-frame video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
   /* ───── FORM (gradient bg) ───── */
   .form {
     position: relative;
@@ -1365,7 +1428,7 @@
   }
   body,
   .stats, .directory, .editorial, .philosophy, .renders,
-  .plantas, .materials, .location, .team {
+  .plantas, .materials, .location, .team, .video-section {
     background-image: var(--grain);
     background-blend-mode: overlay;
   }
@@ -1396,9 +1459,10 @@
     .directory-grid { grid-template-columns: 1fr; gap: 18px; }
     .directory-card-body { padding: 22px 22px 26px; }
 
-    .editorial, .philosophy, .renders, .plantas, .materials, .location, .team, .form {
+    .editorial, .philosophy, .renders, .plantas, .materials, .location, .team, .video-section, .form {
       padding: 80px 24px;
     }
+    nav, nav.nav-scrolled { padding-left: 24px; padding-right: 24px; }
     .editorial-grid, .location-grid {
       grid-template-columns: 1fr;
       gap: 40px;
@@ -1958,6 +2022,23 @@
   </div>
 </section>
 
+<!-- VIDEO -->
+<section class="video-section" id="video">
+  <div class="video-inner">
+    <div class="video-header reveal">
+      <p class="video-tag">EL PROYECTO EN VIDEO</p>
+      <h2 class="video-title">TAO en movimiento.</h2>
+      <p class="video-sub">Un recorrido por las terrazas, las plantas y los amenities del edificio.</p>
+    </div>
+    <div class="video-frame reveal">
+      <video controls preload="metadata" playsinline poster="images/hero-building.jpg">
+        <source src="video/tao.mp4" type="video/mp4">
+        Tu navegador no soporta video HTML5.
+      </video>
+    </div>
+  </div>
+</section>
+
 <!-- FORM -->
 <section class="form" id="contacto">
   <div class="form-inner">
@@ -2080,32 +2161,36 @@
       if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
     });
 
-    /* ---- Hero parallax + extended fade ---- */
+    /* ---- Hero parallax + nav scroll state ---- */
     var heroBg = document.getElementById('hero-bg');
     var heroOverlay = document.getElementById('hero-overlay');
     var heroImg = document.getElementById('hero-img');
-    if (heroBg && heroImg) {
-      var lastScroll = 0;
-      var ticking = false;
-      function updateHero() {
-        var heroH = window.innerHeight;
-        // Phase 1 (0 to heroH): scroll through the building image (top to bottom)
+    var navEl = document.querySelector('nav');
+    var lastScroll = 0;
+    var ticking = false;
+    function updateScroll() {
+      var heroH = window.innerHeight;
+      if (heroBg && heroImg) {
         var scrollProgress = Math.min(1, lastScroll / heroH);
         heroImg.style.objectPosition = 'center ' + (scrollProgress * 100) + '%';
-        // Phase 2 (heroH to 2*heroH): fade out slowly
         var fadeProgress = Math.max(0, Math.min(1, (lastScroll - heroH) / heroH));
         heroBg.style.opacity = 1 - fadeProgress;
         heroOverlay.style.opacity = 1 - fadeProgress;
-        ticking = false;
       }
-      window.addEventListener('scroll', function() {
-        lastScroll = window.pageYOffset;
-        if (!ticking) {
-          window.requestAnimationFrame(updateHero);
-          ticking = true;
-        }
-      }, { passive: true });
+      if (navEl) {
+        var threshold = Math.max(0, heroH - 80);
+        if (lastScroll > threshold) navEl.classList.add('nav-scrolled');
+        else navEl.classList.remove('nav-scrolled');
+      }
+      ticking = false;
     }
+    window.addEventListener('scroll', function() {
+      lastScroll = window.pageYOffset;
+      if (!ticking) {
+        window.requestAnimationFrame(updateScroll);
+        ticking = true;
+      }
+    }, { passive: true });
 
     /* ---- Scroll reveal ---- */
     if ('IntersectionObserver' in window) {
