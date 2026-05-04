@@ -24,6 +24,17 @@
 <meta name="twitter:description" content="Casas en altura · La Plata.">
 <meta name="twitter:image" content="https://tao.demur.com.ar/images/hero-building.jpg">
 
+<script>
+  (function() {
+    try {
+      var stored = localStorage.getItem('tao-theme');
+      var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+      var theme = stored || (prefersLight ? 'light' : 'dark');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+    } catch (e) {}
+  })();
+</script>
+
 <style>
   :root {
     --black: #0a0a0a;
@@ -31,13 +42,90 @@
     --bg-mid: #2E2E2A;
     --bg-soft: #4A4943;
     --cream: #FAFAF7;
-    --cream-dim: rgba(250, 250, 247, 0.7);
-    --cream-faint: rgba(250, 250, 247, 0.4);
-    --line: rgba(250, 250, 247, 0.12);
-    --line-soft: rgba(250, 250, 247, 0.06);
+    --cream-dim: rgba(250, 250, 247, 0.82);
+    --cream-faint: rgba(250, 250, 247, 0.55);
+    --line: rgba(250, 250, 247, 0.16);
+    --line-soft: rgba(250, 250, 247, 0.08);
     --accent: #d1d0c5;
     --wa: #25D366;
   }
+
+  :root[data-theme="light"] {
+    --black: #2E2E2A;
+    --bg-deep: #FAFAF7;
+    --bg-mid: #F2F1EC;
+    --bg-soft: #E2E0D6;
+    --cream: #1F1F1C;
+    --cream-dim: rgba(31, 31, 28, 0.78);
+    --cream-faint: rgba(31, 31, 28, 0.5);
+    --line: rgba(31, 31, 28, 0.14);
+    --line-soft: rgba(31, 31, 28, 0.06);
+    --accent: #4A4943;
+  }
+  /* Form section keeps deliberate contrast in both themes */
+  :root[data-theme="light"] .form {
+    background: linear-gradient(180deg, #1F1F1C 0%, #2E2E2A 40%, #0a0a0a 100%);
+    color: #FAFAF7;
+  }
+  :root[data-theme="light"] .form .form-tag,
+  :root[data-theme="light"] .form .form-meta { color: rgba(250,250,247,0.78); }
+  :root[data-theme="light"] .form .form-title { color: #FAFAF7; }
+  :root[data-theme="light"] .form .form-input,
+  :root[data-theme="light"] .form .form-textarea,
+  :root[data-theme="light"] .form .form-select {
+    color: #FAFAF7;
+    border-color: rgba(250,250,247,0.16);
+  }
+  :root[data-theme="light"] .form .form-input::placeholder,
+  :root[data-theme="light"] .form .form-textarea::placeholder { color: rgba(250,250,247,0.5); }
+  :root[data-theme="light"] .form .form-submit {
+    color: #FAFAF7;
+    border-color: rgba(250,250,247,0.5);
+  }
+  :root[data-theme="light"] .form .form-submit:hover {
+    background: #FAFAF7;
+    color: #0a0a0a;
+  }
+  /* Location map SVG colors (hardcoded inline) — invert via CSS in light */
+  :root[data-theme="light"] .location-map svg line { stroke: rgba(31,31,28,0.18); }
+  :root[data-theme="light"] .location-map svg line[stroke-width="1.2"] { stroke: rgba(31,31,28,0.32); }
+  :root[data-theme="light"] .location-map svg rect { fill: rgba(31,31,28,0.06); stroke: rgba(31,31,28,0.4); }
+  :root[data-theme="light"] .location-map svg text { fill: rgba(31,31,28,0.6); }
+  :root[data-theme="light"] .location-map svg circle { fill: rgba(31,31,28,0.08); stroke: rgba(31,31,28,0.4); }
+  :root[data-theme="light"] .location-map svg circle[fill="#FAFAF7"] { fill: #1F1F1C; stroke: #1F1F1C; }
+  :root[data-theme="light"] .location-map svg text[fill="#1F1F1C"] { fill: #FAFAF7; }
+
+  /* Smooth transitions on theme swap */
+  body, section, .stat, .planta-card, .plano-canvas, .directory-card,
+  .material-tr, .team-card, .render-card, nav, .editorial-image {
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+  }
+
+  /* Theme toggle button (in nav) */
+  .theme-toggle {
+    background: transparent;
+    border: 1px solid var(--cream-faint);
+    color: var(--cream);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s, background 0.2s;
+    font-family: inherit;
+  }
+  .theme-toggle:hover {
+    border-color: var(--cream);
+    background: var(--line-soft);
+  }
+  .theme-toggle svg { width: 16px; height: 16px; }
+  .theme-toggle .icon-sun { display: none; }
+  .theme-toggle .icon-moon { display: block; }
+  :root[data-theme="light"] .theme-toggle .icon-sun { display: block; }
+  :root[data-theme="light"] .theme-toggle .icon-moon { display: none; }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -254,30 +342,66 @@
   }
   .stat:first-child { border-left: none; padding-left: 0; }
   .stat-tag {
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 3px;
     color: var(--cream-dim);
-    margin-bottom: 24px;
+    margin-bottom: 22px;
   }
   .stat-number {
-    font-size: clamp(60px, 7vw, 110px);
+    font-size: clamp(48px, 5vw, 80px);
     font-weight: 200;
     line-height: 0.9;
     letter-spacing: -0.03em;
     color: var(--cream);
   }
   .stat-unit {
-    font-size: 16px;
+    font-size: 22px;
     color: var(--cream-dim);
-    margin-left: 4px;
+    margin-left: 6px;
     font-weight: 300;
+    letter-spacing: -0.01em;
   }
   .stat-desc {
-    font-size: 12px;
+    font-size: 13px;
     color: var(--cream-dim);
-    margin-top: 16px;
+    margin-top: 18px;
+    line-height: 1.55;
+    letter-spacing: 0.4px;
+  }
+
+  /* Stat with two stacked tipologías (2 hab / 3 hab) */
+  .stat-split {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 4px;
+  }
+  .stat-split-row {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .stat-split-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .stat-split-num {
+    font-size: clamp(40px, 4vw, 56px);
+    font-weight: 200;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--cream);
+  }
+  .stat-split-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--cream-dim);
+    text-transform: uppercase;
+  }
+  .stat-split-meta {
+    font-size: 13px;
+    color: var(--cream-dim);
     line-height: 1.5;
-    letter-spacing: 0.5px;
+    margin-top: 4px;
   }
 
   /* All sections after hero need a relative position + z-index so they cover the fixed hero image */
@@ -294,58 +418,111 @@
   .directory-inner {
     max-width: 1400px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 2.2fr 1fr;
-    gap: 80px;
   }
-  .directory-list { display: flex; flex-direction: column; }
-  .directory-item {
-    display: grid;
-    grid-template-columns: 80px 1fr 320px;
-    gap: 40px;
-    padding: 40px 0;
-    border-bottom: 1px solid var(--line);
-    align-items: baseline;
+  .directory-header {
+    margin-bottom: 64px;
+    max-width: 720px;
   }
-  .directory-num {
-    font-size: 11px;
-    color: var(--cream-faint);
-    letter-spacing: 1px;
-    font-weight: 500;
+  .directory-tag {
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: var(--cream-dim);
+    margin-bottom: 16px;
   }
-  .directory-name {
+  .directory-headline {
     font-size: clamp(36px, 4.5vw, 64px);
     font-weight: 200;
-    line-height: 1;
+    line-height: 1.05;
     letter-spacing: -0.03em;
-    color: var(--cream);
-  }
-  .directory-detail {
-    font-size: 13px;
-    color: var(--cream-dim);
-    line-height: 1.6;
-  }
-  .directory-detail strong {
-    color: var(--cream);
-    font-weight: 400;
-    display: block;
-    margin-bottom: 4px;
-    letter-spacing: 0.3px;
-  }
-  .directory-detail-item { margin-bottom: 14px; }
-  .directory-side { padding-top: 60px; }
-  .directory-side-title {
-    font-size: 18px;
     color: var(--cream);
     margin-bottom: 16px;
     font-style: italic;
-    font-weight: 300;
   }
-  .directory-side-text {
-    font-size: 12px;
+  .directory-sub {
+    font-size: 14px;
     color: var(--cream-dim);
     line-height: 1.7;
-    letter-spacing: 0.3px;
+    max-width: 520px;
+  }
+  .directory-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .directory-card {
+    background: var(--bg-mid);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .directory-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--cream-faint);
+  }
+  .directory-card-img {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    position: relative;
+    background: var(--bg-deep);
+  }
+  .directory-card-img picture, .directory-card-img img {
+    width: 100%; height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+  }
+  .directory-card:hover .directory-card-img img { transform: scale(1.04); }
+  .directory-card-num {
+    position: absolute;
+    top: 16px; left: 16px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--cream);
+    background: rgba(31,31,28,0.7);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    padding: 6px 10px;
+    z-index: 2;
+    font-weight: 500;
+  }
+  .directory-card-body {
+    padding: 28px 28px 32px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .directory-card-name {
+    font-size: clamp(28px, 2.6vw, 36px);
+    font-weight: 200;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+  .directory-card-lead {
+    font-size: 14px;
+    color: var(--cream-dim);
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+  .directory-card-tags {
+    margin-top: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+  .directory-card-tag {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--cream-dim);
+    text-transform: uppercase;
+    padding: 6px 10px;
+    border: 1px solid var(--line);
   }
 
   /* ───── EDITORIAL ───── */
@@ -544,59 +721,157 @@
     line-height: 1.7;
     max-width: 460px;
   }
-  .plantas-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+  /* Plano tabs */
+  .plano-tabs {
+    display: flex;
+    gap: 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 48px;
   }
-  .planta-card {
+  .plano-tab {
+    flex: 1;
+    background: transparent;
+    border: none;
+    border-right: 1px solid var(--line);
+    color: var(--cream-dim);
+    padding: 28px 24px;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    transition: background 0.25s, color 0.25s;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    position: relative;
+  }
+  .plano-tab:last-child { border-right: none; }
+  .plano-tab:hover { background: var(--line-soft); color: var(--cream); }
+  .plano-tab.active { color: var(--cream); }
+  .plano-tab.active::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: 0; right: 0;
+    height: 2px;
+    background: var(--cream);
+  }
+  .plano-tab-num {
+    font-size: clamp(40px, 4vw, 56px);
+    font-weight: 200;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .plano-tab-label {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .plano-viewer {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  .plano-canvas {
     background: var(--bg-deep);
-    padding: 32px;
     border: 1px solid var(--line);
     border-radius: 2px;
+    padding: 32px;
+    aspect-ratio: 4/3;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-in;
+    overflow: hidden;
+    position: relative;
   }
-  .planta-tag {
-    font-size: 10px;
-    letter-spacing: 2px;
+  .plano-canvas .plano-img {
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity 0.4s ease;
+    opacity: 0;
+  }
+  .plano-canvas .plano-img.active {
+    display: block;
+    opacity: 1;
+  }
+  .plano-info {
+    padding-top: 8px;
+  }
+  .plano-info-tag {
+    font-size: 11px;
+    letter-spacing: 3px;
     color: var(--cream-faint);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .plano-info-name {
+    font-size: clamp(32px, 3.5vw, 44px);
+    font-weight: 200;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    color: var(--cream);
     margin-bottom: 8px;
   }
-  .planta-name {
-    font-size: 24px;
+  .plano-info-floor {
+    font-size: 13px;
+    color: var(--cream-dim);
+    letter-spacing: 0.5px;
+    margin-bottom: 32px;
+  }
+  .plano-info-specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 20px 0;
+    margin-bottom: 28px;
+  }
+  .plano-info-specs > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .plano-info-specs span {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--cream-faint);
+    text-transform: uppercase;
+  }
+  .plano-info-specs strong {
+    font-size: 18px;
     color: var(--cream);
     font-weight: 300;
-    margin-bottom: 24px;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
   }
-  .planta-image {
-    flex: 1;
-    background: var(--bg-mid);
-    border: 1px solid var(--line-soft);
-    margin-bottom: 24px;
-    overflow: hidden;
-    cursor: zoom-in;
-    transition: border-color 0.2s;
-  }
-  .planta-image:hover { border-color: var(--cream-faint); }
-  .planta-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  .planta-specs {
+  .plano-info-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
-    justify-content: space-between;
-    border-top: 1px solid var(--line);
-    padding-top: 16px;
-    font-size: 12px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .plano-info-features li {
+    font-size: 13px;
     color: var(--cream-dim);
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.5;
   }
-  .planta-spec-value {
-    color: var(--cream);
-    font-weight: 400;
+  .plano-info-features li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 9px;
+    width: 6px; height: 1px;
+    background: var(--cream-faint);
   }
+  .plano-pane { display: none; }
+  .plano-pane.active { display: block; }
   .planta-cta {
     margin-top: 60px;
     padding: 32px 0 0;
@@ -648,27 +923,62 @@
     margin-bottom: 80px;
     color: var(--cream);
   }
-  .materials-list { display: flex; flex-direction: column; }
-  .material-row {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 60px;
-    padding: 36px 0;
-    border-bottom: 1px solid var(--line);
-    align-items: baseline;
-  }
-  .material-row:first-child { border-top: 1px solid var(--line); }
-  .material-name {
-    font-size: 12px;
-    letter-spacing: 2px;
-    color: var(--cream);
-    font-weight: 500;
-  }
-  .material-desc {
+  .materials-intro {
     font-size: 14px;
     color: var(--cream-dim);
     line-height: 1.7;
-    max-width: 760px;
+    max-width: 580px;
+    margin-bottom: 56px;
+  }
+  .materials-table {
+    width: 100%;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .materials-table-head {
+    display: grid;
+    grid-template-columns: 1.1fr 2fr 1.6fr 1.6fr;
+    gap: 32px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .materials-table-head span {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--cream-faint);
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .material-tr {
+    display: grid;
+    grid-template-columns: 1.1fr 2fr 1.6fr 1.6fr;
+    gap: 32px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line-soft);
+    align-items: baseline;
+    transition: background 0.2s;
+  }
+  .material-tr:last-child { border-bottom: none; }
+  .material-tr:hover { background: var(--line-soft); }
+  .material-tr-item {
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    color: var(--cream);
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .material-tr-spec {
+    font-size: 14px;
+    color: var(--cream);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+  .material-tr-brand,
+  .material-tr-where {
+    font-size: 13px;
+    color: var(--cream-dim);
+    line-height: 1.5;
+    font-weight: 300;
   }
 
   /* ───── LOCATION ───── */
@@ -753,9 +1063,9 @@
   }
   .team-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 32px;
-    max-width: 760px;
+    max-width: 1140px;
     margin: 0 0 48px;
   }
   .team-card { text-align: left; margin: 0; }
@@ -781,7 +1091,7 @@
     letter-spacing: -0.01em;
   }
   .team-role {
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 2px;
     color: var(--cream-dim);
   }
@@ -1057,9 +1367,8 @@
     .stat { border-left: none; padding-left: 0; }
 
     .directory { padding: 80px 24px; }
-    .directory-inner { grid-template-columns: 1fr; gap: 40px; }
-    .directory-item { grid-template-columns: 60px 1fr; gap: 16px; }
-    .directory-item .directory-detail { grid-column: 1 / -1; padding-left: 76px; }
+    .directory-grid { grid-template-columns: 1fr; gap: 18px; }
+    .directory-card-body { padding: 22px 22px 26px; }
 
     .editorial, .philosophy, .renders, .plantas, .materials, .location, .team, .form {
       padding: 80px 24px;
@@ -1069,12 +1378,31 @@
       gap: 40px;
     }
     .renders-grid { grid-template-columns: 1fr 1fr; }
-    .plantas-grid { grid-template-columns: 1fr; }
+    .plano-viewer { grid-template-columns: 1fr; gap: 32px; }
+    .plano-canvas { aspect-ratio: 4/3; padding: 18px; }
+    .plano-tabs { flex-direction: column; }
+    .plano-tab { border-right: none; border-bottom: 1px solid var(--line); padding: 18px 20px; }
+    .plano-tab:last-child { border-bottom: none; }
+    .plano-tab.active::before { top: 0; bottom: 0; right: auto; width: 2px; height: auto; }
+    .plano-tab-num { font-size: 36px; }
     .form-row { grid-template-columns: 1fr; gap: 24px; }
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
     .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
-    .team-grid { grid-template-columns: 1fr 1fr; gap: 18px; }
-    .material-row { grid-template-columns: 1fr; gap: 8px; padding: 24px 0; }
+    .team-grid { grid-template-columns: 1fr; gap: 24px; max-width: 420px; }
+    .materials-table-head { display: none; }
+    .material-tr {
+      grid-template-columns: 1fr;
+      gap: 6px;
+      padding: 24px 0;
+    }
+    .material-tr-item {
+      font-size: 11px;
+      color: var(--cream-faint);
+      margin-bottom: 4px;
+    }
+    .material-tr-spec { font-size: 15px; }
+    .material-tr-brand,
+    .material-tr-where { font-size: 13px; }
     .planta-cta { flex-direction: column; gap: 24px; align-items: flex-start; }
     .wa-float { bottom: 16px; right: 16px; width: 48px; height: 48px; }
     .wa-float svg { width: 22px; height: 22px; }
@@ -1090,6 +1418,22 @@
     <a href="#plantas">Plantas</a>
     <a href="#materiales">Materiales</a>
     <a href="#contacto">Contacto</a>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambiar tema">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"/>
+        <line x1="12" y1="2" x2="12" y2="4"/>
+        <line x1="12" y1="20" x2="12" y2="22"/>
+        <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/>
+        <line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/>
+        <line x1="2" y1="12" x2="4" y2="12"/>
+        <line x1="20" y1="12" x2="22" y2="12"/>
+        <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/>
+        <line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/>
+      </svg>
+    </button>
   </div>
 </nav>
 
@@ -1153,9 +1497,23 @@
       <p class="stat-desc">Distribuidos en 12 pisos</p>
     </div>
     <div class="stat reveal" data-delay="2">
-      <p class="stat-tag">HABITACIONES</p>
-      <span class="stat-number">2<span class="stat-unit">/3</span></span>
-      <p class="stat-desc">Suite con vestidor en 3 hab.</p>
+      <p class="stat-tag">TIPOLOGÍAS</p>
+      <div class="stat-split">
+        <div class="stat-split-row">
+          <span class="stat-split-num">2</span>
+          <div>
+            <span class="stat-split-label">Habitaciones</span>
+            <p class="stat-split-meta">12 unidades · 138 m²</p>
+          </div>
+        </div>
+        <div class="stat-split-row">
+          <span class="stat-split-num">3</span>
+          <div>
+            <span class="stat-split-label">Habitaciones</span>
+            <p class="stat-split-meta">12 unidades · suite con vestidor</p>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="stat reveal" data-delay="3">
       <p class="stat-tag">ENTREGA</p>
@@ -1168,75 +1526,70 @@
 <!-- DIRECTORY -->
 <section class="directory">
   <div class="directory-inner">
-    <div class="directory-list">
-      <div class="directory-item reveal">
-        <span class="directory-num">/01</span>
-        <span class="directory-name">Departamentos</span>
-        <div class="directory-detail">
-          <div class="directory-detail-item">
-            <strong>2 habitaciones</strong>
-            Superficie total 138 m²
-          </div>
-          <div class="directory-detail-item">
-            <strong>3 habitaciones con suite</strong>
-            Dormitorio en suite con vestidor
-          </div>
-          <div class="directory-detail-item">
-            <strong>Terraza con parrilla</strong>
-            Vista a Plaza Belgrano desde ambos lados
-          </div>
-        </div>
-      </div>
-
-      <div class="directory-item reveal">
-        <span class="directory-num">/02</span>
-        <span class="directory-name">Amenities</span>
-        <div class="directory-detail">
-          <div class="directory-detail-item">
-            <strong>SUM con parrilla y semicubierto</strong>
-            Para reuniones sociales
-          </div>
-          <div class="directory-detail-item">
-            <strong>Gimnasio</strong>
-            Espacio equipado para entrenamientos
-          </div>
-          <div class="directory-detail-item">
-            <strong>Piscina y solarium</strong>
-            Vistas panorámicas de la ciudad
-          </div>
-          <div class="directory-detail-item">
-            <strong>Plaza seca en el hall de entrada</strong>
-          </div>
-          <div class="directory-detail-item">
-            <strong>Grupo electrógeno para servicios generales</strong>
-            Ascensores, rampa, portón, agua y electricidad
-          </div>
-        </div>
-      </div>
-
-      <div class="directory-item reveal">
-        <span class="directory-num">/03</span>
-        <span class="directory-name">Cocheras</span>
-        <div class="directory-detail">
-          <div class="directory-detail-item">
-            <strong>24 cocheras techadas</strong>
-            Subsuelo y planta baja
-          </div>
-          <div class="directory-detail-item">
-            <strong>12 cocheras descubiertas</strong>
-            Planta baja
-          </div>
-          <div class="directory-detail-item">
-            <strong>13 bauleras privadas</strong>
-            Subsuelo
-          </div>
-        </div>
-      </div>
+    <div class="directory-header reveal">
+      <p class="directory-tag">EL PROYECTO</p>
+      <h2 class="directory-headline">Comodidad. Naturaleza. Funcionalidad.</h2>
+      <p class="directory-sub">Tres ejes que definen TAO: las unidades, los espacios comunes y la infraestructura que sostiene la vida diaria.</p>
     </div>
 
-    <div class="directory-side">
-      <p class="directory-side-title">Comodidad. Naturaleza. Funcionalidad.</p>
-      <p class="directory-side-text">Los espacios comunes han sido diseñados para ofrecer un estilo de vida elevado.</p>
+    <div class="directory-grid">
+      <a href="#plantas" class="directory-card reveal">
+        <div class="directory-card-img">
+          <span class="directory-card-num">/01</span>
+          <picture>
+            <source srcset="images/gallery-living.webp" type="image/webp">
+            <img src="images/gallery-living.jpg" alt="Living comedor de un departamento TAO" loading="lazy">
+          </picture>
+        </div>
+        <div class="directory-card-body">
+          <h3 class="directory-card-name">Departamentos</h3>
+          <p class="directory-card-lead">Tipologías de 2 y 3 habitaciones, 138 m² totales con terraza propia y vista a Plaza Belgrano.</p>
+          <div class="directory-card-tags">
+            <span class="directory-card-tag">2 hab</span>
+            <span class="directory-card-tag">3 hab + suite</span>
+            <span class="directory-card-tag">Terraza · parrilla</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#renders" class="directory-card reveal" data-delay="1">
+        <div class="directory-card-img">
+          <span class="directory-card-num">/02</span>
+          <picture>
+            <source srcset="images/amenities-pileta.webp" type="image/webp">
+            <img src="images/amenities-pileta.jpg" alt="Pileta y solarium en terraza" loading="lazy">
+          </picture>
+        </div>
+        <div class="directory-card-body">
+          <h3 class="directory-card-name">Amenities</h3>
+          <p class="directory-card-lead">Pileta, solarium, gimnasio y SUM en terraza. Plaza seca de acceso. Grupo electrógeno para servicios.</p>
+          <div class="directory-card-tags">
+            <span class="directory-card-tag">Pileta</span>
+            <span class="directory-card-tag">Gimnasio</span>
+            <span class="directory-card-tag">SUM</span>
+            <span class="directory-card-tag">Plaza seca</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#contacto" class="directory-card reveal" data-delay="2">
+        <div class="directory-card-img">
+          <span class="directory-card-num">/03</span>
+          <picture>
+            <source srcset="images/hero-building.webp" type="image/webp">
+            <img src="images/hero-building.jpg" alt="Frente del edificio TAO" loading="lazy">
+          </picture>
+        </div>
+        <div class="directory-card-body">
+          <h3 class="directory-card-name">Cocheras</h3>
+          <p class="directory-card-lead">36 cocheras y 13 bauleras privadas distribuidas entre subsuelo y planta baja.</p>
+          <div class="directory-card-tags">
+            <span class="directory-card-tag">24 techadas</span>
+            <span class="directory-card-tag">12 descubiertas</span>
+            <span class="directory-card-tag">13 bauleras</span>
+          </div>
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -1352,63 +1705,99 @@
     <div class="plantas-header reveal">
       <p class="plantas-tag">PLANTAS DEL PROYECTO</p>
       <h2 class="plantas-title">Cada metro, pensado.</h2>
-      <p class="plantas-text">Dos tipologías de departamentos diseñadas para optimizar el aprovechamiento de cada metro cuadrado, sin sacrificar la estética ni la comodidad.</p>
+      <p class="plantas-text">Dos tipologías de departamentos y una terraza de amenities. Seleccioná abajo para explorar cada planta.</p>
     </div>
 
-    <div class="plantas-grid">
-      <div class="planta-card reveal">
-        <p class="planta-tag">PISO 1° AL 11°</p>
-        <h3 class="planta-name">2 Habitaciones</h3>
-        <div class="planta-image" data-img="images/plan-2hab.jpg" data-alt="Planta tipo 2 habitaciones — 138 m²">
-          <picture>
-            <source srcset="images/plan-2hab.webp" type="image/webp">
-            <img src="images/plan-2hab.jpg" alt="Planta tipo 2 habitaciones — 138 m²" loading="lazy">
-          </picture>
-        </div>
-        <div class="planta-specs">
-          <div>
-            <span>Cubierta</span><br>
-            <span class="planta-spec-value">106,15 m²</span>
-          </div>
-          <div>
-            <span>Semicubierta</span><br>
-            <span class="planta-spec-value">32,35 m²</span>
-          </div>
-          <div>
-            <span>Total</span><br>
-            <span class="planta-spec-value">138,50 m²</span>
-          </div>
-        </div>
+    <div class="plano-tabs reveal" role="tablist">
+      <button class="plano-tab active" type="button" role="tab" data-plano="2hab" aria-selected="true">
+        <span class="plano-tab-num">2</span>
+        <span class="plano-tab-label">Habitaciones</span>
+      </button>
+      <button class="plano-tab" type="button" role="tab" data-plano="3hab" aria-selected="false">
+        <span class="plano-tab-num">3</span>
+        <span class="plano-tab-label">Hab. + suite</span>
+      </button>
+      <button class="plano-tab" type="button" role="tab" data-plano="terraza" aria-selected="false">
+        <span class="plano-tab-num">↑</span>
+        <span class="plano-tab-label">Terraza · Amenities</span>
+      </button>
+    </div>
+
+    <div class="plano-viewer reveal">
+      <div class="plano-canvas" id="plano-canvas">
+        <picture class="plano-img active" data-plano="2hab">
+          <source srcset="images/plan-2hab.webp" type="image/webp">
+          <img src="images/plan-2hab.jpg" alt="Planta 2 habitaciones — 138 m²" class="plano-img-tag" loading="lazy">
+        </picture>
+        <picture class="plano-img" data-plano="3hab">
+          <source srcset="images/plan-3hab.webp" type="image/webp">
+          <img src="images/plan-3hab.jpg" alt="Planta 3 habitaciones — 138 m²" loading="lazy">
+        </picture>
+        <picture class="plano-img" data-plano="terraza">
+          <source srcset="images/plan-terraza.webp" type="image/webp">
+          <img src="images/plan-terraza.jpg" alt="Terraza con amenities" loading="lazy">
+        </picture>
       </div>
 
-      <div class="planta-card reveal" data-delay="1">
-        <p class="planta-tag">PISO 2° AL 12°</p>
-        <h3 class="planta-name">3 Habitaciones</h3>
-        <div class="planta-image" data-img="images/plan-3hab.jpg" data-alt="Planta tipo 3 habitaciones — 138 m²">
-          <picture>
-            <source srcset="images/plan-3hab.webp" type="image/webp">
-            <img src="images/plan-3hab.jpg" alt="Planta tipo 3 habitaciones — 138 m²" loading="lazy">
-          </picture>
+      <aside class="plano-info">
+        <div class="plano-pane active" data-plano="2hab">
+          <p class="plano-info-tag">Tipología A</p>
+          <h3 class="plano-info-name">2 Habitaciones</h3>
+          <p class="plano-info-floor">Piso 1° al 11°</p>
+          <div class="plano-info-specs">
+            <div><span>Cubierta</span><strong>106,15 m²</strong></div>
+            <div><span>Semicubierta</span><strong>32,35 m²</strong></div>
+            <div><span>Total</span><strong>138,50 m²</strong></div>
+          </div>
+          <ul class="plano-info-features">
+            <li>Living-comedor con balcón vidriado</li>
+            <li>Cocina abierta con isla de mármol</li>
+            <li>Dos dormitorios con placard</li>
+            <li>Baño completo + toilette</li>
+            <li>Terraza con parrilla propia</li>
+          </ul>
         </div>
-        <div class="planta-specs">
-          <div>
-            <span>Cubierta</span><br>
-            <span class="planta-spec-value">106,78 m²</span>
+
+        <div class="plano-pane" data-plano="3hab">
+          <p class="plano-info-tag">Tipología B</p>
+          <h3 class="plano-info-name">3 Habitaciones</h3>
+          <p class="plano-info-floor">Piso 2° al 12°</p>
+          <div class="plano-info-specs">
+            <div><span>Cubierta</span><strong>106,78 m²</strong></div>
+            <div><span>Semicubierta</span><strong>31,72 m²</strong></div>
+            <div><span>Total</span><strong>138,50 m²</strong></div>
           </div>
-          <div>
-            <span>Semicubierta</span><br>
-            <span class="planta-spec-value">31,72 m²</span>
-          </div>
-          <div>
-            <span>Total</span><br>
-            <span class="planta-spec-value">138,50 m²</span>
-          </div>
+          <ul class="plano-info-features">
+            <li>Living-comedor con balcón vidriado</li>
+            <li>Cocina abierta con isla de mármol</li>
+            <li>Suite principal con vestidor</li>
+            <li>Dos dormitorios secundarios</li>
+            <li>Dos baños completos + toilette</li>
+            <li>Terraza con parrilla propia</li>
+          </ul>
         </div>
-      </div>
+
+        <div class="plano-pane" data-plano="terraza">
+          <p class="plano-info-tag">Amenities</p>
+          <h3 class="plano-info-name">Terraza</h3>
+          <p class="plano-info-floor">Piso 13° · Espacio común</p>
+          <div class="plano-info-specs">
+            <div><span>SUM</span><strong>Cubierto</strong></div>
+            <div><span>Pileta</span><strong>+ solarium</strong></div>
+            <div><span>Vista</span><strong>Panorámica</strong></div>
+          </div>
+          <ul class="plano-info-features">
+            <li>SUM con parrilla y semicubierto</li>
+            <li>Gimnasio equipado</li>
+            <li>Piscina con solarium</li>
+            <li>Vista panorámica a Plaza Belgrano</li>
+          </ul>
+        </div>
+      </aside>
     </div>
 
     <div class="planta-cta reveal">
-      <p class="planta-cta-text">Ver el plano completo del edificio.</p>
+      <p class="planta-cta-text">¿Querés el plano completo del edificio?</p>
       <a href="#contacto" class="planta-cta-link">SOLICITAR PLANO COMPLETO</a>
     </div>
   </div>
@@ -1419,27 +1808,50 @@
   <div class="materials-inner">
     <p class="materials-tag reveal">MATERIALES</p>
     <h2 class="materials-title reveal">Calidez y modernidad.</h2>
+    <p class="materials-intro reveal">Especificación técnica de los acabados que componen cada unidad. Calidad premium en pisos, revestimientos, griferías y carpinterías.</p>
 
-    <div class="materials-list">
-      <div class="material-row reveal">
-        <div class="material-name">PISOS</div>
-        <p class="material-desc">En las áreas principales como el estar, la cocina, los dormitorios y las terrazas, se ha optado por porcelanato de gran formato con apariencia de madera (22 x 160 cm), lo que proporciona una sensación de calidez y modernidad.</p>
+    <div class="materials-table reveal">
+      <div class="materials-table-head">
+        <span>Ítem</span>
+        <span>Especificación</span>
+        <span>Marca / Modelo</span>
+        <span>Ambiente</span>
       </div>
-      <div class="material-row reveal">
-        <div class="material-name">BAÑOS</div>
-        <p class="material-desc">Los baños cuentan con revestimientos en porcelanato de alta gama (60x120 cm o 80x160 cm), en tonos neutros como travertino grey o concreto hueso, creando una atmósfera elegante y relajante.</p>
+      <div class="material-tr">
+        <div class="material-tr-item">Pisos</div>
+        <div class="material-tr-spec">Porcelanato gran formato 22 × 160 cm — apariencia madera</div>
+        <div class="material-tr-brand">Premium</div>
+        <div class="material-tr-where">Estar, cocina, dormitorios, terrazas</div>
       </div>
-      <div class="material-row reveal">
-        <div class="material-name">GRIFERÍAS Y ARTEFACTOS</div>
-        <p class="material-desc">Se han incorporado griferías de la línea Roca Varna, así como artefactos sanitarios de primera marca, como Roca The Gap, garantizando calidad y funcionalidad.</p>
+      <div class="material-tr">
+        <div class="material-tr-item">Baños</div>
+        <div class="material-tr-spec">Porcelanato alta gama 60 × 120 / 80 × 160 cm</div>
+        <div class="material-tr-brand">Travertino grey · Concreto hueso</div>
+        <div class="material-tr-where">Revestimientos de baño</div>
       </div>
-      <div class="material-row reveal">
-        <div class="material-name">CARPINTERÍAS</div>
-        <p class="material-desc">El edificio está equipado con carpinterías de aluminio negro con doble vidrio hermético (DVH), lo que asegura un aislamiento térmico y acústico óptimo.</p>
+      <div class="material-tr">
+        <div class="material-tr-item">Griferías</div>
+        <div class="material-tr-spec">Línea premium</div>
+        <div class="material-tr-brand">Roca Varna</div>
+        <div class="material-tr-where">Cocina, baños</div>
       </div>
-      <div class="material-row reveal">
-        <div class="material-name">MESADAS</div>
-        <p class="material-desc">Las cocinas y baños cuentan con mesadas compuestas del clásico negro Brasil o blanco nube, añadiendo un toque de lujo a los espacios más funcionales del hogar.</p>
+      <div class="material-tr">
+        <div class="material-tr-item">Sanitarios</div>
+        <div class="material-tr-spec">Artefactos primera marca</div>
+        <div class="material-tr-brand">Roca The Gap</div>
+        <div class="material-tr-where">Baños</div>
+      </div>
+      <div class="material-tr">
+        <div class="material-tr-item">Carpintería</div>
+        <div class="material-tr-spec">Aluminio negro · DVH (doble vidrio hermético)</div>
+        <div class="material-tr-brand">Aislación térmica + acústica</div>
+        <div class="material-tr-where">Aberturas exteriores</div>
+      </div>
+      <div class="material-tr">
+        <div class="material-tr-item">Mesadas</div>
+        <div class="material-tr-spec">Cuarzo compuesto</div>
+        <div class="material-tr-brand">Negro Brasil · Blanco nube</div>
+        <div class="material-tr-where">Cocina, baños</div>
       </div>
     </div>
   </div>
@@ -1504,7 +1916,7 @@
   <div class="team-inner">
     <div class="team-header reveal">
       <p class="team-tag">QUIÉNES SOMOS</p>
-      <h2 class="team-title">Couyet Arquitectura<br>+ Diseño.</h2>
+      <h2 class="team-title">El equipo detrás<br>de TAO.</h2>
     </div>
 
     <div class="team-grid">
@@ -1528,9 +1940,19 @@
         <p class="team-name">Juliana Azpiazu</p>
         <p class="team-role">ARQUITECTA</p>
       </figure>
+      <figure class="team-card reveal" data-delay="2">
+        <div class="team-photo">
+          <picture>
+            <source srcset="images/team-facundo.webp" type="image/webp">
+            <img src="images/team-facundo.jpg" alt="Facundo Couyet" loading="lazy">
+          </picture>
+        </div>
+        <p class="team-name">Facundo Couyet</p>
+        <p class="team-role">DIRECTOR COMERCIAL</p>
+      </figure>
     </div>
 
-    <p class="team-text reveal">Junto a <strong>Andrés García Olivares</strong>, Luis y Juliana conforman <strong>Couyet Arquitectura + Diseño</strong>, el estudio responsable del diseño y la dirección de obra del edificio TAO.</p>
+    <p class="team-text reveal">Luis y Juliana, junto a <strong>Andrés García Olivares</strong>, conforman <strong>Couyet Arquitectura + Diseño</strong>, el estudio responsable del diseño y la dirección de obra del edificio TAO. <strong>Facundo Couyet</strong> lidera la dirección comercial del proyecto desde <strong>De Mur</strong>.</p>
   </div>
 </section>
 
@@ -1697,6 +2119,52 @@
       document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
     } else {
       document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('in-view'); });
+    }
+
+    /* ---- Theme toggle ---- */
+    var themeToggle = document.getElementById('theme-toggle');
+    var root = document.documentElement;
+    function applyTheme(theme) {
+      if (theme === 'light') root.setAttribute('data-theme', 'light');
+      else root.removeAttribute('data-theme');
+    }
+    if (themeToggle) {
+      themeToggle.addEventListener('click', function() {
+        var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        applyTheme(next);
+        try { localStorage.setItem('tao-theme', next); } catch (e) {}
+      });
+    }
+
+    /* ---- Plano tabs ---- */
+    var planoTabs = document.querySelectorAll('.plano-tab');
+    var planoImgs = document.querySelectorAll('.plano-img');
+    var planoPanes = document.querySelectorAll('.plano-pane');
+    var planoCanvas = document.getElementById('plano-canvas');
+
+    function activatePlano(key) {
+      planoTabs.forEach(function(t) {
+        var on = t.getAttribute('data-plano') === key;
+        t.classList.toggle('active', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      planoImgs.forEach(function(p) {
+        p.classList.toggle('active', p.getAttribute('data-plano') === key);
+      });
+      planoPanes.forEach(function(p) {
+        p.classList.toggle('active', p.getAttribute('data-plano') === key);
+      });
+    }
+    planoTabs.forEach(function(t) {
+      t.addEventListener('click', function() {
+        activatePlano(t.getAttribute('data-plano'));
+      });
+    });
+    if (planoCanvas) {
+      planoCanvas.addEventListener('click', function() {
+        var activeImg = planoCanvas.querySelector('.plano-img.active img');
+        if (activeImg) openLightbox(activeImg.src, activeImg.alt);
+      });
     }
 
     /* ---- Form (placeholder, mientras conectamos a Airtable) ---- */
