@@ -1013,18 +1013,16 @@
     align-items: center;
   }
   .location-map {
-    aspect-ratio: 1/1;
-    background: #F2F1EC;
+    aspect-ratio: 6/5;
     border-radius: 2px;
     border: 1px solid var(--line);
     overflow: hidden;
     position: relative;
-    padding: 24px;
   }
   .location-map picture, .location-map img {
     width: 100%; height: 100%;
     display: block;
-    object-fit: contain;
+    object-fit: cover;
   }
   .location-features { display: flex; flex-direction: column; }
   .location-feature {
@@ -1876,7 +1874,7 @@
       <div class="location-map reveal">
         <picture>
           <source srcset="images/location-map.webp" type="image/webp">
-          <img src="images/location-map.png" alt="Mapa ilustrado de Av. 13 entre 40 y 41, La Plata. TAO frente a Plaza Belgrano." loading="lazy">
+          <img src="images/location-map.jpg" alt="Mapa ilustrado de Av. 13 entre 40 y 41, La Plata. TAO frente a Plaza Belgrano." loading="lazy">
         </picture>
       </div>
 
