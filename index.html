@@ -943,6 +943,15 @@
     max-width: 580px;
     margin-bottom: 56px;
   }
+  .materials-disclaimer {
+    font-size: 12px;
+    color: var(--cream-faint);
+    line-height: 1.6;
+    margin-top: 32px;
+    max-width: 760px;
+    font-style: italic;
+    letter-spacing: 0.2px;
+  }
   .materials-table {
     width: 100%;
     border-top: 1px solid var(--line);
@@ -1063,7 +1072,7 @@
   /* ───── TEAM ───── */
   .team {
     background: var(--bg-deep);
-    padding: 140px 48px;
+    padding: 140px 48px 80px;
   }
   .team-inner { max-width: 1400px; margin: 0 auto; }
   .team-header { margin-bottom: 80px; max-width: 700px; }
@@ -1129,25 +1138,24 @@
   /* ───── VIDEO ───── */
   .video-section {
     background: var(--bg-deep);
-    padding: 120px 48px;
+    padding: 56px 48px 96px;
   }
-  .video-inner { max-width: 1400px; margin: 0 auto; }
+  .video-inner { max-width: 980px; margin: 0 auto; }
   .video-header {
-    margin-bottom: 48px;
-    max-width: 700px;
-    text-align: left;
+    margin-bottom: 36px;
+    text-align: center;
   }
   .video-tag {
     font-size: 12px;
     letter-spacing: 4px;
     color: var(--cream-dim);
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     font-weight: 500;
   }
   .video-title {
-    font-size: clamp(40px, 5vw, 72px);
+    font-size: clamp(34px, 4vw, 52px);
     font-weight: 200;
-    line-height: 1;
+    line-height: 1.05;
     letter-spacing: -0.03em;
     color: var(--cream);
   }
@@ -1155,8 +1163,10 @@
     font-size: 14px;
     color: var(--cream-dim);
     line-height: 1.7;
-    margin-top: 16px;
+    margin-top: 14px;
     max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
   }
   .video-frame {
     position: relative;
@@ -1166,6 +1176,8 @@
     border: 1px solid var(--line);
     aspect-ratio: 16/9;
     box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+    max-width: 980px;
+    margin: 0 auto;
   }
   .video-frame video {
     width: 100%;
@@ -1682,7 +1694,7 @@
         <source srcset="images/editorial-terraza.webp" type="image/webp">
         <img src="images/editorial-terraza.jpg" alt="Terraza con parrilla del edificio TAO" loading="lazy">
       </picture>
-      <div class="editorial-image-meta">RENDER · TERRAZA CON PARRILLA</div>
+      <div class="editorial-image-meta">RENDER · SOLARIUM Y GALERÍA</div>
     </div>
     <div class="editorial-text reveal" data-delay="1">
       <h2 class="editorial-headline">
@@ -1710,38 +1722,45 @@
         <p class="renders-tag">RENDERS DEL PROYECTO</p>
         <h2 class="renders-title">Conocé cada espacio.</h2>
       </div>
-      <p class="renders-counter">08 IMÁGENES</p>
+      <p class="renders-counter">09 IMÁGENES</p>
     </div>
 
     <p class="renders-section-label reveal">DEPARTAMENTOS</p>
     <div class="renders-grid">
-      <figure class="render-card reveal" data-img="images/gallery-living.jpg" data-alt="Living comedor con balcón">
+      <figure class="render-card reveal" data-img="images/gallery-living.jpg" data-alt="Living">
         <picture>
           <source srcset="images/gallery-living.webp" type="image/webp">
-          <img src="images/gallery-living.jpg" alt="Living comedor con balcón" loading="lazy">
+          <img src="images/gallery-living.jpg" alt="Living" loading="lazy">
         </picture>
-        <p class="render-caption">Living &middot; Balcón con vista</p>
+        <p class="render-caption">Living</p>
       </figure>
-      <figure class="render-card reveal" data-delay="1" data-img="images/gallery-cocina.jpg" data-alt="Cocina con isla de mármol">
+      <figure class="render-card reveal" data-delay="1" data-img="images/gallery-cocina.jpg" data-alt="Cocina">
         <picture>
           <source srcset="images/gallery-cocina.webp" type="image/webp">
-          <img src="images/gallery-cocina.jpg" alt="Cocina con isla de mármol" loading="lazy">
+          <img src="images/gallery-cocina.jpg" alt="Cocina" loading="lazy">
         </picture>
-        <p class="render-caption">Cocina &middot; Isla de mármol</p>
+        <p class="render-caption">Cocina</p>
       </figure>
-      <figure class="render-card reveal" data-delay="2" data-img="images/gallery-comedor.jpg" data-alt="Comedor amplio con cocina abierta">
+      <figure class="render-card reveal" data-delay="2" data-img="images/gallery-comedor.jpg" data-alt="Comedor">
         <picture>
           <source srcset="images/gallery-comedor.webp" type="image/webp">
-          <img src="images/gallery-comedor.jpg" alt="Comedor amplio con cocina abierta" loading="lazy">
+          <img src="images/gallery-comedor.jpg" alt="Comedor" loading="lazy">
         </picture>
-        <p class="render-caption">Comedor &middot; Cocina abierta</p>
+        <p class="render-caption">Comedor</p>
       </figure>
-      <figure class="render-card reveal" data-delay="3" data-img="images/gallery-living-2.jpg" data-alt="Living con vista a la ciudad">
+      <figure class="render-card reveal" data-delay="3" data-img="images/gallery-living-2.jpg" data-alt="Estar">
         <picture>
           <source srcset="images/gallery-living-2.webp" type="image/webp">
-          <img src="images/gallery-living-2.jpg" alt="Living con vista a la ciudad" loading="lazy">
+          <img src="images/gallery-living-2.jpg" alt="Estar" loading="lazy">
         </picture>
-        <p class="render-caption">Living &middot; Vista a la ciudad</p>
+        <p class="render-caption">Estar</p>
+      </figure>
+      <figure class="render-card reveal" data-delay="4" data-img="images/depto-terraza.jpg" data-alt="Terraza con parrilla">
+        <picture>
+          <source srcset="images/depto-terraza.webp" type="image/webp">
+          <img src="images/depto-terraza.jpg" alt="Terraza con parrilla" loading="lazy">
+        </picture>
+        <p class="render-caption">Terraza con parrilla</p>
       </figure>
     </div>
 
@@ -1900,13 +1919,13 @@
       </div>
       <div class="material-tr">
         <div class="material-tr-item">Pisos</div>
-        <div class="material-tr-spec">Porcelanato gran formato 22 × 160 cm — apariencia madera</div>
+        <div class="material-tr-spec">Porcelanato 22 × 160 cm · símil madera</div>
         <div class="material-tr-brand">Premium</div>
         <div class="material-tr-where">Estar, cocina, dormitorios, terrazas</div>
       </div>
       <div class="material-tr">
         <div class="material-tr-item">Baños</div>
-        <div class="material-tr-spec">Porcelanato alta gama 60 × 120 / 80 × 160 cm</div>
+        <div class="material-tr-spec">Porcelanato gran formato 80 × 160 cm</div>
         <div class="material-tr-brand">Travertino grey · Concreto hueso</div>
         <div class="material-tr-where">Revestimientos de baño</div>
       </div>
@@ -1935,6 +1954,7 @@
         <div class="material-tr-where">Cocina, baños</div>
       </div>
     </div>
+    <p class="materials-disclaimer reveal">Las marcas y modelos indicados son referenciales. Pueden ser reemplazados por opciones similares de la misma calidad según disponibilidad de mercado.</p>
   </div>
 </section>
 
