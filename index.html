@@ -42,10 +42,10 @@
     --bg-mid: #2E2E2A;
     --bg-soft: #4A4943;
     --cream: #FAFAF7;
-    --cream-dim: rgba(250, 250, 247, 0.82);
-    --cream-faint: rgba(250, 250, 247, 0.55);
-    --line: rgba(250, 250, 247, 0.16);
-    --line-soft: rgba(250, 250, 247, 0.08);
+    --cream-dim: rgba(250, 250, 247, 0.88);
+    --cream-faint: rgba(250, 250, 247, 0.66);
+    --line: rgba(250, 250, 247, 0.18);
+    --line-soft: rgba(250, 250, 247, 0.09);
     --accent: #d1d0c5;
     --wa: #25D366;
   }
@@ -56,36 +56,45 @@
     --bg-mid: #F2F1EC;
     --bg-soft: #E2E0D6;
     --cream: #1F1F1C;
-    --cream-dim: rgba(31, 31, 28, 0.78);
-    --cream-faint: rgba(31, 31, 28, 0.5);
-    --line: rgba(31, 31, 28, 0.14);
-    --line-soft: rgba(31, 31, 28, 0.06);
+    --cream-dim: rgba(31, 31, 28, 0.84);
+    --cream-faint: rgba(31, 31, 28, 0.62);
+    --line: rgba(31, 31, 28, 0.16);
+    --line-soft: rgba(31, 31, 28, 0.08);
     --accent: #4A4943;
   }
-  /* Form section keeps deliberate contrast in both themes */
+  /* Form section keeps deliberate dark contrast in BOTH themes — child text must stay light */
   :root[data-theme="light"] .form {
     background: linear-gradient(180deg, #1F1F1C 0%, #2E2E2A 40%, #0a0a0a 100%);
     color: #FAFAF7;
   }
   :root[data-theme="light"] .form .form-tag,
-  :root[data-theme="light"] .form .form-meta { color: rgba(250,250,247,0.78); }
+  :root[data-theme="light"] .form .form-sub,
+  :root[data-theme="light"] .form .form-divider,
+  :root[data-theme="light"] .form .form-wa-link { color: rgba(250,250,247,0.88); }
   :root[data-theme="light"] .form .form-title { color: #FAFAF7; }
+  :root[data-theme="light"] .form .form-label { color: rgba(250,250,247,0.78); }
+  :root[data-theme="light"] .form .form-disclaimer { color: rgba(250,250,247,0.65); }
+  :root[data-theme="light"] .form .form-divider::before,
+  :root[data-theme="light"] .form .form-divider::after { background: rgba(250,250,247,0.18); }
   :root[data-theme="light"] .form .form-input,
-  :root[data-theme="light"] .form .form-textarea,
-  :root[data-theme="light"] .form .form-select {
+  :root[data-theme="light"] .form .form-textarea {
     color: #FAFAF7;
-    border-color: rgba(250,250,247,0.16);
+    border-color: rgba(250,250,247,0.22);
   }
+  :root[data-theme="light"] .form .form-input:focus,
+  :root[data-theme="light"] .form .form-textarea:focus { border-color: #FAFAF7; }
   :root[data-theme="light"] .form .form-input::placeholder,
-  :root[data-theme="light"] .form .form-textarea::placeholder { color: rgba(250,250,247,0.5); }
-  :root[data-theme="light"] .form .form-submit {
+  :root[data-theme="light"] .form .form-textarea::placeholder { color: rgba(250,250,247,0.45); }
+  :root[data-theme="light"] .form .form-button {
     color: #FAFAF7;
-    border-color: rgba(250,250,247,0.5);
+    border-color: rgba(250,250,247,0.55);
   }
-  :root[data-theme="light"] .form .form-submit:hover {
+  :root[data-theme="light"] .form .form-button:hover {
     background: #FAFAF7;
     color: #0a0a0a;
+    border-color: #FAFAF7;
   }
+  :root[data-theme="light"] .form .form-wa-link:hover { color: #FAFAF7; }
   /* Location map SVG colors (hardcoded inline) — invert via CSS in light */
   :root[data-theme="light"] .location-map svg line { stroke: rgba(31,31,28,0.18); }
   :root[data-theme="light"] .location-map svg line[stroke-width="1.2"] { stroke: rgba(31,31,28,0.32); }
@@ -246,10 +255,10 @@
     margin-bottom: 16px;
   }
   .hero-tagline {
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 4px;
     color: var(--cream-dim);
-    font-weight: 400;
+    font-weight: 500;
   }
   .hero-quote {
     font-size: clamp(20px, 2.4vw, 32px);
@@ -301,15 +310,17 @@
   .hero-key svg { stroke: var(--cream); transition: stroke 0.3s; }
   .hero-key:hover svg { stroke: var(--bg-deep); }
   .hero-key-label {
-    font-size: 11px;
+    font-size: 12px;
     color: var(--cream-dim);
     letter-spacing: 1px;
+    font-weight: 500;
   }
   .hero-location {
-    font-size: 11px;
+    font-size: 12px;
     color: var(--cream-dim);
     line-height: 1.7;
     letter-spacing: 1.5px;
+    font-weight: 500;
   }
 
   /* Spacer so the fixed hero gets scrolled past with parallax range */
@@ -392,10 +403,11 @@
     color: var(--cream);
   }
   .stat-split-label {
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 2px;
     color: var(--cream-dim);
     text-transform: uppercase;
+    font-weight: 500;
   }
   .stat-split-meta {
     font-size: 13px;
@@ -478,15 +490,15 @@
   .directory-card-num {
     position: absolute;
     top: 16px; left: 16px;
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 2px;
-    color: var(--cream);
-    background: rgba(31,31,28,0.7);
+    color: #FAFAF7;
+    background: rgba(31,31,28,0.78);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    padding: 6px 10px;
+    padding: 7px 11px;
     z-index: 2;
-    font-weight: 500;
+    font-weight: 600;
   }
   .directory-card-body {
     padding: 28px 28px 32px;
@@ -517,12 +529,13 @@
     border-top: 1px solid var(--line);
   }
   .directory-card-tag {
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 1.5px;
     color: var(--cream-dim);
     text-transform: uppercase;
-    padding: 6px 10px;
+    padding: 7px 11px;
     border: 1px solid var(--line);
+    font-weight: 500;
   }
 
   /* ───── EDITORIAL ───── */
@@ -551,13 +564,14 @@
     position: absolute;
     bottom: 18px;
     left: 18px;
-    color: var(--cream);
-    font-size: 10px;
+    color: #FAFAF7;
+    font-size: 11px;
     letter-spacing: 2px;
-    background: rgba(31, 31, 28, 0.7);
+    background: rgba(31, 31, 28, 0.78);
     padding: 8px 12px;
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
+    font-weight: 500;
   }
 
   .editorial-text { color: var(--cream); }
@@ -579,9 +593,10 @@
     margin-bottom: 32px;
   }
   .editorial-meta {
-    font-size: 11px;
-    color: var(--cream-faint);
+    font-size: 12px;
+    color: var(--cream-dim);
     letter-spacing: 2px;
+    font-weight: 500;
   }
 
   /* ───── PHILOSOPHY ───── */
@@ -607,9 +622,10 @@
     font-style: italic;
   }
   .philosophy-attribution {
-    font-size: 11px;
-    color: var(--cream-faint);
+    font-size: 12px;
+    color: var(--cream-dim);
     letter-spacing: 3px;
+    font-weight: 500;
   }
 
   /* ───── RENDERS GALLERY (split into Departamentos + Amenities) ───── */
@@ -628,10 +644,11 @@
   }
   .renders-title-block { max-width: 680px; }
   .renders-tag {
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 4px;
     color: var(--cream-dim);
     margin-bottom: 16px;
+    font-weight: 500;
   }
   .renders-title {
     font-size: clamp(40px, 5vw, 72px);
@@ -641,15 +658,17 @@
     color: var(--cream);
   }
   .renders-counter {
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 2px;
-    color: var(--cream-faint);
+    color: var(--cream-dim);
+    font-weight: 500;
   }
 
   .renders-section-label {
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 4px;
     color: var(--cream-dim);
+    font-weight: 500;
     margin: 56px 0 24px;
   }
   .renders-section-label:first-of-type { margin-top: 0; }
@@ -685,13 +704,14 @@
   .render-caption {
     position: absolute;
     bottom: 0; left: 0; right: 0;
-    padding: 16px 18px;
-    color: var(--cream);
-    font-size: 11px;
+    padding: 18px 20px;
+    color: #FAFAF7;
+    font-size: 12px;
     letter-spacing: 1.5px;
     z-index: 2;
-    background: linear-gradient(180deg, transparent 0%, rgba(31, 31, 28, 0.85) 100%);
+    background: linear-gradient(180deg, transparent 0%, rgba(31, 31, 28, 0.92) 100%);
     pointer-events: none;
+    font-weight: 500;
   }
 
   /* ───── PLANTAS ───── */
@@ -702,10 +722,11 @@
   .plantas-inner { max-width: 1400px; margin: 0 auto; }
   .plantas-header { margin-bottom: 80px; max-width: 700px; }
   .plantas-tag {
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 4px;
     color: var(--cream-dim);
     margin-bottom: 16px;
+    font-weight: 500;
   }
   .plantas-title {
     font-size: clamp(40px, 5vw, 72px);
@@ -802,11 +823,12 @@
     padding-top: 8px;
   }
   .plano-info-tag {
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 3px;
-    color: var(--cream-faint);
+    color: var(--cream-dim);
     text-transform: uppercase;
     margin-bottom: 12px;
+    font-weight: 500;
   }
   .plano-info-name {
     font-size: clamp(32px, 3.5vw, 44px);
@@ -837,10 +859,11 @@
     gap: 4px;
   }
   .plano-info-specs span {
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 1.5px;
-    color: var(--cream-faint);
+    color: var(--cream-dim);
     text-transform: uppercase;
+    font-weight: 500;
   }
   .plano-info-specs strong {
     font-size: 18px;
@@ -910,10 +933,11 @@
   }
   .materials-inner { max-width: 1400px; margin: 0 auto; }
   .materials-tag {
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 4px;
     color: var(--cream-dim);
     margin-bottom: 16px;
+    font-weight: 500;
   }
   .materials-title {
     font-size: clamp(40px, 5vw, 72px);
@@ -943,11 +967,11 @@
     border-bottom: 1px solid var(--line);
   }
   .materials-table-head span {
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 3px;
-    color: var(--cream-faint);
+    color: var(--cream-dim);
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 600;
   }
   .material-tr {
     display: grid;
@@ -1036,9 +1060,10 @@
     letter-spacing: -0.01em;
   }
   .location-feature-desc {
-    font-size: 11px;
+    font-size: 12px;
     color: var(--cream-dim);
     letter-spacing: 1.5px;
+    font-weight: 500;
   }
 
   /* ───── TEAM ───── */
@@ -1049,10 +1074,11 @@
   .team-inner { max-width: 1400px; margin: 0 auto; }
   .team-header { margin-bottom: 80px; max-width: 700px; }
   .team-tag {
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 4px;
     color: var(--cream-dim);
     margin-bottom: 16px;
+    font-weight: 500;
   }
   .team-title {
     font-size: clamp(40px, 5vw, 72px);
@@ -1066,7 +1092,7 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 32px;
     max-width: 1140px;
-    margin: 0 0 48px;
+    margin: 0 auto 48px;
   }
   .team-card { text-align: left; margin: 0; }
   .team-photo {
@@ -1096,12 +1122,13 @@
     color: var(--cream-dim);
   }
   .team-text {
-    max-width: 580px;
+    max-width: 1140px;
     font-size: 14px;
     color: var(--cream-dim);
     line-height: 1.7;
     border-top: 1px solid var(--line);
     padding-top: 32px;
+    margin: 0 auto;
   }
   .team-text strong { color: var(--cream); font-weight: 500; }
 
@@ -1120,10 +1147,11 @@
     z-index: 2;
   }
   .form-tag {
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 4px;
     color: var(--cream-dim);
     margin-bottom: 24px;
+    font-weight: 500;
   }
   .form-title {
     font-size: clamp(48px, 6vw, 84px);
@@ -1134,7 +1162,7 @@
     color: var(--cream);
   }
   .form-sub {
-    font-size: 14px;
+    font-size: 15px;
     color: var(--cream-dim);
     line-height: 1.7;
     margin-bottom: 56px;
@@ -1152,16 +1180,17 @@
   .form-field { display: flex; flex-direction: column; }
   .form-field-full { margin-bottom: 32px; }
   .form-label {
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 2px;
-    color: var(--cream-faint);
+    color: var(--cream-dim);
     margin-bottom: 12px;
+    font-weight: 600;
   }
   .form-input {
     border: none;
     border-bottom: 1px solid var(--line);
-    padding: 8px 0;
-    font-size: 15px;
+    padding: 10px 0;
+    font-size: 16px;
     background: transparent;
     color: var(--cream);
     font-family: inherit;
@@ -1174,7 +1203,7 @@
     padding: 14px;
     color: var(--cream);
     font-family: inherit;
-    font-size: 14px;
+    font-size: 15px;
     min-height: 80px;
     resize: vertical;
   }
@@ -1183,21 +1212,21 @@
     width: 100%;
     background: transparent;
     color: var(--cream);
-    border: 1px solid var(--cream-faint);
+    border: 1px solid var(--cream-dim);
     padding: 22px;
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 3px;
-    font-weight: 400;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
     margin-top: 24px;
     font-family: inherit;
   }
-  .form-button:hover { background: var(--cream); color: var(--bg-deep); }
+  .form-button:hover { background: var(--cream); color: var(--bg-deep); border-color: var(--cream); }
   .form-disclaimer {
     text-align: center;
-    font-size: 11px;
-    color: var(--cream-faint);
+    font-size: 12px;
+    color: var(--cream-dim);
     margin-top: 20px;
     letter-spacing: 0.5px;
   }
@@ -1206,9 +1235,10 @@
     align-items: center;
     gap: 16px;
     margin: 32px 0;
-    color: var(--cream-faint);
-    font-size: 10px;
+    color: var(--cream-dim);
+    font-size: 12px;
     letter-spacing: 3px;
+    font-weight: 500;
   }
   .form-divider::before, .form-divider::after {
     content: '';
@@ -1219,14 +1249,16 @@
   .form-wa-link {
     display: block;
     text-align: center;
-    color: var(--cream-dim);
+    color: var(--cream);
     text-decoration: none;
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 1px;
-    transition: color 0.2s;
+    transition: opacity 0.2s;
     padding: 12px;
+    font-weight: 500;
+    opacity: 0.88;
   }
-  .form-wa-link:hover { color: var(--cream); }
+  .form-wa-link:hover { opacity: 1; }
 
   /* ───── FLOATING WHATSAPP ───── */
   .wa-float {
@@ -1313,15 +1345,17 @@
     margin-bottom: 8px;
   }
   .footer-tagline {
-    font-size: 11px;
+    font-size: 12px;
     color: var(--cream-dim);
     letter-spacing: 2px;
+    font-weight: 500;
   }
   .footer-col-title {
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 2px;
-    color: var(--cream-faint);
+    color: var(--cream-dim);
     margin-bottom: 16px;
+    font-weight: 600;
   }
   .footer-col a, .footer-col p {
     display: block;
@@ -1338,9 +1372,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 10px;
-    color: var(--cream-faint);
+    font-size: 12px;
+    color: var(--cream-dim);
     letter-spacing: 1px;
+    font-weight: 500;
   }
 
   /* ───── MOBILE ───── */
@@ -1350,7 +1385,7 @@
   }
 
   @media (max-width: 768px) {
-    nav { padding: 18px 24px; font-size: 10px; gap: 12px; }
+    nav { padding: 18px 24px; font-size: 11px; gap: 12px; }
     .nav-right { gap: 16px; flex-wrap: wrap; justify-content: flex-end; max-width: 60%; }
 
     .hero-content {
@@ -1528,8 +1563,8 @@
   <div class="directory-inner">
     <div class="directory-header reveal">
       <p class="directory-tag">EL PROYECTO</p>
-      <h2 class="directory-headline">Comodidad. Naturaleza. Funcionalidad.</h2>
-      <p class="directory-sub">Tres ejes que definen TAO: las unidades, los espacios comunes y la infraestructura que sostiene la vida diaria.</p>
+      <h2 class="directory-headline">Tres ejes, un mismo proyecto.</h2>
+      <p class="directory-sub">Las unidades, los espacios comunes y la infraestructura que sostiene la vida diaria — pensados como un sistema único.</p>
     </div>
 
     <div class="directory-grid">
@@ -1808,7 +1843,7 @@
   <div class="materials-inner">
     <p class="materials-tag reveal">MATERIALES</p>
     <h2 class="materials-title reveal">Calidez y modernidad.</h2>
-    <p class="materials-intro reveal">Especificación técnica de los acabados que componen cada unidad. Calidad premium en pisos, revestimientos, griferías y carpinterías.</p>
+    <p class="materials-intro reveal">Cada unidad TAO se termina con materiales premium en pisos, revestimientos, griferías y carpinterías. La selección, en detalle.</p>
 
     <div class="materials-table reveal">
       <div class="materials-table-head">
