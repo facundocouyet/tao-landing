@@ -705,7 +705,7 @@
   /* ───── PLANTAS ───── */
   .plantas {
     background: var(--bg-mid);
-    padding: 140px 48px;
+    padding: 140px 48px 80px;
   }
   .plantas-inner { max-width: 1400px; margin: 0 auto; }
   .plantas-header { margin-bottom: 80px; max-width: 700px; }
@@ -786,8 +786,11 @@
     background: var(--bg-deep);
     border: 1px solid var(--line);
     border-radius: 2px;
-    padding: 24px;
-    aspect-ratio: 16/9;
+    padding: 32px;
+    /* Outer 5:3 + padding 32 → inner area exactamente 16:9 (matchea las
+       imágenes 1280x720). Resultado: el plano llena el inner exacto y
+       el padding queda como margen cream uniforme en los 4 lados. */
+    aspect-ratio: 5/3;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1485,7 +1488,7 @@
     .renders-grid--5 { grid-template-columns: 1fr 1fr; }
     .renders-grid--5 .render-card:last-child { grid-column: 1 / -1; }
     .plano-viewer { grid-template-columns: 1fr; gap: 32px; }
-    .plano-canvas { aspect-ratio: 16/9; padding: 14px; }
+    .plano-canvas { aspect-ratio: 5/3; padding: 16px; }
     .plano-tabs { flex-direction: column; }
     .plano-tab { border-right: none; border-bottom: 1px solid var(--line); padding: 18px 20px; }
     .plano-tab:last-child { border-bottom: none; }
