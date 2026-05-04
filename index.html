@@ -665,6 +665,7 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
   }
+  .renders-grid--5 { grid-template-columns: repeat(5, 1fr); }
   .render-card {
     margin: 0;
     aspect-ratio: 4/5;
@@ -785,8 +786,8 @@
     background: var(--bg-deep);
     border: 1px solid var(--line);
     border-radius: 2px;
-    padding: 32px;
-    aspect-ratio: 4/3;
+    padding: 24px;
+    aspect-ratio: 16/9;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1449,6 +1450,7 @@
   @media (max-width: 1024px) {
     .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
     .renders-grid { grid-template-columns: repeat(2, 1fr); }
+    .renders-grid--5 { grid-template-columns: repeat(3, 1fr); }
   }
 
   @media (max-width: 768px) {
@@ -1480,8 +1482,10 @@
       gap: 40px;
     }
     .renders-grid { grid-template-columns: 1fr 1fr; }
+    .renders-grid--5 { grid-template-columns: 1fr 1fr; }
+    .renders-grid--5 .render-card:last-child { grid-column: 1 / -1; }
     .plano-viewer { grid-template-columns: 1fr; gap: 32px; }
-    .plano-canvas { aspect-ratio: 4/3; padding: 18px; }
+    .plano-canvas { aspect-ratio: 16/9; padding: 14px; }
     .plano-tabs { flex-direction: column; }
     .plano-tab { border-right: none; border-bottom: 1px solid var(--line); padding: 18px 20px; }
     .plano-tab:last-child { border-bottom: none; }
@@ -1726,7 +1730,7 @@
     </div>
 
     <p class="renders-section-label reveal">DEPARTAMENTOS</p>
-    <div class="renders-grid">
+    <div class="renders-grid renders-grid--5">
       <figure class="render-card reveal" data-img="images/gallery-living.jpg" data-alt="Living">
         <picture>
           <source srcset="images/gallery-living.webp" type="image/webp">
