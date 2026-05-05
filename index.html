@@ -98,8 +98,8 @@
     border-top-color: rgba(250,250,247,0.12);
   }
   /* Smooth transitions on theme swap */
-  body, section, .stat, .planta-card, .plano-canvas, .directory-card,
-  .material-tr, .team-card, .render-card, nav, .editorial-image {
+  body, section, .stat, .plano-canvas, .directory-card,
+  .team-card, .render-card, nav, .editorial-image {
     transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
   }
 
@@ -918,92 +918,56 @@
     border-color: var(--cream);
   }
 
-  /* ───── MATERIALS ───── */
-  .materials {
-    background: var(--bg-deep);
-    padding: 140px 48px;
+  /* ───── PLANTAS · TERMINACIONES (compact materials block) ───── */
+  .plantas-finishes {
+    margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
   }
-  .materials-inner { max-width: 1400px; margin: 0 auto; }
-  .materials-tag {
+  .plantas-finishes-tag {
     font-size: 12px;
     letter-spacing: 4px;
     color: var(--cream-dim);
-    margin-bottom: 16px;
     font-weight: 500;
+    margin-bottom: 28px;
+    text-align: center;
   }
-  .materials-title {
-    font-size: clamp(40px, 5vw, 72px);
-    font-weight: 200;
-    line-height: 1;
-    letter-spacing: -0.03em;
-    margin-bottom: 80px;
-    color: var(--cream);
-  }
-  .materials-intro {
-    font-size: 14px;
-    color: var(--cream-dim);
-    line-height: 1.7;
-    max-width: 580px;
-    margin-bottom: 56px;
-  }
-  .materials-disclaimer {
-    font-size: 12px;
-    color: var(--cream-faint);
-    line-height: 1.6;
-    margin-top: 32px;
-    max-width: 760px;
-    font-style: italic;
-    letter-spacing: 0.2px;
-  }
-  .materials-table {
-    width: 100%;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-  }
-  .materials-table-head {
+  .plantas-finishes-list {
     display: grid;
-    grid-template-columns: 1.1fr 2fr 1.6fr 1.6fr;
-    gap: 32px;
-    padding: 18px 0;
-    border-bottom: 1px solid var(--line);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
   }
-  .materials-table-head span {
-    font-size: 12px;
-    letter-spacing: 3px;
-    color: var(--cream-dim);
+  .plantas-finishes-list > div {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 16px;
+    align-items: baseline;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .plantas-finishes-list dt {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--cream);
     text-transform: uppercase;
     font-weight: 600;
   }
-  .material-tr {
-    display: grid;
-    grid-template-columns: 1.1fr 2fr 1.6fr 1.6fr;
-    gap: 32px;
-    padding: 22px 0;
-    border-bottom: 1px solid var(--line-soft);
-    align-items: baseline;
-    transition: background 0.2s;
-  }
-  .material-tr:last-child { border-bottom: none; }
-  .material-tr:hover { background: var(--line-soft); }
-  .material-tr-item {
-    font-size: 13px;
-    letter-spacing: 1.5px;
-    color: var(--cream);
-    text-transform: uppercase;
-    font-weight: 500;
-  }
-  .material-tr-spec {
+  .plantas-finishes-list dd {
     font-size: 14px;
-    color: var(--cream);
-    font-weight: 300;
-    line-height: 1.5;
-  }
-  .material-tr-brand,
-  .material-tr-where {
-    font-size: 13px;
     color: var(--cream-dim);
     line-height: 1.5;
-    font-weight: 300;
+    margin: 0;
+  }
+  .plantas-finishes-note {
+    margin: 24px auto 0;
+    max-width: 680px;
+    font-size: 12px;
+    color: var(--cream-faint);
+    text-align: center;
+    font-style: italic;
+    line-height: 1.6;
   }
 
   /* ───── LOCATION ───── */
@@ -1452,7 +1416,7 @@
   }
   body,
   .stats, .directory, .editorial, .philosophy, .renders,
-  .plantas, .materials, .location, .team, .video-section {
+  .plantas, .location, .team, .video-section {
     background-image: var(--grain);
     background-blend-mode: overlay;
   }
@@ -1484,7 +1448,7 @@
     .directory-grid { grid-template-columns: 1fr; gap: 18px; }
     .directory-card-body { padding: 22px 22px 26px; }
 
-    .editorial, .philosophy, .renders, .plantas, .materials, .location, .team, .video-section, .form {
+    .editorial, .philosophy, .renders, .plantas, .location, .team, .video-section, .form {
       padding: 80px 24px;
     }
     nav, nav.nav-scrolled { padding-left: 24px; padding-right: 24px; }
@@ -1506,20 +1470,8 @@
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
     .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
     .team-grid { grid-template-columns: 1fr; gap: 24px; max-width: 420px; }
-    .materials-table-head { display: none; }
-    .material-tr {
-      grid-template-columns: 1fr;
-      gap: 6px;
-      padding: 24px 0;
-    }
-    .material-tr-item {
-      font-size: 11px;
-      color: var(--cream-faint);
-      margin-bottom: 4px;
-    }
-    .material-tr-spec { font-size: 15px; }
-    .material-tr-brand,
-    .material-tr-where { font-size: 13px; }
+    .plantas-finishes-list > div { grid-template-columns: 90px 1fr; gap: 12px; }
+    .plantas-finishes-list dd { font-size: 13px; }
     .planta-cta { gap: 16px; }
     .wa-float { bottom: 16px; right: 16px; width: 48px; height: 48px; }
     .wa-float svg { width: 22px; height: 22px; }
@@ -1653,6 +1605,90 @@
   </div>
 </section>
 
+<!-- RENDERS (split: Departamentos + Amenities) -->
+<section class="renders" id="renders">
+  <div class="renders-inner">
+    <div class="renders-header reveal">
+      <div class="renders-title-block">
+        <p class="renders-tag">RENDERS DEL PROYECTO</p>
+        <h2 class="renders-title">Conocé cada espacio.</h2>
+      </div>
+      <p class="renders-counter">09 IMÁGENES</p>
+    </div>
+
+    <p class="renders-section-label reveal">DEPARTAMENTOS</p>
+    <div class="renders-grid renders-grid--5">
+      <figure class="render-card reveal" data-img="images/gallery-living.jpg" data-alt="Living">
+        <picture>
+          <source srcset="images/gallery-living.webp" type="image/webp">
+          <img src="images/gallery-living.jpg" alt="Living" loading="lazy">
+        </picture>
+        <p class="render-caption">Living</p>
+      </figure>
+      <figure class="render-card reveal" data-delay="1" data-img="images/gallery-cocina.jpg" data-alt="Cocina">
+        <picture>
+          <source srcset="images/gallery-cocina.webp" type="image/webp">
+          <img src="images/gallery-cocina.jpg" alt="Cocina" loading="lazy">
+        </picture>
+        <p class="render-caption">Cocina</p>
+      </figure>
+      <figure class="render-card reveal" data-delay="2" data-img="images/gallery-comedor.jpg" data-alt="Comedor">
+        <picture>
+          <source srcset="images/gallery-comedor.webp" type="image/webp">
+          <img src="images/gallery-comedor.jpg" alt="Comedor" loading="lazy">
+        </picture>
+        <p class="render-caption">Comedor</p>
+      </figure>
+      <figure class="render-card reveal" data-delay="3" data-img="images/gallery-living-2.jpg" data-alt="Estar">
+        <picture>
+          <source srcset="images/gallery-living-2.webp" type="image/webp">
+          <img src="images/gallery-living-2.jpg" alt="Estar" loading="lazy">
+        </picture>
+        <p class="render-caption">Estar</p>
+      </figure>
+      <figure class="render-card reveal" data-delay="4" data-img="images/depto-terraza.jpg" data-alt="Terraza con parrilla">
+        <picture>
+          <source srcset="images/depto-terraza.webp" type="image/webp">
+          <img src="images/depto-terraza.jpg" alt="Terraza con parrilla" loading="lazy">
+        </picture>
+        <p class="render-caption">Terraza con parrilla</p>
+      </figure>
+    </div>
+
+    <p class="renders-section-label reveal">AMENITIES</p>
+    <div class="renders-grid">
+      <figure class="render-card reveal" data-img="images/hero-building.jpg" data-alt="Frente del edificio TAO al atardecer">
+        <picture>
+          <source srcset="images/hero-building.webp" type="image/webp">
+          <img src="images/hero-building.jpg" alt="Frente del edificio TAO al atardecer" loading="lazy">
+        </picture>
+        <p class="render-caption">Edificio &middot; Vista frontal</p>
+      </figure>
+      <figure class="render-card reveal" data-delay="1" data-img="images/gallery-quincho.jpg" data-alt="Quincho con vista panorámica">
+        <picture>
+          <source srcset="images/gallery-quincho.webp" type="image/webp">
+          <img src="images/gallery-quincho.jpg" alt="Quincho con vista panorámica" loading="lazy">
+        </picture>
+        <p class="render-caption">Quincho &middot; Vista panorámica</p>
+      </figure>
+      <figure class="render-card reveal" data-delay="2" data-img="images/gallery-lobby.jpg" data-alt="Lobby con espejo de agua">
+        <picture>
+          <source srcset="images/gallery-lobby.webp" type="image/webp">
+          <img src="images/gallery-lobby.jpg" alt="Lobby con espejo de agua" loading="lazy">
+        </picture>
+        <p class="render-caption">Lobby &middot; Espejo de agua</p>
+      </figure>
+      <figure class="render-card reveal" data-delay="3" data-img="images/amenities-pileta.jpg" data-alt="Pileta y gimnasio en terraza">
+        <picture>
+          <source srcset="images/amenities-pileta.webp" type="image/webp">
+          <img src="images/amenities-pileta.jpg" alt="Pileta y gimnasio en terraza" loading="lazy">
+        </picture>
+        <p class="render-caption">Pileta &middot; Gimnasio &middot; Solarium</p>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <!-- STATS -->
 <section class="stats">
   <div class="stats-grid">
@@ -1764,6 +1800,45 @@
   </div>
 </section>
 
+<!-- LOCATION -->
+<section class="location" id="ubicacion">
+  <div class="location-inner">
+    <div class="location-header reveal">
+      <p class="location-tag">UBICACIÓN</p>
+      <h2 class="location-title">Av. 13<br>entre 40 y 41.</h2>
+      <p class="location-text">La ubicación estratégica del edificio no solo ofrece proximidad a los principales puntos de interés, sino también una conexión con la tranquilidad que caracteriza a esta zona residencial. Con vistas despejadas hacia plazas y áreas verdes, TAO representa la perfecta combinación de exclusividad, modernidad y confort.</p>
+    </div>
+
+    <div class="location-grid">
+      <div class="location-map reveal">
+        <picture>
+          <source srcset="images/location-map.webp" type="image/webp">
+          <img src="images/location-map.jpg" alt="Mapa ilustrado de Av. 13 entre 40 y 41, La Plata. TAO frente a Plaza Belgrano." loading="lazy">
+        </picture>
+      </div>
+
+      <div class="location-features">
+        <div class="location-feature reveal">
+          <p class="location-feature-name">Plaza Belgrano</p>
+          <p class="location-feature-desc">FRENTE AL EDIFICIO</p>
+        </div>
+        <div class="location-feature reveal" data-delay="1">
+          <p class="location-feature-name">Por afuera del centro</p>
+          <p class="location-feature-desc">ZONA RESIDENCIAL</p>
+        </div>
+        <div class="location-feature reveal" data-delay="2">
+          <p class="location-feature-name">Rápida salida a Buenos Aires</p>
+          <p class="location-feature-desc">AUTOPISTA</p>
+        </div>
+        <div class="location-feature reveal" data-delay="3">
+          <p class="location-feature-name">Vistas despejadas</p>
+          <p class="location-feature-desc">PLAZAS Y ÁREAS VERDES</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- EDITORIAL -->
 <section class="editorial">
   <div class="editorial-grid">
@@ -1790,90 +1865,6 @@
   <p class="philosophy-tag reveal">DE MUR &middot; ELEVANDO FUTURO</p>
   <p class="philosophy-quote reveal">"TAO es la unidad que todo lo contiene: comodidad, tranquilidad, naturaleza."</p>
   <p class="philosophy-attribution reveal">COUYET ARQUITECTURA + DISEÑO</p>
-</section>
-
-<!-- RENDERS (split: Departamentos + Amenities) -->
-<section class="renders" id="renders">
-  <div class="renders-inner">
-    <div class="renders-header reveal">
-      <div class="renders-title-block">
-        <p class="renders-tag">RENDERS DEL PROYECTO</p>
-        <h2 class="renders-title">Conocé cada espacio.</h2>
-      </div>
-      <p class="renders-counter">09 IMÁGENES</p>
-    </div>
-
-    <p class="renders-section-label reveal">DEPARTAMENTOS</p>
-    <div class="renders-grid renders-grid--5">
-      <figure class="render-card reveal" data-img="images/gallery-living.jpg" data-alt="Living">
-        <picture>
-          <source srcset="images/gallery-living.webp" type="image/webp">
-          <img src="images/gallery-living.jpg" alt="Living" loading="lazy">
-        </picture>
-        <p class="render-caption">Living</p>
-      </figure>
-      <figure class="render-card reveal" data-delay="1" data-img="images/gallery-cocina.jpg" data-alt="Cocina">
-        <picture>
-          <source srcset="images/gallery-cocina.webp" type="image/webp">
-          <img src="images/gallery-cocina.jpg" alt="Cocina" loading="lazy">
-        </picture>
-        <p class="render-caption">Cocina</p>
-      </figure>
-      <figure class="render-card reveal" data-delay="2" data-img="images/gallery-comedor.jpg" data-alt="Comedor">
-        <picture>
-          <source srcset="images/gallery-comedor.webp" type="image/webp">
-          <img src="images/gallery-comedor.jpg" alt="Comedor" loading="lazy">
-        </picture>
-        <p class="render-caption">Comedor</p>
-      </figure>
-      <figure class="render-card reveal" data-delay="3" data-img="images/gallery-living-2.jpg" data-alt="Estar">
-        <picture>
-          <source srcset="images/gallery-living-2.webp" type="image/webp">
-          <img src="images/gallery-living-2.jpg" alt="Estar" loading="lazy">
-        </picture>
-        <p class="render-caption">Estar</p>
-      </figure>
-      <figure class="render-card reveal" data-delay="4" data-img="images/depto-terraza.jpg" data-alt="Terraza con parrilla">
-        <picture>
-          <source srcset="images/depto-terraza.webp" type="image/webp">
-          <img src="images/depto-terraza.jpg" alt="Terraza con parrilla" loading="lazy">
-        </picture>
-        <p class="render-caption">Terraza con parrilla</p>
-      </figure>
-    </div>
-
-    <p class="renders-section-label reveal">AMENITIES</p>
-    <div class="renders-grid">
-      <figure class="render-card reveal" data-img="images/hero-building.jpg" data-alt="Frente del edificio TAO al atardecer">
-        <picture>
-          <source srcset="images/hero-building.webp" type="image/webp">
-          <img src="images/hero-building.jpg" alt="Frente del edificio TAO al atardecer" loading="lazy">
-        </picture>
-        <p class="render-caption">Edificio &middot; Vista frontal</p>
-      </figure>
-      <figure class="render-card reveal" data-delay="1" data-img="images/gallery-quincho.jpg" data-alt="Quincho con vista panorámica">
-        <picture>
-          <source srcset="images/gallery-quincho.webp" type="image/webp">
-          <img src="images/gallery-quincho.jpg" alt="Quincho con vista panorámica" loading="lazy">
-        </picture>
-        <p class="render-caption">Quincho &middot; Vista panorámica</p>
-      </figure>
-      <figure class="render-card reveal" data-delay="2" data-img="images/gallery-lobby.jpg" data-alt="Lobby con espejo de agua">
-        <picture>
-          <source srcset="images/gallery-lobby.webp" type="image/webp">
-          <img src="images/gallery-lobby.jpg" alt="Lobby con espejo de agua" loading="lazy">
-        </picture>
-        <p class="render-caption">Lobby &middot; Espejo de agua</p>
-      </figure>
-      <figure class="render-card reveal" data-delay="3" data-img="images/amenities-pileta.jpg" data-alt="Pileta y gimnasio en terraza">
-        <picture>
-          <source srcset="images/amenities-pileta.webp" type="image/webp">
-          <img src="images/amenities-pileta.jpg" alt="Pileta y gimnasio en terraza" loading="lazy">
-        </picture>
-        <p class="render-caption">Pileta &middot; Gimnasio &middot; Solarium</p>
-      </figure>
-    </div>
-  </div>
 </section>
 
 <!-- PLANTAS -->
@@ -1974,103 +1965,21 @@
       </aside>
     </div>
 
+    <div class="plantas-finishes reveal" id="materiales">
+      <p class="plantas-finishes-tag">TERMINACIONES PREMIUM</p>
+      <dl class="plantas-finishes-list">
+        <div><dt>Pisos</dt><dd>Porcelanato símil madera 22×160 cm</dd></div>
+        <div><dt>Baños</dt><dd>Porcelanato gran formato 80×160 cm</dd></div>
+        <div><dt>Griferías</dt><dd>Roca Varna · sanitarios Roca The Gap</dd></div>
+        <div><dt>Carpintería</dt><dd>Aluminio negro con DVH</dd></div>
+        <div><dt>Mesadas</dt><dd>Cuarzo compuesto · negro Brasil o blanco nube</dd></div>
+      </dl>
+      <p class="plantas-finishes-note">Las marcas y modelos son referenciales y pueden reemplazarse por opciones similares de la misma calidad.</p>
+    </div>
+
     <div class="planta-cta reveal">
       <p class="planta-cta-text">¿Querés el plano completo del edificio?</p>
       <a href="#contacto" class="planta-cta-link">SOLICITAR PLANO COMPLETO</a>
-    </div>
-  </div>
-</section>
-
-<!-- MATERIALS -->
-<section class="materials" id="materiales">
-  <div class="materials-inner">
-    <p class="materials-tag reveal">MATERIALES</p>
-    <h2 class="materials-title reveal">Calidez y modernidad.</h2>
-    <p class="materials-intro reveal">Cada unidad TAO se termina con materiales premium en pisos, revestimientos, griferías y carpinterías. La selección, en detalle.</p>
-
-    <div class="materials-table reveal">
-      <div class="materials-table-head">
-        <span>Ítem</span>
-        <span>Especificación</span>
-        <span>Marca / Modelo</span>
-        <span>Ambiente</span>
-      </div>
-      <div class="material-tr">
-        <div class="material-tr-item">Pisos</div>
-        <div class="material-tr-spec">Porcelanato 22 × 160 cm · símil madera</div>
-        <div class="material-tr-brand">Premium</div>
-        <div class="material-tr-where">Estar, cocina, dormitorios, terrazas</div>
-      </div>
-      <div class="material-tr">
-        <div class="material-tr-item">Baños</div>
-        <div class="material-tr-spec">Porcelanato gran formato 80 × 160 cm</div>
-        <div class="material-tr-brand">Travertino grey · Concreto hueso</div>
-        <div class="material-tr-where">Revestimientos de baño</div>
-      </div>
-      <div class="material-tr">
-        <div class="material-tr-item">Griferías</div>
-        <div class="material-tr-spec">Línea premium</div>
-        <div class="material-tr-brand">Roca Varna</div>
-        <div class="material-tr-where">Cocina, baños</div>
-      </div>
-      <div class="material-tr">
-        <div class="material-tr-item">Sanitarios</div>
-        <div class="material-tr-spec">Artefactos primera marca</div>
-        <div class="material-tr-brand">Roca The Gap</div>
-        <div class="material-tr-where">Baños</div>
-      </div>
-      <div class="material-tr">
-        <div class="material-tr-item">Carpintería</div>
-        <div class="material-tr-spec">Aluminio negro · DVH (doble vidrio hermético)</div>
-        <div class="material-tr-brand">Aislación térmica + acústica</div>
-        <div class="material-tr-where">Aberturas exteriores</div>
-      </div>
-      <div class="material-tr">
-        <div class="material-tr-item">Mesadas</div>
-        <div class="material-tr-spec">Cuarzo compuesto</div>
-        <div class="material-tr-brand">Negro Brasil · Blanco nube</div>
-        <div class="material-tr-where">Cocina, baños</div>
-      </div>
-    </div>
-    <p class="materials-disclaimer reveal">Las marcas y modelos indicados son referenciales. Pueden ser reemplazados por opciones similares de la misma calidad según disponibilidad de mercado.</p>
-  </div>
-</section>
-
-<!-- LOCATION -->
-<section class="location" id="ubicacion">
-  <div class="location-inner">
-    <div class="location-header reveal">
-      <p class="location-tag">UBICACIÓN</p>
-      <h2 class="location-title">Av. 13<br>entre 40 y 41.</h2>
-      <p class="location-text">La ubicación estratégica del edificio no solo ofrece proximidad a los principales puntos de interés, sino también una conexión con la tranquilidad que caracteriza a esta zona residencial. Con vistas despejadas hacia plazas y áreas verdes, TAO representa la perfecta combinación de exclusividad, modernidad y confort.</p>
-    </div>
-
-    <div class="location-grid">
-      <div class="location-map reveal">
-        <picture>
-          <source srcset="images/location-map.webp" type="image/webp">
-          <img src="images/location-map.jpg" alt="Mapa ilustrado de Av. 13 entre 40 y 41, La Plata. TAO frente a Plaza Belgrano." loading="lazy">
-        </picture>
-      </div>
-
-      <div class="location-features">
-        <div class="location-feature reveal">
-          <p class="location-feature-name">Plaza Belgrano</p>
-          <p class="location-feature-desc">FRENTE AL EDIFICIO</p>
-        </div>
-        <div class="location-feature reveal" data-delay="1">
-          <p class="location-feature-name">Por afuera del centro</p>
-          <p class="location-feature-desc">ZONA RESIDENCIAL</p>
-        </div>
-        <div class="location-feature reveal" data-delay="2">
-          <p class="location-feature-name">Rápida salida a Buenos Aires</p>
-          <p class="location-feature-desc">AUTOPISTA</p>
-        </div>
-        <div class="location-feature reveal" data-delay="3">
-          <p class="location-feature-name">Vistas despejadas</p>
-          <p class="location-feature-desc">PLAZAS Y ÁREAS VERDES</p>
-        </div>
-      </div>
     </div>
   </div>
 </section>
