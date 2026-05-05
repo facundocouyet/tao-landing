@@ -1078,7 +1078,11 @@
     padding: 140px 48px 80px;
   }
   .team-inner { max-width: 1400px; margin: 0 auto; }
-  .team-header { margin-bottom: 80px; max-width: 700px; }
+  .team-header {
+    margin: 0 auto 80px;
+    max-width: 700px;
+    text-align: center;
+  }
   .team-tag {
     font-size: 12px;
     letter-spacing: 4px;
@@ -1097,7 +1101,7 @@
     font-size: clamp(15px, 1.4vw, 18px);
     color: var(--cream-dim);
     line-height: 1.6;
-    margin-top: 18px;
+    margin: 18px auto 0;
     max-width: 620px;
     font-weight: 400;
   }
@@ -1641,7 +1645,7 @@
       <p class="video-sub">Un recorrido por las terrazas, las plantas y los amenities del edificio.</p>
     </div>
     <div class="video-frame reveal">
-      <video controls preload="metadata" playsinline poster="images/hero-building.jpg">
+      <video controls preload="metadata" playsinline poster="images/video-poster.jpg">
         <source src="video/tao.mp4" type="video/mp4">
         Tu navegador no soporta video HTML5.
       </video>
